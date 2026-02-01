@@ -1,8 +1,15 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 import axios from "axios";
-import { RefreshCw, Search, ShieldAlert } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  RefreshCw,
+  Search,
+  ShieldAlert,
+  Filter,
+} from "lucide-react";
 
 interface SahamData {
   kode: string;
@@ -17,11 +24,8 @@ export default function LintangPredatorDashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("-");
   const [filterSignal, setFilterSignal] = useState<string>("ALL");
-  const [countdown, setCountdown] = useState(300); // 5 Menit dalam detik
 
-  // 1. Fungsi Utama Scan (Gunakan useCallback agar stabil)
-  const executeRadar = useCallback(async () => {
-    if (isLoading) return;
+  const executeRadar = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get("/api/scan");
@@ -29,38 +33,23 @@ export default function LintangPredatorDashboard() {
         setSahamList(response.data);
       }
       setLastUpdate(new Date().toLocaleTimeString());
-      setCountdown(300); // Reset timer setelah sukses
     } catch (error) {
       console.error("Radar Error:", error);
+      alert("Gagal Terhubung ke Radar.");
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading]);
+  };
 
-  // 2. OTOMATISASI: Jalankan saat pertama kali buka & Timer 5 menit
-  useEffect(() => {
-    executeRadar(); // Langsung scan saat website dibuka
-
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          executeRadar(); // Auto-scan saat timer habis
-          return 300;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer); // Bersihkan memory saat tab ditutup
-  }, [executeRadar]);
-
+  // Logika Filter Dinamis
   const filteredSaham = useMemo(() => {
     if (filterSignal === "ALL") return sahamList;
     return sahamList.filter((s) => s.signal === filterSignal);
   }, [sahamList, filterSignal]);
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-[#f4f4f5] font-sans">
+    <div className="min-h-screen bg-[#09090b] text-[#f4f4f5] font-sans selection:bg-green-500 selection:text-black">
+      {/* NAV ... (Tetap seperti sebelumnya) */}
       <nav className="border-b border-zinc-800 bg-zinc-950/50 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -72,69 +61,50 @@ export default function LintangPredatorDashboard() {
             </span>
           </div>
 
-          {/* Menampilkan status Auto-Refresh */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:block text-right">
-              <p className="text-[8px] text-zinc-500 uppercase font-bold leading-none">
-                Next Auto-Scan
-              </p>
-              <p className="text-xs font-mono text-green-500">
-                {Math.floor(countdown / 60)}:
-                {(countdown % 60).toString().padStart(2, "0")}
-              </p>
-            </div>
-            <button
-              onClick={executeRadar}
-              disabled={isLoading}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-bold transition-all ${
-                isLoading
-                  ? "bg-zinc-800 text-zinc-500"
-                  : "bg-green-600 text-black hover:bg-green-400"
-              }`}
-            >
-              <RefreshCw
-                className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
-              />
-              {isLoading ? "SCANNING..." : "EXECUTE"}
-            </button>
-          </div>
+          <button
+            onClick={executeRadar}
+            disabled={isLoading}
+            className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-bold transition-all active:scale-95 ${
+              isLoading
+                ? "bg-zinc-800 text-zinc-500"
+                : "bg-green-600 text-black hover:bg-green-400"
+            }`}
+          >
+            <RefreshCw
+              className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
+            />
+            {isLoading ? "SCANNING..." : "EXECUTE"}
+          </button>
         </div>
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        {/* STATS SUMMARY */}
+        {/* STATS SUMMARY ... (Tetap seperti sebelumnya) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <div className="bg-zinc-900/50 border border-zinc-800 p-4 rounded-xl">
-            <p className="text-zinc-500 text-[10px] uppercase font-bold mb-1 tracking-widest text-center sm:text-left">
+            <p className="text-zinc-500 text-[10px] uppercase font-bold mb-1 tracking-widest">
               Total Scan
             </p>
-            <p className="text-2xl font-mono text-center sm:text-left">
-              {sahamList.length}
-            </p>
+            <p className="text-2xl font-mono">{sahamList.length}</p>
           </div>
           <div className="bg-zinc-900/50 border border-zinc-800 p-4 rounded-xl border-l-green-600 border-l-4">
-            <p className="text-green-500 text-[10px] uppercase font-bold mb-1 tracking-widest text-center sm:text-left">
+            <p className="text-green-500 text-[10px] uppercase font-bold mb-1 tracking-widest">
               Buy Signals
             </p>
-            <p className="text-2xl font-mono text-green-500 text-center sm:text-left">
+            <p className="text-2xl font-mono text-green-500">
               {sahamList.filter((s) => s.signal === "BUY").length}
             </p>
           </div>
           <div className="bg-zinc-900/50 border border-zinc-800 p-4 rounded-xl">
-            <p className="text-zinc-500 text-[10px] uppercase font-bold mb-1 tracking-widest text-center sm:text-left">
-              Status
+            <p className="text-zinc-500 text-[10px] uppercase font-bold mb-1 tracking-widest">
+              Update
             </p>
-            <div className="flex items-center justify-center sm:justify-start gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-              <p className="text-2xl font-mono text-blue-400 uppercase text-sm">
-                LIVE
-              </p>
-            </div>
+            <p className="text-2xl font-mono text-blue-400">{lastUpdate}</p>
           </div>
         </div>
 
-        {/* FILTER TABS */}
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-8 bg-zinc-950 p-1 rounded-lg border border-zinc-800 w-fit mx-auto sm:mx-0">
+        {/* NEW: FILTER TABS */}
+        <div className="flex flex-wrap items-center gap-2 mb-8 bg-zinc-950 p-1 rounded-lg border border-zinc-800 w-fit">
           {["ALL", "BUY", "SELL", "HOLD"].map((type) => (
             <button
               key={type}
@@ -154,8 +124,10 @@ export default function LintangPredatorDashboard() {
         {filteredSaham.length === 0 && !isLoading ? (
           <div className="flex flex-col items-center justify-center py-32 border-2 border-dashed border-zinc-800 rounded-3xl bg-zinc-900/20">
             <Search className="w-12 h-12 text-zinc-800 mb-4" />
-            <p className="text-zinc-600 uppercase tracking-widest text-[10px] font-bold">
-              Mencari Target Predator...
+            <p className="text-zinc-600 uppercase tracking-widest text-xs font-bold">
+              {sahamList.length > 0
+                ? `Tidak ada saham dengan status ${filterSignal}`
+                : "Radar Siap. Klik Execute."}
             </p>
           </div>
         ) : (
@@ -165,6 +137,7 @@ export default function LintangPredatorDashboard() {
                 key={saham.kode}
                 className="group bg-zinc-900 border border-zinc-800 p-5 rounded-2xl hover:border-green-600/50 transition-all duration-300"
               >
+                {/* Bagian Card Saham Tuan (Tetap sama seperti kode responsive sebelumnya) */}
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-2xl font-black text-white">
                     {saham.kode}
@@ -172,7 +145,7 @@ export default function LintangPredatorDashboard() {
                   <div
                     className={`px-2 py-1 rounded text-[10px] font-black border ${
                       saham.signal === "BUY"
-                        ? "border-green-500 text-green-500 bg-green-500/10"
+                        ? "border-green-500 text-green-500"
                         : saham.signal === "SELL"
                           ? "border-red-500 text-red-500"
                           : "border-zinc-700 text-zinc-500"
@@ -184,17 +157,13 @@ export default function LintangPredatorDashboard() {
                 <div className="space-y-2 font-mono text-sm">
                   <div className="flex justify-between text-zinc-400">
                     <span>Price</span>{" "}
-                    <span className="text-white font-bold">
+                    <span className="text-white">
                       Rp {saham.price.toLocaleString("id-ID")}
                     </span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
-                    <span>RSI (14)</span>{" "}
-                    <span
-                      className={
-                        saham.rsi < 35 ? "text-green-500 font-bold" : ""
-                      }
-                    >
+                    <span>RSI</span>{" "}
+                    <span className={saham.rsi < 35 ? "text-green-500" : ""}>
                       {saham.rsi}
                     </span>
                   </div>
