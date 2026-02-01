@@ -12,6 +12,7 @@ import {
   Layers,
   ChevronLeft,
   ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
@@ -29,9 +30,8 @@ export default function NewsSection() {
   const [loading, setLoading] = useState(true);
   const [lastSync, setLastSync] = useState(new Date());
 
-  // --- Pagination States ---
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Jumlah berita per halaman
+  const itemsPerPage = 6;
 
   const fetchNews = async (cat = activeCat, silent = false) => {
     if (!silent) setLoading(true);
@@ -41,7 +41,7 @@ export default function NewsSection() {
       if (Array.isArray(data)) {
         setNews(data);
         setLastSync(new Date());
-        setCurrentPage(1); // Reset ke hal 1 setiap ganti kategori
+        setCurrentPage(1);
       }
     } catch (e) {
       console.error(e);
@@ -56,7 +56,6 @@ export default function NewsSection() {
     return () => clearInterval(timer);
   }, [activeCat]);
 
-  // --- Pagination Logic ---
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentNews = news.slice(indexOfFirstItem, indexOfLastItem);
@@ -68,78 +67,84 @@ export default function NewsSection() {
   };
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white p-4 md:p-10 font-sans">
-      {/* Header & Sync Status */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
-        <div>
-          <h2 className="text-5xl font-black italic uppercase tracking-tighter leading-none">
+    <div className="bg-[#050505] min-h-screen text-white p-4 md:p-10 font-sans selection:bg-blue-500">
+      {/* HEADER SECTION - RESPONSIVE STACKING */}
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-8">
+        <div className="w-full lg:w-auto">
+          <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none">
             Market{" "}
-            <span className="text-blue-500 underline decoration-red-600">
+            <span className="text-blue-500 underline decoration-red-600 decoration-4 underline-offset-8">
               Predator
             </span>
           </h2>
-          <div className="flex items-center gap-3 mt-3">
-            <div className="flex items-center gap-1.5 px-2 py-0.5 bg-red-600/10 border border-red-600/20 rounded text-[9px] font-black text-red-500 uppercase">
-              <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse" />{" "}
+          <div className="flex flex-wrap items-center gap-3 mt-6">
+            <div className="flex items-center gap-1.5 px-3 py-1 bg-red-600/10 border border-red-600/20 rounded-full text-[10px] font-black text-red-500 uppercase tracking-widest">
+              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
               Live Pulse
             </div>
-            <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">
-              Last Update: {lastSync.toLocaleTimeString()}
+            <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-[0.2em]">
+              Synced: {lastSync.toLocaleTimeString()}
             </span>
           </div>
         </div>
 
-        {/* Category Switcher */}
-        <div className="flex flex-wrap gap-2 bg-zinc-900/50 p-1.5 rounded-2xl border border-zinc-800">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCat(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter transition-all
-                ${activeCat === cat.id ? "bg-blue-600 text-white shadow-lg" : "text-zinc-500 hover:text-zinc-300"}`}
-            >
-              <cat.icon className="w-3.5 h-3.5" />
-              {cat.name}
-            </button>
-          ))}
+        {/* CATEGORY SWITCHER - MOBILE HORIZONTAL SCROLL */}
+        <div className="w-full lg:w-auto overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+          <div className="flex gap-2 bg-zinc-900/40 p-1.5 rounded-2xl border border-zinc-800/50 min-w-max">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCat(cat.id)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all
+                  ${
+                    activeCat === cat.id
+                      ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                      : "text-zinc-500 hover:text-white hover:bg-zinc-800"
+                  }`}
+              >
+                <cat.icon className="w-3.5 h-3.5" />
+                {cat.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Main News Stream */}
-      <div className="grid grid-cols-1 gap-4 max-w-6xl mb-10">
+      {/* MAIN NEWS STREAM */}
+      <div className="grid grid-cols-1 gap-5 max-w-5xl mx-auto mb-16">
         {loading
-          ? [1, 2, 3, 4, 5].map((i) => (
+          ? [1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="h-28 bg-zinc-900/30 rounded-[24px] animate-pulse border border-zinc-900"
+                className="h-32 bg-zinc-900/20 rounded-[32px] animate-pulse border border-zinc-900"
               />
             ))
-          : currentNews.map((item, i) => (
+          : currentNews.map((item) => (
               <div
                 key={item.id}
-                className="group flex flex-col md:flex-row md:items-center gap-4 bg-[#0d0d0e] border border-zinc-900 hover:border-blue-500/50 p-5 rounded-[28px] transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
+                className="group relative flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-[#0d0d0e] border border-zinc-800/40 hover:border-blue-500/40 p-6 md:p-8 rounded-[35px] transition-all duration-500 hover:bg-zinc-900/20"
               >
-                {/* Indicator & Time */}
-                <div className="flex md:flex-col items-center gap-3 md:min-w-[100px]">
+                {/* ICON & SENTIMENT */}
+                <div className="flex sm:flex-col items-center gap-4 shrink-0">
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center border transition-all
-                  ${
-                    item.sentiment === "positive"
-                      ? "bg-green-500/10 border-green-500/20 text-green-500"
-                      : item.sentiment === "negative"
-                        ? "bg-red-500/10 border-red-500/20 text-red-500"
-                        : "bg-zinc-800 border-zinc-700 text-zinc-500"
-                  }`}
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 transition-transform duration-500 group-hover:scale-110
+                    ${
+                      item.sentiment === "positive"
+                        ? "bg-green-500/10 border-green-500/20 text-green-500"
+                        : item.sentiment === "negative"
+                          ? "bg-red-500/10 border-red-500/20 text-red-500"
+                          : "bg-zinc-800/50 border-zinc-700/50 text-zinc-500"
+                    }`}
                   >
                     {item.sentiment === "positive" ? (
-                      <TrendingUp />
+                      <TrendingUp size={24} />
                     ) : item.sentiment === "negative" ? (
-                      <TrendingDown />
+                      <TrendingDown size={24} />
                     ) : (
-                      <Clock className="w-5 h-5" />
+                      <Clock size={24} />
                     )}
                   </div>
-                  <div className="text-[10px] font-bold text-zinc-600 uppercase text-center">
+                  <div className="text-[9px] font-black text-zinc-600 uppercase tracking-tighter sm:text-center">
                     {formatDistanceToNow(new Date(item.pubDate), {
                       addSuffix: false,
                       locale: id,
@@ -147,72 +152,87 @@ export default function NewsSection() {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-[9px] font-black uppercase text-blue-500 tracking-widest">
+                {/* CONTENT AREA */}
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-black uppercase text-blue-500 tracking-[0.2em]">
                       {item.source}
                     </span>
-                    <div className="w-1 h-1 bg-zinc-800 rounded-full" />
-                    <span className="text-[9px] font-black uppercase text-zinc-700">
-                      Verified Intel
+                    <span className="w-1 h-1 bg-zinc-800 rounded-full" />
+                    <span className="text-[10px] font-bold text-zinc-700 uppercase">
+                      Intel Verified
                     </span>
                   </div>
-                  <a href={item.link} target="_blank" rel="noopener noreferrer">
-                    <h3 className="text-lg md:text-xl font-bold text-zinc-300 group-hover:text-white leading-tight">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <h3 className="text-lg md:text-2xl font-black text-zinc-300 group-hover:text-white leading-[1.2] tracking-tight transition-colors">
                       {item.title}
                     </h3>
                   </a>
                 </div>
 
-                {/* Action */}
-                <div className="hidden md:block">
+                {/* MOBILE/DESKTOP ACTION BUTTON */}
+                <div className="absolute top-6 right-6 sm:relative sm:top-0 sm:right-0">
                   <a
                     href={item.link}
                     target="_blank"
-                    className="p-3 bg-zinc-900 rounded-2xl group-hover:bg-blue-600 transition-all block"
+                    className="p-4 bg-zinc-900/80 border border-zinc-800 rounded-2xl text-zinc-500 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all duration-300 block"
                   >
-                    <Zap className="w-4 h-4 text-zinc-600 group-hover:text-white" />
+                    <ExternalLink className="w-5 h-5" />
                   </a>
                 </div>
               </div>
             ))}
       </div>
 
-      {/* --- Predator Pagination UI --- */}
+      {/* REFINED PAGINATION */}
       {!loading && news.length > itemsPerPage && (
-        <div className="flex justify-center items-center gap-2 mt-8 pb-10">
+        <div className="flex flex-wrap justify-center items-center gap-3 mt-12 mb-20">
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-            className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-30 hover:text-blue-500 transition-all"
+            className="w-12 h-12 flex items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 transition-all"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft size={20} />
           </button>
 
-          <div className="flex gap-2">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-              <button
-                key={num}
-                onClick={() => paginate(num)}
-                className={`w-10 h-10 rounded-xl font-black text-xs transition-all border
-                  ${
-                    currentPage === num
-                      ? "bg-blue-600 border-blue-500 text-white"
-                      : "bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-700"
-                  }`}
-              >
-                {num}
-              </button>
-            ))}
+          <div className="flex gap-2 overflow-x-auto px-2 no-scrollbar">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => {
+              // Menampilkan hanya beberapa halaman jika terlalu banyak
+              if (
+                totalPages > 5 &&
+                Math.abs(num - currentPage) > 1 &&
+                num !== 1 &&
+                num !== totalPages
+              )
+                return null;
+              return (
+                <button
+                  key={num}
+                  onClick={() => paginate(num)}
+                  className={`w-12 h-12 shrink-0 rounded-2xl font-black text-xs transition-all border
+                    ${
+                      currentPage === num
+                        ? "bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/20"
+                        : "bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-600"
+                    }`}
+                >
+                  {num}
+                </button>
+              );
+            })}
           </div>
 
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-30 hover:text-blue-500 transition-all"
+            className="w-12 h-12 flex items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 transition-all"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight size={20} />
           </button>
         </div>
       )}
