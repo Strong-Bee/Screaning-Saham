@@ -1,0 +1,4782 @@
+[
+  {
+    "No": 1,
+    "Kode": "AALI",
+    "Nama Perusahaan": "Astra Agro Lestari Tbk."
+  },
+  {
+    "No": 2,
+    "Kode": "ABBA",
+    "Nama Perusahaan": "Mahaka Media Tbk."
+  },
+  {
+    "No": 3,
+    "Kode": "ABDA",
+    "Nama Perusahaan": "Asuransi Bina Dana Arta Tbk."
+  },
+  {
+    "No": 4,
+    "Kode": "ABMM",
+    "Nama Perusahaan": "ABM Investama Tbk."
+  },
+  {
+    "No": 5,
+    "Kode": "ACES",
+    "Nama Perusahaan": "Aspirasi Hidup Indonesia Tbk."
+  },
+  {
+    "No": 6,
+    "Kode": "ACST",
+    "Nama Perusahaan": "Acset Indonusa Tbk."
+  },
+  {
+    "No": 7,
+    "Kode": "ADES",
+    "Nama Perusahaan": "Akasha Wira International Tbk."
+  },
+  {
+    "No": 8,
+    "Kode": "ADHI",
+    "Nama Perusahaan": "Adhi Karya (Persero) Tbk."
+  },
+  {
+    "No": 9,
+    "Kode": "AISA",
+    "Nama Perusahaan": "FKS Food Sejahtera Tbk."
+  },
+  {
+    "No": 10,
+    "Kode": "AKKU",
+    "Nama Perusahaan": "Anugerah Kagum Karya Utama Tbk"
+  },
+  {
+    "No": 11,
+    "Kode": "AKPI",
+    "Nama Perusahaan": "Argha Karya Prima Industry Tbk"
+  },
+  {
+    "No": 12,
+    "Kode": "AKRA",
+    "Nama Perusahaan": "AKR Corporindo Tbk."
+  },
+  {
+    "No": 13,
+    "Kode": "AKSI",
+    "Nama Perusahaan": "Mineral Sumberdaya Mandiri Tbk"
+  },
+  {
+    "No": 14,
+    "Kode": "ALDO",
+    "Nama Perusahaan": "Alkindo Naratama Tbk."
+  },
+  {
+    "No": 15,
+    "Kode": "ALKA",
+    "Nama Perusahaan": "Alakasa Industrindo Tbk"
+  },
+  {
+    "No": 16,
+    "Kode": "ALMI",
+    "Nama Perusahaan": "Alumindo Light Metal Industry "
+  },
+  {
+    "No": 17,
+    "Kode": "ALTO",
+    "Nama Perusahaan": "Tri Banyan Tirta Tbk."
+  },
+  {
+    "No": 18,
+    "Kode": "AMAG",
+    "Nama Perusahaan": "Asuransi Multi Artha Guna Tbk."
+  },
+  {
+    "No": 19,
+    "Kode": "AMFG",
+    "Nama Perusahaan": "Asahimas Flat Glass Tbk."
+  },
+  {
+    "No": 20,
+    "Kode": "AMIN",
+    "Nama Perusahaan": "Ateliers Mecaniques D Indonesi"
+  },
+  {
+    "No": 21,
+    "Kode": "AMRT",
+    "Nama Perusahaan": "Sumber Alfaria Trijaya Tbk."
+  },
+  {
+    "No": 22,
+    "Kode": "ANJT",
+    "Nama Perusahaan": "Austindo Nusantara Jaya Tbk."
+  },
+  {
+    "No": 23,
+    "Kode": "ANTM",
+    "Nama Perusahaan": "Aneka Tambang Tbk."
+  },
+  {
+    "No": 24,
+    "Kode": "APEX",
+    "Nama Perusahaan": "Apexindo Pratama Duta Tbk."
+  },
+  {
+    "No": 25,
+    "Kode": "APIC",
+    "Nama Perusahaan": "Pacific Strategic Financial Tb"
+  },
+  {
+    "No": 26,
+    "Kode": "APII",
+    "Nama Perusahaan": "Arita Prima Indonesia Tbk."
+  },
+  {
+    "No": 27,
+    "Kode": "APLI",
+    "Nama Perusahaan": "Asiaplast Industries Tbk."
+  },
+  {
+    "No": 28,
+    "Kode": "APLN",
+    "Nama Perusahaan": "Agung Podomoro Land Tbk."
+  },
+  {
+    "No": 29,
+    "Kode": "ARGO",
+    "Nama Perusahaan": "Argo Pantes Tbk"
+  },
+  {
+    "No": 30,
+    "Kode": "ARII",
+    "Nama Perusahaan": "Atlas Resources Tbk."
+  },
+  {
+    "No": 31,
+    "Kode": "ARNA",
+    "Nama Perusahaan": "Arwana Citramulia Tbk."
+  },
+  {
+    "No": 32,
+    "Kode": "ARTA",
+    "Nama Perusahaan": "Arthavest Tbk"
+  },
+  {
+    "No": 33,
+    "Kode": "ARTI",
+    "Nama Perusahaan": "Ratu Prabu Energi Tbk"
+  },
+  {
+    "No": 34,
+    "Kode": "ARTO",
+    "Nama Perusahaan": "Bank Jago Tbk."
+  },
+  {
+    "No": 35,
+    "Kode": "ASBI",
+    "Nama Perusahaan": "Asuransi Bintang Tbk."
+  },
+  {
+    "No": 36,
+    "Kode": "ASDM",
+    "Nama Perusahaan": "Asuransi Dayin Mitra Tbk."
+  },
+  {
+    "No": 37,
+    "Kode": "ASGR",
+    "Nama Perusahaan": "Astra Graphia Tbk."
+  },
+  {
+    "No": 38,
+    "Kode": "ASII",
+    "Nama Perusahaan": "Astra International Tbk."
+  },
+  {
+    "No": 39,
+    "Kode": "ASJT",
+    "Nama Perusahaan": "Asuransi Jasa Tania Tbk."
+  },
+  {
+    "No": 40,
+    "Kode": "ASMI",
+    "Nama Perusahaan": "Asuransi Maximus Graha Persada"
+  },
+  {
+    "No": 41,
+    "Kode": "ASRI",
+    "Nama Perusahaan": "Alam Sutera Realty Tbk."
+  },
+  {
+    "No": 42,
+    "Kode": "ASRM",
+    "Nama Perusahaan": "Asuransi Ramayana Tbk."
+  },
+  {
+    "No": 43,
+    "Kode": "ASSA",
+    "Nama Perusahaan": "Adi Sarana Armada Tbk."
+  },
+  {
+    "No": 44,
+    "Kode": "ATIC",
+    "Nama Perusahaan": "Anabatic Technologies Tbk."
+  },
+  {
+    "No": 45,
+    "Kode": "AUTO",
+    "Nama Perusahaan": "Astra Otoparts Tbk."
+  },
+  {
+    "No": 46,
+    "Kode": "BABP",
+    "Nama Perusahaan": "Bank MNC Internasional Tbk."
+  },
+  {
+    "No": 47,
+    "Kode": "BACA",
+    "Nama Perusahaan": "Bank Capital Indonesia Tbk."
+  },
+  {
+    "No": 48,
+    "Kode": "BAJA",
+    "Nama Perusahaan": "Saranacentral Bajatama Tbk."
+  },
+  {
+    "No": 49,
+    "Kode": "BALI",
+    "Nama Perusahaan": "Bali Towerindo Sentra Tbk."
+  },
+  {
+    "No": 50,
+    "Kode": "BAPA",
+    "Nama Perusahaan": "Bekasi Asri Pemula Tbk."
+  },
+  {
+    "No": 51,
+    "Kode": "BATA",
+    "Nama Perusahaan": "Sepatu Bata Tbk."
+  },
+  {
+    "No": 52,
+    "Kode": "BAYU",
+    "Nama Perusahaan": "Bayu Buana Tbk"
+  },
+  {
+    "No": 53,
+    "Kode": "BBCA",
+    "Nama Perusahaan": "Bank Central Asia Tbk."
+  },
+  {
+    "No": 54,
+    "Kode": "BBHI",
+    "Nama Perusahaan": "Allo Bank Indonesia Tbk."
+  },
+  {
+    "No": 55,
+    "Kode": "BBKP",
+    "Nama Perusahaan": "Bank KB Indonesia Tbk."
+  },
+  {
+    "No": 56,
+    "Kode": "BBLD",
+    "Nama Perusahaan": "Buana Finance Tbk."
+  },
+  {
+    "No": 57,
+    "Kode": "BBMD",
+    "Nama Perusahaan": "Bank Mestika Dharma Tbk."
+  },
+  {
+    "No": 58,
+    "Kode": "BBNI",
+    "Nama Perusahaan": "Bank Negara Indonesia (Persero"
+  },
+  {
+    "No": 59,
+    "Kode": "BBRI",
+    "Nama Perusahaan": "Bank Rakyat Indonesia (Persero"
+  },
+  {
+    "No": 60,
+    "Kode": "BBRM",
+    "Nama Perusahaan": "Pelayaran Nasional Bina Buana "
+  },
+  {
+    "No": 61,
+    "Kode": "BBTN",
+    "Nama Perusahaan": "Bank Tabungan Negara (Persero)"
+  },
+  {
+    "No": 62,
+    "Kode": "BBYB",
+    "Nama Perusahaan": "Bank Neo Commerce Tbk."
+  },
+  {
+    "No": 63,
+    "Kode": "BCAP",
+    "Nama Perusahaan": "MNC Kapital Indonesia Tbk."
+  },
+  {
+    "No": 64,
+    "Kode": "BCIC",
+    "Nama Perusahaan": "Bank JTrust Indonesia Tbk."
+  },
+  {
+    "No": 65,
+    "Kode": "BCIP",
+    "Nama Perusahaan": "Bumi Citra Permai Tbk."
+  },
+  {
+    "No": 66,
+    "Kode": "BDMN",
+    "Nama Perusahaan": "Bank Danamon Indonesia Tbk."
+  },
+  {
+    "No": 67,
+    "Kode": "BEKS",
+    "Nama Perusahaan": "Bank Pembangunan Daerah Banten"
+  },
+  {
+    "No": 68,
+    "Kode": "BEST",
+    "Nama Perusahaan": "Bekasi Fajar Industrial Estate"
+  },
+  {
+    "No": 69,
+    "Kode": "BFIN",
+    "Nama Perusahaan": "BFI Finance  Indonesia Tbk."
+  },
+  {
+    "No": 70,
+    "Kode": "BGTG",
+    "Nama Perusahaan": "Bank Ganesha Tbk."
+  },
+  {
+    "No": 71,
+    "Kode": "BHIT",
+    "Nama Perusahaan": "MNC Asia Holding Tbk."
+  },
+  {
+    "No": 72,
+    "Kode": "BIKA",
+    "Nama Perusahaan": "Binakarya Jaya Abadi Tbk."
+  },
+  {
+    "No": 73,
+    "Kode": "BIMA",
+    "Nama Perusahaan": "Primarindo Asia Infrastructure"
+  },
+  {
+    "No": 74,
+    "Kode": "BINA",
+    "Nama Perusahaan": "Bank Ina Perdana Tbk."
+  },
+  {
+    "No": 75,
+    "Kode": "BIPI",
+    "Nama Perusahaan": "Astrindo Nusantara Infrastrukt"
+  },
+  {
+    "No": 76,
+    "Kode": "BIPP",
+    "Nama Perusahaan": "Bhuwanatala Indah Permai Tbk."
+  },
+  {
+    "No": 77,
+    "Kode": "BIRD",
+    "Nama Perusahaan": "Blue Bird Tbk."
+  },
+  {
+    "No": 78,
+    "Kode": "BISI",
+    "Nama Perusahaan": "BISI International Tbk."
+  },
+  {
+    "No": 79,
+    "Kode": "BJBR",
+    "Nama Perusahaan": "Bank Pembangunan Daerah Jawa B"
+  },
+  {
+    "No": 80,
+    "Kode": "BJTM",
+    "Nama Perusahaan": "Bank Pembangunan Daerah Jawa T"
+  },
+  {
+    "No": 81,
+    "Kode": "BKDP",
+    "Nama Perusahaan": "Bukit Darmo Property Tbk"
+  },
+  {
+    "No": 82,
+    "Kode": "BKSL",
+    "Nama Perusahaan": "Sentul City Tbk."
+  },
+  {
+    "No": 83,
+    "Kode": "BKSW",
+    "Nama Perusahaan": "Bank QNB Indonesia Tbk."
+  },
+  {
+    "No": 84,
+    "Kode": "BLTA",
+    "Nama Perusahaan": "Berlian Laju Tanker Tbk"
+  },
+  {
+    "No": 85,
+    "Kode": "BLTZ",
+    "Nama Perusahaan": "Graha Layar Prima Tbk."
+  },
+  {
+    "No": 86,
+    "Kode": "BMAS",
+    "Nama Perusahaan": "Bank Maspion Indonesia Tbk."
+  },
+  {
+    "No": 87,
+    "Kode": "BMRI",
+    "Nama Perusahaan": "Bank Mandiri (Persero) Tbk."
+  },
+  {
+    "No": 88,
+    "Kode": "BMSR",
+    "Nama Perusahaan": "Bintang Mitra Semestaraya Tbk"
+  },
+  {
+    "No": 89,
+    "Kode": "BMTR",
+    "Nama Perusahaan": "Global Mediacom Tbk."
+  },
+  {
+    "No": 90,
+    "Kode": "BNBA",
+    "Nama Perusahaan": "Bank Bumi Arta Tbk."
+  },
+  {
+    "No": 91,
+    "Kode": "BNBR",
+    "Nama Perusahaan": "Bakrie & Brothers Tbk"
+  },
+  {
+    "No": 92,
+    "Kode": "BNGA",
+    "Nama Perusahaan": "Bank CIMB Niaga Tbk."
+  },
+  {
+    "No": 93,
+    "Kode": "BNII",
+    "Nama Perusahaan": "Bank Maybank Indonesia Tbk."
+  },
+  {
+    "No": 94,
+    "Kode": "BNLI",
+    "Nama Perusahaan": "Bank Permata Tbk."
+  },
+  {
+    "No": 95,
+    "Kode": "BOLT",
+    "Nama Perusahaan": "Garuda Metalindo Tbk."
+  },
+  {
+    "No": 96,
+    "Kode": "BPFI",
+    "Nama Perusahaan": "Woori Finance Indonesia Tbk."
+  },
+  {
+    "No": 97,
+    "Kode": "BPII",
+    "Nama Perusahaan": "Batavia Prosperindo Internasio"
+  },
+  {
+    "No": 98,
+    "Kode": "BRAM",
+    "Nama Perusahaan": "Indo Kordsa Tbk."
+  },
+  {
+    "No": 99,
+    "Kode": "BRMS",
+    "Nama Perusahaan": "Bumi Resources Minerals Tbk."
+  },
+  {
+    "No": 100,
+    "Kode": "BRNA",
+    "Nama Perusahaan": "Berlina Tbk."
+  },
+  {
+    "No": 101,
+    "Kode": "BRPT",
+    "Nama Perusahaan": "Barito Pacific Tbk."
+  },
+  {
+    "No": 102,
+    "Kode": "BSDE",
+    "Nama Perusahaan": "Bumi Serpong Damai Tbk."
+  },
+  {
+    "No": 103,
+    "Kode": "BSIM",
+    "Nama Perusahaan": "Bank Sinarmas Tbk."
+  },
+  {
+    "No": 104,
+    "Kode": "BSSR",
+    "Nama Perusahaan": "Baramulti Suksessarana Tbk."
+  },
+  {
+    "No": 105,
+    "Kode": "BSWD",
+    "Nama Perusahaan": "Bank Of India Indonesia Tbk."
+  },
+  {
+    "No": 106,
+    "Kode": "BTEK",
+    "Nama Perusahaan": "Bumi Teknokultura Unggul Tbk"
+  },
+  {
+    "No": 107,
+    "Kode": "BTEL",
+    "Nama Perusahaan": "Bakrie Telecom Tbk."
+  },
+  {
+    "No": 108,
+    "Kode": "BTON",
+    "Nama Perusahaan": "Betonjaya Manunggal Tbk."
+  },
+  {
+    "No": 109,
+    "Kode": "BTPN",
+    "Nama Perusahaan": "Bank SMBC Indonesia Tbk."
+  },
+  {
+    "No": 110,
+    "Kode": "BUDI",
+    "Nama Perusahaan": "Budi Starch & Sweetener Tbk."
+  },
+  {
+    "No": 111,
+    "Kode": "BUKK",
+    "Nama Perusahaan": "Bukaka Teknik Utama Tbk."
+  },
+  {
+    "No": 112,
+    "Kode": "BULL",
+    "Nama Perusahaan": "Buana Lintas Lautan Tbk."
+  },
+  {
+    "No": 113,
+    "Kode": "BUMI",
+    "Nama Perusahaan": "Bumi Resources Tbk."
+  },
+  {
+    "No": 114,
+    "Kode": "BUVA",
+    "Nama Perusahaan": "Bukit Uluwatu Villa Tbk."
+  },
+  {
+    "No": 115,
+    "Kode": "BVIC",
+    "Nama Perusahaan": "Bank Victoria International Tb"
+  },
+  {
+    "No": 116,
+    "Kode": "BWPT",
+    "Nama Perusahaan": "Eagle High Plantations Tbk."
+  },
+  {
+    "No": 117,
+    "Kode": "BYAN",
+    "Nama Perusahaan": "Bayan Resources Tbk."
+  },
+  {
+    "No": 118,
+    "Kode": "CANI",
+    "Nama Perusahaan": "Capitol Nusantara Indonesia Tb"
+  },
+  {
+    "No": 119,
+    "Kode": "CASS",
+    "Nama Perusahaan": "Cahaya Aero Services Tbk."
+  },
+  {
+    "No": 120,
+    "Kode": "CEKA",
+    "Nama Perusahaan": "Wilmar Cahaya Indonesia Tbk."
+  },
+  {
+    "No": 121,
+    "Kode": "CENT",
+    "Nama Perusahaan": "Centratama Telekomunikasi Indo"
+  },
+  {
+    "No": 122,
+    "Kode": "CFIN",
+    "Nama Perusahaan": "Clipan Finance Indonesia Tbk."
+  },
+  {
+    "No": 123,
+    "Kode": "CINT",
+    "Nama Perusahaan": "Chitose Internasional Tbk."
+  },
+  {
+    "No": 124,
+    "Kode": "CITA",
+    "Nama Perusahaan": "Cita Mineral Investindo Tbk."
+  },
+  {
+    "No": 125,
+    "Kode": "CLPI",
+    "Nama Perusahaan": "Colorpak Indonesia Tbk."
+  },
+  {
+    "No": 126,
+    "Kode": "CMNP",
+    "Nama Perusahaan": "Citra Marga Nusaphala Persada "
+  },
+  {
+    "No": 127,
+    "Kode": "CMPP",
+    "Nama Perusahaan": "AirAsia Indonesia Tbk."
+  },
+  {
+    "No": 128,
+    "Kode": "CNKO",
+    "Nama Perusahaan": "Exploitasi Energi Indonesia Tb"
+  },
+  {
+    "No": 129,
+    "Kode": "CNTX",
+    "Nama Perusahaan": "Century Textile Industry Tbk."
+  },
+  {
+    "No": 130,
+    "Kode": "COWL",
+    "Nama Perusahaan": "Cowell Development Tbk."
+  },
+  {
+    "No": 131,
+    "Kode": "CPIN",
+    "Nama Perusahaan": "Charoen Pokphand Indonesia Tbk"
+  },
+  {
+    "No": 132,
+    "Kode": "CPRO",
+    "Nama Perusahaan": "Central Proteina Prima Tbk."
+  },
+  {
+    "No": 133,
+    "Kode": "CSAP",
+    "Nama Perusahaan": "Catur Sentosa Adiprana Tbk."
+  },
+  {
+    "No": 134,
+    "Kode": "CTBN",
+    "Nama Perusahaan": "Citra Tubindo Tbk."
+  },
+  {
+    "No": 135,
+    "Kode": "CTRA",
+    "Nama Perusahaan": "Ciputra Development Tbk."
+  },
+  {
+    "No": 136,
+    "Kode": "CTTH",
+    "Nama Perusahaan": "Citatah Tbk."
+  },
+  {
+    "No": 137,
+    "Kode": "DART",
+    "Nama Perusahaan": "Duta Anggada Realty Tbk."
+  },
+  {
+    "No": 138,
+    "Kode": "DEFI",
+    "Nama Perusahaan": "Danasupra Erapacific Tbk."
+  },
+  {
+    "No": 139,
+    "Kode": "DEWA",
+    "Nama Perusahaan": "Darma Henwa Tbk"
+  },
+  {
+    "No": 140,
+    "Kode": "DGIK",
+    "Nama Perusahaan": "Nusa Konstruksi Enjiniring Tbk"
+  },
+  {
+    "No": 141,
+    "Kode": "DILD",
+    "Nama Perusahaan": "Intiland Development Tbk."
+  },
+  {
+    "No": 142,
+    "Kode": "DKFT",
+    "Nama Perusahaan": "Central Omega Resources Tbk."
+  },
+  {
+    "No": 143,
+    "Kode": "DLTA",
+    "Nama Perusahaan": "Delta Djakarta Tbk."
+  },
+  {
+    "No": 144,
+    "Kode": "DMAS",
+    "Nama Perusahaan": "Puradelta Lestari Tbk."
+  },
+  {
+    "No": 145,
+    "Kode": "DNAR",
+    "Nama Perusahaan": "Bank Oke Indonesia Tbk."
+  },
+  {
+    "No": 146,
+    "Kode": "DNET",
+    "Nama Perusahaan": "Indoritel Makmur Internasional"
+  },
+  {
+    "No": 147,
+    "Kode": "DOID",
+    "Nama Perusahaan": "BUMA Internasional Grup Tbk."
+  },
+  {
+    "No": 148,
+    "Kode": "DPNS",
+    "Nama Perusahaan": "Duta Pertiwi Nusantara Tbk."
+  },
+  {
+    "No": 149,
+    "Kode": "DSFI",
+    "Nama Perusahaan": "Dharma Samudera Fishing Indust"
+  },
+  {
+    "No": 150,
+    "Kode": "DSNG",
+    "Nama Perusahaan": "Dharma Satya Nusantara Tbk."
+  },
+  {
+    "No": 151,
+    "Kode": "DSSA",
+    "Nama Perusahaan": "Dian Swastatika Sentosa Tbk"
+  },
+  {
+    "No": 152,
+    "Kode": "DUTI",
+    "Nama Perusahaan": "Duta Pertiwi Tbk"
+  },
+  {
+    "No": 153,
+    "Kode": "DVLA",
+    "Nama Perusahaan": "Darya-Varia Laboratoria Tbk."
+  },
+  {
+    "No": 154,
+    "Kode": "DYAN",
+    "Nama Perusahaan": "Dyandra Media International Tb"
+  },
+  {
+    "No": 155,
+    "Kode": "ECII",
+    "Nama Perusahaan": "Electronic City Indonesia Tbk."
+  },
+  {
+    "No": 156,
+    "Kode": "EKAD",
+    "Nama Perusahaan": "Ekadharma International Tbk."
+  },
+  {
+    "No": 157,
+    "Kode": "ELSA",
+    "Nama Perusahaan": "Elnusa Tbk."
+  },
+  {
+    "No": 158,
+    "Kode": "ELTY",
+    "Nama Perusahaan": "Bakrieland Development Tbk."
+  },
+  {
+    "No": 159,
+    "Kode": "EMDE",
+    "Nama Perusahaan": "Megapolitan Developments Tbk."
+  },
+  {
+    "No": 160,
+    "Kode": "EMTK",
+    "Nama Perusahaan": "Elang Mahkota Teknologi Tbk."
+  },
+  {
+    "No": 161,
+    "Kode": "ENRG",
+    "Nama Perusahaan": "Energi Mega Persada Tbk."
+  },
+  {
+    "No": 162,
+    "Kode": "EPMT",
+    "Nama Perusahaan": "Enseval Putera Megatrading Tbk"
+  },
+  {
+    "No": 163,
+    "Kode": "ERAA",
+    "Nama Perusahaan": "Erajaya Swasembada Tbk."
+  },
+  {
+    "No": 164,
+    "Kode": "ERTX",
+    "Nama Perusahaan": "Eratex Djaja Tbk."
+  },
+  {
+    "No": 165,
+    "Kode": "ESSA",
+    "Nama Perusahaan": "ESSA Industries Indonesia Tbk."
+  },
+  {
+    "No": 166,
+    "Kode": "ESTI",
+    "Nama Perusahaan": "Ever Shine Tex Tbk."
+  },
+  {
+    "No": 167,
+    "Kode": "ETWA",
+    "Nama Perusahaan": "Eterindo Wahanatama Tbk"
+  },
+  {
+    "No": 168,
+    "Kode": "EXCL",
+    "Nama Perusahaan": "XLSMART Telecom Sejahtera Tbk."
+  },
+  {
+    "No": 169,
+    "Kode": "FAST",
+    "Nama Perusahaan": "Fast Food Indonesia Tbk."
+  },
+  {
+    "No": 170,
+    "Kode": "FASW",
+    "Nama Perusahaan": "Fajar Surya Wisesa Tbk."
+  },
+  {
+    "No": 171,
+    "Kode": "FISH",
+    "Nama Perusahaan": "FKS Multi Agro Tbk."
+  },
+  {
+    "No": 172,
+    "Kode": "FMII",
+    "Nama Perusahaan": "Fortune Mate Indonesia Tbk"
+  },
+  {
+    "No": 173,
+    "Kode": "FORU",
+    "Nama Perusahaan": "Fortune Indonesia Tbk"
+  },
+  {
+    "No": 174,
+    "Kode": "FPNI",
+    "Nama Perusahaan": "Lotte Chemical Titan Tbk."
+  },
+  {
+    "No": 175,
+    "Kode": "GAMA",
+    "Nama Perusahaan": "Aksara Global Development Tbk."
+  },
+  {
+    "No": 176,
+    "Kode": "GDST",
+    "Nama Perusahaan": "Gunawan Dianjaya Steel Tbk."
+  },
+  {
+    "No": 177,
+    "Kode": "GDYR",
+    "Nama Perusahaan": "Goodyear Indonesia Tbk."
+  },
+  {
+    "No": 178,
+    "Kode": "GEMA",
+    "Nama Perusahaan": "Gema Grahasarana Tbk."
+  },
+  {
+    "No": 179,
+    "Kode": "GEMS",
+    "Nama Perusahaan": "Golden Energy Mines Tbk."
+  },
+  {
+    "No": 180,
+    "Kode": "GGRM",
+    "Nama Perusahaan": "Gudang Garam Tbk."
+  },
+  {
+    "No": 181,
+    "Kode": "GIAA",
+    "Nama Perusahaan": "Garuda Indonesia (Persero) Tbk"
+  },
+  {
+    "No": 182,
+    "Kode": "GJTL",
+    "Nama Perusahaan": "Gajah Tunggal Tbk."
+  },
+  {
+    "No": 183,
+    "Kode": "GLOB",
+    "Nama Perusahaan": "Globe Kita Terang Tbk."
+  },
+  {
+    "No": 184,
+    "Kode": "GMTD",
+    "Nama Perusahaan": "Gowa Makassar Tourism Developm"
+  },
+  {
+    "No": 185,
+    "Kode": "GOLD",
+    "Nama Perusahaan": "Visi Telekomunikasi Infrastruk"
+  },
+  {
+    "No": 186,
+    "Kode": "GOLL",
+    "Nama Perusahaan": "Golden Plantation Tbk."
+  },
+  {
+    "No": 187,
+    "Kode": "GPRA",
+    "Nama Perusahaan": "Perdana Gapuraprima Tbk."
+  },
+  {
+    "No": 188,
+    "Kode": "GSMF",
+    "Nama Perusahaan": "Equity Development Investment "
+  },
+  {
+    "No": 189,
+    "Kode": "GTBO",
+    "Nama Perusahaan": "Garda Tujuh Buana Tbk"
+  },
+  {
+    "No": 190,
+    "Kode": "GWSA",
+    "Nama Perusahaan": "Greenwood Sejahtera Tbk."
+  },
+  {
+    "No": 191,
+    "Kode": "GZCO",
+    "Nama Perusahaan": "Gozco Plantations Tbk."
+  },
+  {
+    "No": 192,
+    "Kode": "HADE",
+    "Nama Perusahaan": "Himalaya Energi Perkasa Tbk."
+  },
+  {
+    "No": 193,
+    "Kode": "HDFA",
+    "Nama Perusahaan": "Radana Bhaskara Finance Tbk."
+  },
+  {
+    "No": 194,
+    "Kode": "HERO",
+    "Nama Perusahaan": "DFI Retail Nusantara Tbk."
+  },
+  {
+    "No": 195,
+    "Kode": "HEXA",
+    "Nama Perusahaan": "Hexindo Adiperkasa Tbk."
+  },
+  {
+    "No": 196,
+    "Kode": "HITS",
+    "Nama Perusahaan": "Humpuss Intermoda Transportasi"
+  },
+  {
+    "No": 197,
+    "Kode": "HMSP",
+    "Nama Perusahaan": "H.M. Sampoerna Tbk."
+  },
+  {
+    "No": 198,
+    "Kode": "HOME",
+    "Nama Perusahaan": "Hotel Mandarine Regency Tbk."
+  },
+  {
+    "No": 199,
+    "Kode": "HOTL",
+    "Nama Perusahaan": "Saraswati Griya Lestari Tbk."
+  },
+  {
+    "No": 200,
+    "Kode": "HRUM",
+    "Nama Perusahaan": "Harum Energy Tbk."
+  },
+  {
+    "No": 201,
+    "Kode": "IATA",
+    "Nama Perusahaan": "MNC Energy Investments Tbk."
+  },
+  {
+    "No": 202,
+    "Kode": "IBFN",
+    "Nama Perusahaan": "Intan Baru Prana Tbk."
+  },
+  {
+    "No": 203,
+    "Kode": "IBST",
+    "Nama Perusahaan": "Inti Bangun Sejahtera Tbk."
+  },
+  {
+    "No": 204,
+    "Kode": "ICBP",
+    "Nama Perusahaan": "Indofood CBP Sukses Makmur Tbk"
+  },
+  {
+    "No": 205,
+    "Kode": "ICON",
+    "Nama Perusahaan": "Island Concepts Indonesia Tbk."
+  },
+  {
+    "No": 206,
+    "Kode": "IGAR",
+    "Nama Perusahaan": "Champion Pacific Indonesia Tbk"
+  },
+  {
+    "No": 207,
+    "Kode": "IIKP",
+    "Nama Perusahaan": "Inti Agri Resources Tbk"
+  },
+  {
+    "No": 208,
+    "Kode": "IKAI",
+    "Nama Perusahaan": "Intikeramik Alamasri Industri "
+  },
+  {
+    "No": 209,
+    "Kode": "IKBI",
+    "Nama Perusahaan": "Sumi Indo Kabel Tbk."
+  },
+  {
+    "No": 210,
+    "Kode": "IMAS",
+    "Nama Perusahaan": "Indomobil Sukses Internasional"
+  },
+  {
+    "No": 211,
+    "Kode": "IMJS",
+    "Nama Perusahaan": "Indomobil Multi Jasa Tbk."
+  },
+  {
+    "No": 212,
+    "Kode": "IMPC",
+    "Nama Perusahaan": "Impack Pratama Industri Tbk."
+  },
+  {
+    "No": 213,
+    "Kode": "INAF",
+    "Nama Perusahaan": "Indofarma Tbk."
+  },
+  {
+    "No": 214,
+    "Kode": "INAI",
+    "Nama Perusahaan": "Indal Aluminium Industry Tbk."
+  },
+  {
+    "No": 215,
+    "Kode": "INCI",
+    "Nama Perusahaan": "Intanwijaya Internasional Tbk"
+  },
+  {
+    "No": 216,
+    "Kode": "INCO",
+    "Nama Perusahaan": "Vale Indonesia Tbk."
+  },
+  {
+    "No": 217,
+    "Kode": "INDF",
+    "Nama Perusahaan": "Indofood Sukses Makmur Tbk."
+  },
+  {
+    "No": 218,
+    "Kode": "INDR",
+    "Nama Perusahaan": "Indo-Rama Synthetics Tbk."
+  },
+  {
+    "No": 219,
+    "Kode": "INDS",
+    "Nama Perusahaan": "Indospring Tbk."
+  },
+  {
+    "No": 220,
+    "Kode": "INDX",
+    "Nama Perusahaan": "Tanah Laut Tbk"
+  },
+  {
+    "No": 221,
+    "Kode": "INDY",
+    "Nama Perusahaan": "Indika Energy Tbk."
+  },
+  {
+    "No": 222,
+    "Kode": "INKP",
+    "Nama Perusahaan": "Indah Kiat Pulp & Paper Tbk."
+  },
+  {
+    "No": 223,
+    "Kode": "INPC",
+    "Nama Perusahaan": "Bank Artha Graha Internasional"
+  },
+  {
+    "No": 224,
+    "Kode": "INPP",
+    "Nama Perusahaan": "Indonesian Paradise Property T"
+  },
+  {
+    "No": 225,
+    "Kode": "INRU",
+    "Nama Perusahaan": "Toba Pulp Lestari Tbk."
+  },
+  {
+    "No": 226,
+    "Kode": "INTA",
+    "Nama Perusahaan": "Intraco Penta Tbk."
+  },
+  {
+    "No": 227,
+    "Kode": "INTD",
+    "Nama Perusahaan": "Inter Delta Tbk"
+  },
+  {
+    "No": 228,
+    "Kode": "INTP",
+    "Nama Perusahaan": "Indocement Tunggal Prakarsa Tb"
+  },
+  {
+    "No": 229,
+    "Kode": "IPOL",
+    "Nama Perusahaan": "Indopoly Swakarsa Industry Tbk"
+  },
+  {
+    "No": 230,
+    "Kode": "ISAT",
+    "Nama Perusahaan": "Indosat Tbk."
+  },
+  {
+    "No": 231,
+    "Kode": "ISSP",
+    "Nama Perusahaan": "Steel Pipe Industry of Indones"
+  },
+  {
+    "No": 232,
+    "Kode": "ITMA",
+    "Nama Perusahaan": "Sumber Energi Andalan Tbk."
+  },
+  {
+    "No": 233,
+    "Kode": "ITMG",
+    "Nama Perusahaan": "Indo Tambangraya Megah Tbk."
+  },
+  {
+    "No": 234,
+    "Kode": "JAWA",
+    "Nama Perusahaan": "Jaya Agra Wattie Tbk."
+  },
+  {
+    "No": 235,
+    "Kode": "JECC",
+    "Nama Perusahaan": "Jembo Cable Company Tbk."
+  },
+  {
+    "No": 236,
+    "Kode": "JIHD",
+    "Nama Perusahaan": "Jakarta International Hotels &"
+  },
+  {
+    "No": 237,
+    "Kode": "JKON",
+    "Nama Perusahaan": "Jaya Konstruksi Manggala Prata"
+  },
+  {
+    "No": 238,
+    "Kode": "JPFA",
+    "Nama Perusahaan": "Japfa Comfeed Indonesia Tbk."
+  },
+  {
+    "No": 239,
+    "Kode": "JRPT",
+    "Nama Perusahaan": "Jaya Real Property Tbk."
+  },
+  {
+    "No": 240,
+    "Kode": "JSMR",
+    "Nama Perusahaan": "Jasa Marga (Persero) Tbk."
+  },
+  {
+    "No": 241,
+    "Kode": "JSPT",
+    "Nama Perusahaan": "Jakarta Setiabudi Internasiona"
+  },
+  {
+    "No": 242,
+    "Kode": "JTPE",
+    "Nama Perusahaan": "Jasuindo Tiga Perkasa Tbk."
+  },
+  {
+    "No": 243,
+    "Kode": "KAEF",
+    "Nama Perusahaan": "Kimia Farma Tbk."
+  },
+  {
+    "No": 244,
+    "Kode": "KARW",
+    "Nama Perusahaan": "Meratus Jasa Prima Tbk."
+  },
+  {
+    "No": 245,
+    "Kode": "KBLI",
+    "Nama Perusahaan": "KMI Wire & Cable Tbk."
+  },
+  {
+    "No": 246,
+    "Kode": "KBLM",
+    "Nama Perusahaan": "Kabelindo Murni Tbk."
+  },
+  {
+    "No": 247,
+    "Kode": "KBLV",
+    "Nama Perusahaan": "First Media Tbk."
+  },
+  {
+    "No": 248,
+    "Kode": "KBRI",
+    "Nama Perusahaan": "Kertas Basuki Rachmat Indonesi"
+  },
+  {
+    "No": 249,
+    "Kode": "KDSI",
+    "Nama Perusahaan": "Kedawung Setia Industrial Tbk."
+  },
+  {
+    "No": 250,
+    "Kode": "KIAS",
+    "Nama Perusahaan": "Keramika Indonesia Assosiasi T"
+  },
+  {
+    "No": 251,
+    "Kode": "KICI",
+    "Nama Perusahaan": "Kedaung Indah Can Tbk"
+  },
+  {
+    "No": 252,
+    "Kode": "KIJA",
+    "Nama Perusahaan": "Kawasan Industri Jababeka Tbk."
+  },
+  {
+    "No": 253,
+    "Kode": "KKGI",
+    "Nama Perusahaan": "Resource Alam Indonesia Tbk."
+  },
+  {
+    "No": 254,
+    "Kode": "KLBF",
+    "Nama Perusahaan": "Kalbe Farma Tbk."
+  },
+  {
+    "No": 255,
+    "Kode": "KOBX",
+    "Nama Perusahaan": "Kobexindo Tractors Tbk."
+  },
+  {
+    "No": 256,
+    "Kode": "KOIN",
+    "Nama Perusahaan": "Kokoh Inti Arebama Tbk"
+  },
+  {
+    "No": 257,
+    "Kode": "KONI",
+    "Nama Perusahaan": "Perdana Bangun Pusaka Tbk"
+  },
+  {
+    "No": 258,
+    "Kode": "KOPI",
+    "Nama Perusahaan": "Mitra Energi Persada Tbk."
+  },
+  {
+    "No": 259,
+    "Kode": "KPIG",
+    "Nama Perusahaan": "MNC Tourism Indonesia Tbk."
+  },
+  {
+    "No": 260,
+    "Kode": "KRAS",
+    "Nama Perusahaan": "Krakatau Steel (Persero) Tbk."
+  },
+  {
+    "No": 261,
+    "Kode": "KREN",
+    "Nama Perusahaan": "Quantum Clovera Investama Tbk."
+  },
+  {
+    "No": 262,
+    "Kode": "LAPD",
+    "Nama Perusahaan": "Leyand International Tbk."
+  },
+  {
+    "No": 263,
+    "Kode": "LCGP",
+    "Nama Perusahaan": "Eureka Prima Jakarta Tbk."
+  },
+  {
+    "No": 264,
+    "Kode": "LEAD",
+    "Nama Perusahaan": "Logindo Samudramakmur Tbk."
+  },
+  {
+    "No": 265,
+    "Kode": "LINK",
+    "Nama Perusahaan": "Link Net Tbk."
+  },
+  {
+    "No": 266,
+    "Kode": "LION",
+    "Nama Perusahaan": "Lion Metal Works Tbk."
+  },
+  {
+    "No": 267,
+    "Kode": "LMAS",
+    "Nama Perusahaan": "Limas Indonesia Makmur Tbk"
+  },
+  {
+    "No": 268,
+    "Kode": "LMPI",
+    "Nama Perusahaan": "Langgeng Makmur Industri Tbk."
+  },
+  {
+    "No": 269,
+    "Kode": "LMSH",
+    "Nama Perusahaan": "Lionmesh Prima Tbk."
+  },
+  {
+    "No": 270,
+    "Kode": "LPCK",
+    "Nama Perusahaan": "Lippo Cikarang Tbk"
+  },
+  {
+    "No": 271,
+    "Kode": "LPGI",
+    "Nama Perusahaan": "Lippo General Insurance Tbk."
+  },
+  {
+    "No": 272,
+    "Kode": "LPIN",
+    "Nama Perusahaan": "Multi Prima Sejahtera Tbk"
+  },
+  {
+    "No": 273,
+    "Kode": "LPKR",
+    "Nama Perusahaan": "Lippo Karawaci Tbk."
+  },
+  {
+    "No": 274,
+    "Kode": "LPLI",
+    "Nama Perusahaan": "Star Pacific Tbk"
+  },
+  {
+    "No": 275,
+    "Kode": "LPPF",
+    "Nama Perusahaan": "Matahari Department Store Tbk."
+  },
+  {
+    "No": 276,
+    "Kode": "LPPS",
+    "Nama Perusahaan": "Lenox Pasifik Investama Tbk."
+  },
+  {
+    "No": 277,
+    "Kode": "LRNA",
+    "Nama Perusahaan": "Eka Sari Lorena Transport Tbk."
+  },
+  {
+    "No": 278,
+    "Kode": "LSIP",
+    "Nama Perusahaan": "PP London Sumatra Indonesia Tb"
+  },
+  {
+    "No": 279,
+    "Kode": "LTLS",
+    "Nama Perusahaan": "Lautan Luas Tbk."
+  },
+  {
+    "No": 280,
+    "Kode": "MAGP",
+    "Nama Perusahaan": "Multi Agro Gemilang Plantation"
+  },
+  {
+    "No": 281,
+    "Kode": "MAIN",
+    "Nama Perusahaan": "Malindo Feedmill Tbk."
+  },
+  {
+    "No": 282,
+    "Kode": "MAPI",
+    "Nama Perusahaan": "Mitra Adiperkasa Tbk."
+  },
+  {
+    "No": 283,
+    "Kode": "MAYA",
+    "Nama Perusahaan": "Bank Mayapada Internasional Tb"
+  },
+  {
+    "No": 284,
+    "Kode": "MBAP",
+    "Nama Perusahaan": "Mitrabara Adiperdana Tbk."
+  },
+  {
+    "No": 285,
+    "Kode": "MBSS",
+    "Nama Perusahaan": "Mitrabahtera Segara Sejati Tbk"
+  },
+  {
+    "No": 286,
+    "Kode": "MBTO",
+    "Nama Perusahaan": "Martina Berto Tbk."
+  },
+  {
+    "No": 287,
+    "Kode": "MCOR",
+    "Nama Perusahaan": "Bank China Construction Bank I"
+  },
+  {
+    "No": 288,
+    "Kode": "MDIA",
+    "Nama Perusahaan": "Intermedia Capital Tbk."
+  },
+  {
+    "No": 289,
+    "Kode": "MDKA",
+    "Nama Perusahaan": "Merdeka Copper Gold Tbk."
+  },
+  {
+    "No": 290,
+    "Kode": "MDLN",
+    "Nama Perusahaan": "Modernland Realty Tbk."
+  },
+  {
+    "No": 291,
+    "Kode": "MDRN",
+    "Nama Perusahaan": "Modern Internasional Tbk."
+  },
+  {
+    "No": 292,
+    "Kode": "MEDC",
+    "Nama Perusahaan": "Medco Energi Internasional Tbk"
+  },
+  {
+    "No": 293,
+    "Kode": "MEGA",
+    "Nama Perusahaan": "Bank Mega Tbk."
+  },
+  {
+    "No": 294,
+    "Kode": "MERK",
+    "Nama Perusahaan": "Merck Tbk."
+  },
+  {
+    "No": 295,
+    "Kode": "META",
+    "Nama Perusahaan": "Nusantara Infrastructure Tbk."
+  },
+  {
+    "No": 296,
+    "Kode": "MFMI",
+    "Nama Perusahaan": "Multifiling Mitra Indonesia Tb"
+  },
+  {
+    "No": 297,
+    "Kode": "MGNA",
+    "Nama Perusahaan": "Magna Investama Mandiri Tbk."
+  },
+  {
+    "No": 298,
+    "Kode": "MICE",
+    "Nama Perusahaan": "Multi Indocitra Tbk."
+  },
+  {
+    "No": 299,
+    "Kode": "MIDI",
+    "Nama Perusahaan": "Midi Utama Indonesia Tbk."
+  },
+  {
+    "No": 300,
+    "Kode": "MIKA",
+    "Nama Perusahaan": "Mitra Keluarga Karyasehat Tbk."
+  },
+  {
+    "No": 301,
+    "Kode": "MIRA",
+    "Nama Perusahaan": "Mitra International Resources "
+  },
+  {
+    "No": 302,
+    "Kode": "MITI",
+    "Nama Perusahaan": "Mitra Investindo Tbk."
+  },
+  {
+    "No": 303,
+    "Kode": "MKPI",
+    "Nama Perusahaan": "Metropolitan Kentjana Tbk."
+  },
+  {
+    "No": 304,
+    "Kode": "MLBI",
+    "Nama Perusahaan": "Multi Bintang Indonesia Tbk."
+  },
+  {
+    "No": 305,
+    "Kode": "MLIA",
+    "Nama Perusahaan": "Mulia Industrindo Tbk"
+  },
+  {
+    "No": 306,
+    "Kode": "MLPL",
+    "Nama Perusahaan": "Multipolar Tbk."
+  },
+  {
+    "No": 307,
+    "Kode": "MLPT",
+    "Nama Perusahaan": "Multipolar Technology Tbk."
+  },
+  {
+    "No": 308,
+    "Kode": "MMLP",
+    "Nama Perusahaan": "Mega Manunggal Property Tbk."
+  },
+  {
+    "No": 309,
+    "Kode": "MNCN",
+    "Nama Perusahaan": "Media Nusantara Citra Tbk."
+  },
+  {
+    "No": 310,
+    "Kode": "MPMX",
+    "Nama Perusahaan": "Mitra Pinasthika Mustika Tbk."
+  },
+  {
+    "No": 311,
+    "Kode": "MPPA",
+    "Nama Perusahaan": "Matahari Putra Prima Tbk."
+  },
+  {
+    "No": 312,
+    "Kode": "MRAT",
+    "Nama Perusahaan": "Mustika Ratu Tbk."
+  },
+  {
+    "No": 313,
+    "Kode": "MREI",
+    "Nama Perusahaan": "Maskapai Reasuransi Indonesia "
+  },
+  {
+    "No": 314,
+    "Kode": "MSKY",
+    "Nama Perusahaan": "MNC Sky Vision Tbk."
+  },
+  {
+    "No": 315,
+    "Kode": "MTDL",
+    "Nama Perusahaan": "Metrodata Electronics Tbk."
+  },
+  {
+    "No": 316,
+    "Kode": "MTFN",
+    "Nama Perusahaan": "Capitalinc Investment Tbk."
+  },
+  {
+    "No": 317,
+    "Kode": "MTLA",
+    "Nama Perusahaan": "Metropolitan Land Tbk."
+  },
+  {
+    "No": 318,
+    "Kode": "MTSM",
+    "Nama Perusahaan": "Metro Realty Tbk."
+  },
+  {
+    "No": 319,
+    "Kode": "MYOH",
+    "Nama Perusahaan": "Samindo Resources Tbk."
+  },
+  {
+    "No": 320,
+    "Kode": "MYOR",
+    "Nama Perusahaan": "Mayora Indah Tbk."
+  },
+  {
+    "No": 321,
+    "Kode": "MYTX",
+    "Nama Perusahaan": "Asia Pacific Investama Tbk."
+  },
+  {
+    "No": 322,
+    "Kode": "NELY",
+    "Nama Perusahaan": "Pelayaran Nelly Dwi Putri Tbk."
+  },
+  {
+    "No": 323,
+    "Kode": "NIKL",
+    "Nama Perusahaan": "Pelat Timah Nusantara Tbk."
+  },
+  {
+    "No": 324,
+    "Kode": "NIRO",
+    "Nama Perusahaan": "City Retail Developments Tbk."
+  },
+  {
+    "No": 325,
+    "Kode": "NISP",
+    "Nama Perusahaan": "Bank OCBC NISP Tbk."
+  },
+  {
+    "No": 326,
+    "Kode": "NOBU",
+    "Nama Perusahaan": "Bank Nationalnobu Tbk."
+  },
+  {
+    "No": 327,
+    "Kode": "NRCA",
+    "Nama Perusahaan": "Nusa Raya Cipta Tbk."
+  },
+  {
+    "No": 328,
+    "Kode": "OCAP",
+    "Nama Perusahaan": "Onix Capital Tbk."
+  },
+  {
+    "No": 329,
+    "Kode": "OKAS",
+    "Nama Perusahaan": "Ancora Indonesia Resources Tbk"
+  },
+  {
+    "No": 330,
+    "Kode": "OMRE",
+    "Nama Perusahaan": "Indonesia Prima Property Tbk"
+  },
+  {
+    "No": 331,
+    "Kode": "PADI",
+    "Nama Perusahaan": "Minna Padi Investama Sekuritas"
+  },
+  {
+    "No": 332,
+    "Kode": "PALM",
+    "Nama Perusahaan": "Provident Investasi Bersama Tb"
+  },
+  {
+    "No": 333,
+    "Kode": "PANR",
+    "Nama Perusahaan": "Panorama Sentrawisata Tbk."
+  },
+  {
+    "No": 334,
+    "Kode": "PANS",
+    "Nama Perusahaan": "Panin Sekuritas Tbk."
+  },
+  {
+    "No": 335,
+    "Kode": "PBRX",
+    "Nama Perusahaan": "Pan Brothers Tbk."
+  },
+  {
+    "No": 336,
+    "Kode": "PDES",
+    "Nama Perusahaan": "Destinasi Tirta Nusantara Tbk"
+  },
+  {
+    "No": 337,
+    "Kode": "PEGE",
+    "Nama Perusahaan": "Panca Global Kapital Tbk."
+  },
+  {
+    "No": 338,
+    "Kode": "PGAS",
+    "Nama Perusahaan": "Perusahaan Gas Negara Tbk."
+  },
+  {
+    "No": 339,
+    "Kode": "PGLI",
+    "Nama Perusahaan": "Pembangunan Graha Lestari Inda"
+  },
+  {
+    "No": 340,
+    "Kode": "PICO",
+    "Nama Perusahaan": "Pelangi Indah Canindo Tbk"
+  },
+  {
+    "No": 341,
+    "Kode": "PJAA",
+    "Nama Perusahaan": "Pembangunan Jaya Ancol Tbk."
+  },
+  {
+    "No": 342,
+    "Kode": "PKPK",
+    "Nama Perusahaan": "Paragon Karya Perkasa Tbk."
+  },
+  {
+    "No": 343,
+    "Kode": "PLAS",
+    "Nama Perusahaan": "Polaris Investama Tbk"
+  },
+  {
+    "No": 344,
+    "Kode": "PLIN",
+    "Nama Perusahaan": "Plaza Indonesia Realty Tbk."
+  },
+  {
+    "No": 345,
+    "Kode": "PNBN",
+    "Nama Perusahaan": "Bank Pan Indonesia Tbk"
+  },
+  {
+    "No": 346,
+    "Kode": "PNBS",
+    "Nama Perusahaan": "Bank Panin Dubai Syariah Tbk."
+  },
+  {
+    "No": 347,
+    "Kode": "PNIN",
+    "Nama Perusahaan": "Paninvest Tbk."
+  },
+  {
+    "No": 348,
+    "Kode": "PNLF",
+    "Nama Perusahaan": "Panin Financial Tbk."
+  },
+  {
+    "No": 349,
+    "Kode": "PSAB",
+    "Nama Perusahaan": "J Resources Asia Pasifik Tbk."
+  },
+  {
+    "No": 350,
+    "Kode": "PSDN",
+    "Nama Perusahaan": "Prasidha Aneka Niaga Tbk"
+  },
+  {
+    "No": 351,
+    "Kode": "PSKT",
+    "Nama Perusahaan": "Red Planet Indonesia Tbk."
+  },
+  {
+    "No": 352,
+    "Kode": "PTBA",
+    "Nama Perusahaan": "Bukit Asam Tbk."
+  },
+  {
+    "No": 353,
+    "Kode": "PTIS",
+    "Nama Perusahaan": "Indo Straits Tbk."
+  },
+  {
+    "No": 354,
+    "Kode": "PTPP",
+    "Nama Perusahaan": "PP (Persero) Tbk."
+  },
+  {
+    "No": 355,
+    "Kode": "PTRO",
+    "Nama Perusahaan": "Petrosea Tbk."
+  },
+  {
+    "No": 356,
+    "Kode": "PTSN",
+    "Nama Perusahaan": "Sat Nusapersada Tbk"
+  },
+  {
+    "No": 357,
+    "Kode": "PTSP",
+    "Nama Perusahaan": "Pioneerindo Gourmet Internatio"
+  },
+  {
+    "No": 358,
+    "Kode": "PUDP",
+    "Nama Perusahaan": "Pudjiadi Prestige Tbk."
+  },
+  {
+    "No": 359,
+    "Kode": "PWON",
+    "Nama Perusahaan": "Pakuwon Jati Tbk."
+  },
+  {
+    "No": 360,
+    "Kode": "PYFA",
+    "Nama Perusahaan": "Pyridam Farma Tbk"
+  },
+  {
+    "No": 361,
+    "Kode": "RAJA",
+    "Nama Perusahaan": "Rukun Raharja Tbk."
+  },
+  {
+    "No": 362,
+    "Kode": "RALS",
+    "Nama Perusahaan": "Ramayana Lestari Sentosa Tbk."
+  },
+  {
+    "No": 363,
+    "Kode": "RANC",
+    "Nama Perusahaan": "Supra Boga Lestari Tbk."
+  },
+  {
+    "No": 364,
+    "Kode": "RBMS",
+    "Nama Perusahaan": "Ristia Bintang Mahkotasejati T"
+  },
+  {
+    "No": 365,
+    "Kode": "RDTX",
+    "Nama Perusahaan": "Roda Vivatex Tbk"
+  },
+  {
+    "No": 366,
+    "Kode": "RELI",
+    "Nama Perusahaan": "Reliance Sekuritas Indonesia T"
+  },
+  {
+    "No": 367,
+    "Kode": "RICY",
+    "Nama Perusahaan": "Ricky Putra Globalindo Tbk"
+  },
+  {
+    "No": 368,
+    "Kode": "RIGS",
+    "Nama Perusahaan": "Rig Tenders Indonesia Tbk."
+  },
+  {
+    "No": 369,
+    "Kode": "RIMO",
+    "Nama Perusahaan": "Rimo International Lestari Tbk"
+  },
+  {
+    "No": 370,
+    "Kode": "RODA",
+    "Nama Perusahaan": "Pikko Land Development Tbk."
+  },
+  {
+    "No": 371,
+    "Kode": "ROTI",
+    "Nama Perusahaan": "Nippon Indosari Corpindo Tbk."
+  },
+  {
+    "No": 372,
+    "Kode": "RUIS",
+    "Nama Perusahaan": "Radiant Utama Interinsco Tbk."
+  },
+  {
+    "No": 373,
+    "Kode": "SAFE",
+    "Nama Perusahaan": "Steady Safe Tbk"
+  },
+  {
+    "No": 374,
+    "Kode": "SAME",
+    "Nama Perusahaan": "Sarana Meditama Metropolitan T"
+  },
+  {
+    "No": 375,
+    "Kode": "SCCO",
+    "Nama Perusahaan": "Supreme Cable Manufacturing & "
+  },
+  {
+    "No": 376,
+    "Kode": "SCMA",
+    "Nama Perusahaan": "Surya Citra Media Tbk."
+  },
+  {
+    "No": 377,
+    "Kode": "SCPI",
+    "Nama Perusahaan": "Organon Pharma Indonesia Tbk."
+  },
+  {
+    "No": 378,
+    "Kode": "SDMU",
+    "Nama Perusahaan": "Sidomulyo Selaras Tbk."
+  },
+  {
+    "No": 379,
+    "Kode": "SDPC",
+    "Nama Perusahaan": "Millennium Pharmacon Internati"
+  },
+  {
+    "No": 380,
+    "Kode": "SDRA",
+    "Nama Perusahaan": "Bank Woori Saudara Indonesia 1"
+  },
+  {
+    "No": 381,
+    "Kode": "SGRO",
+    "Nama Perusahaan": "Prime Agri Resources Tbk."
+  },
+  {
+    "No": 382,
+    "Kode": "SHID",
+    "Nama Perusahaan": "Hotel Sahid Jaya International"
+  },
+  {
+    "No": 383,
+    "Kode": "SIDO",
+    "Nama Perusahaan": "Industri Jamu dan Farmasi Sido"
+  },
+  {
+    "No": 384,
+    "Kode": "SILO",
+    "Nama Perusahaan": "Siloam International Hospitals"
+  },
+  {
+    "No": 385,
+    "Kode": "SIMA",
+    "Nama Perusahaan": "Siwani Makmur Tbk"
+  },
+  {
+    "No": 386,
+    "Kode": "SIMP",
+    "Nama Perusahaan": "Salim Ivomas Pratama Tbk."
+  },
+  {
+    "No": 387,
+    "Kode": "SIPD",
+    "Nama Perusahaan": "Sreeya Sewu Indonesia Tbk."
+  },
+  {
+    "No": 388,
+    "Kode": "SKBM",
+    "Nama Perusahaan": "Sekar Bumi Tbk."
+  },
+  {
+    "No": 389,
+    "Kode": "SKLT",
+    "Nama Perusahaan": "Sekar Laut Tbk."
+  },
+  {
+    "No": 390,
+    "Kode": "SKYB",
+    "Nama Perusahaan": "Northcliff Citranusa Indonesia"
+  },
+  {
+    "No": 391,
+    "Kode": "SMAR",
+    "Nama Perusahaan": "Sinar Mas Agro Resources and T"
+  },
+  {
+    "No": 392,
+    "Kode": "SMBR",
+    "Nama Perusahaan": "Semen Baturaja (Persero) Tbk."
+  },
+  {
+    "No": 393,
+    "Kode": "SMCB",
+    "Nama Perusahaan": "Solusi Bangun Indonesia Tbk."
+  },
+  {
+    "No": 394,
+    "Kode": "SMDM",
+    "Nama Perusahaan": "Suryamas Dutamakmur Tbk."
+  },
+  {
+    "No": 395,
+    "Kode": "SMDR",
+    "Nama Perusahaan": "Samudera Indonesia  Tbk."
+  },
+  {
+    "No": 396,
+    "Kode": "SMGR",
+    "Nama Perusahaan": "Semen Indonesia (Persero) Tbk."
+  },
+  {
+    "No": 397,
+    "Kode": "SMMA",
+    "Nama Perusahaan": "Sinarmas Multiartha Tbk."
+  },
+  {
+    "No": 398,
+    "Kode": "SMMT",
+    "Nama Perusahaan": "Golden Eagle Energy Tbk."
+  },
+  {
+    "No": 399,
+    "Kode": "SMRA",
+    "Nama Perusahaan": "Summarecon Agung Tbk."
+  },
+  {
+    "No": 400,
+    "Kode": "SMRU",
+    "Nama Perusahaan": "SMR Utama Tbk."
+  },
+  {
+    "No": 401,
+    "Kode": "SMSM",
+    "Nama Perusahaan": "Selamat Sempurna Tbk."
+  },
+  {
+    "No": 402,
+    "Kode": "SOCI",
+    "Nama Perusahaan": "Soechi Lines Tbk."
+  },
+  {
+    "No": 403,
+    "Kode": "SONA",
+    "Nama Perusahaan": "Sona Topas Tourism Industry Tb"
+  },
+  {
+    "No": 404,
+    "Kode": "SPMA",
+    "Nama Perusahaan": "Suparma Tbk."
+  },
+  {
+    "No": 405,
+    "Kode": "SQMI",
+    "Nama Perusahaan": "Wilton Makmur Indonesia Tbk."
+  },
+  {
+    "No": 406,
+    "Kode": "SRAJ",
+    "Nama Perusahaan": "Sejahteraraya Anugrahjaya Tbk."
+  },
+  {
+    "No": 407,
+    "Kode": "SRIL",
+    "Nama Perusahaan": "Sri Rejeki Isman Tbk."
+  },
+  {
+    "No": 408,
+    "Kode": "SRSN",
+    "Nama Perusahaan": "Indo Acidatama Tbk"
+  },
+  {
+    "No": 409,
+    "Kode": "SRTG",
+    "Nama Perusahaan": "Saratoga Investama Sedaya Tbk."
+  },
+  {
+    "No": 410,
+    "Kode": "SSIA",
+    "Nama Perusahaan": "Surya Semesta Internusa Tbk."
+  },
+  {
+    "No": 411,
+    "Kode": "SSMS",
+    "Nama Perusahaan": "Sawit Sumbermas Sarana Tbk."
+  },
+  {
+    "No": 412,
+    "Kode": "SSTM",
+    "Nama Perusahaan": "Sunson Textile Manufacture Tbk"
+  },
+  {
+    "No": 413,
+    "Kode": "STAR",
+    "Nama Perusahaan": "Buana Artha Anugerah Tbk."
+  },
+  {
+    "No": 414,
+    "Kode": "STTP",
+    "Nama Perusahaan": "Siantar Top Tbk."
+  },
+  {
+    "No": 415,
+    "Kode": "SUGI",
+    "Nama Perusahaan": "Sugih Energy Tbk."
+  },
+  {
+    "No": 416,
+    "Kode": "SULI",
+    "Nama Perusahaan": "SLJ Global Tbk."
+  },
+  {
+    "No": 417,
+    "Kode": "SUPR",
+    "Nama Perusahaan": "Solusi Tunas Pratama Tbk."
+  },
+  {
+    "No": 418,
+    "Kode": "TALF",
+    "Nama Perusahaan": "Tunas Alfin Tbk."
+  },
+  {
+    "No": 419,
+    "Kode": "TARA",
+    "Nama Perusahaan": "Agung Semesta Sejahtera Tbk."
+  },
+  {
+    "No": 420,
+    "Kode": "TAXI",
+    "Nama Perusahaan": "Express Transindo Utama Tbk."
+  },
+  {
+    "No": 421,
+    "Kode": "TBIG",
+    "Nama Perusahaan": "Tower Bersama Infrastructure T"
+  },
+  {
+    "No": 422,
+    "Kode": "TBLA",
+    "Nama Perusahaan": "Tunas Baru Lampung Tbk."
+  },
+  {
+    "No": 423,
+    "Kode": "TBMS",
+    "Nama Perusahaan": "Tembaga Mulia Semanan Tbk."
+  },
+  {
+    "No": 424,
+    "Kode": "TCID",
+    "Nama Perusahaan": "Mandom Indonesia Tbk."
+  },
+  {
+    "No": 425,
+    "Kode": "TELE",
+    "Nama Perusahaan": "Omni Inovasi Indonesia Tbk."
+  },
+  {
+    "No": 426,
+    "Kode": "TFCO",
+    "Nama Perusahaan": "Tifico Fiber Indonesia Tbk."
+  },
+  {
+    "No": 427,
+    "Kode": "TGKA",
+    "Nama Perusahaan": "Tigaraksa Satria Tbk."
+  },
+  {
+    "No": 428,
+    "Kode": "TIFA",
+    "Nama Perusahaan": "KDB Tifa Finance Tbk."
+  },
+  {
+    "No": 429,
+    "Kode": "TINS",
+    "Nama Perusahaan": "Timah Tbk."
+  },
+  {
+    "No": 430,
+    "Kode": "TIRA",
+    "Nama Perusahaan": "Tira Austenite Tbk"
+  },
+  {
+    "No": 431,
+    "Kode": "TIRT",
+    "Nama Perusahaan": "Tirta Mahakam Resources Tbk"
+  },
+  {
+    "No": 432,
+    "Kode": "TKIM",
+    "Nama Perusahaan": "Pabrik Kertas Tjiwi Kimia Tbk."
+  },
+  {
+    "No": 433,
+    "Kode": "TLKM",
+    "Nama Perusahaan": "Telkom Indonesia (Persero) Tbk"
+  },
+  {
+    "No": 434,
+    "Kode": "TMAS",
+    "Nama Perusahaan": "Temas Tbk."
+  },
+  {
+    "No": 435,
+    "Kode": "TMPO",
+    "Nama Perusahaan": "Tempo Intimedia Tbk."
+  },
+  {
+    "No": 436,
+    "Kode": "TOBA",
+    "Nama Perusahaan": "TBS Energi Utama Tbk."
+  },
+  {
+    "No": 437,
+    "Kode": "TOTL",
+    "Nama Perusahaan": "Total Bangun Persada Tbk."
+  },
+  {
+    "No": 438,
+    "Kode": "TOTO",
+    "Nama Perusahaan": "Surya Toto Indonesia Tbk."
+  },
+  {
+    "No": 439,
+    "Kode": "TOWR",
+    "Nama Perusahaan": "Sarana Menara Nusantara Tbk."
+  },
+  {
+    "No": 440,
+    "Kode": "TPIA",
+    "Nama Perusahaan": "Chandra Asri Pacific Tbk."
+  },
+  {
+    "No": 441,
+    "Kode": "TPMA",
+    "Nama Perusahaan": "Trans Power Marine Tbk."
+  },
+  {
+    "No": 442,
+    "Kode": "TRAM",
+    "Nama Perusahaan": "Trada Alam Minera Tbk."
+  },
+  {
+    "No": 443,
+    "Kode": "TRIL",
+    "Nama Perusahaan": "Triwira Insanlestari Tbk."
+  },
+  {
+    "No": 444,
+    "Kode": "TRIM",
+    "Nama Perusahaan": "Trimegah Sekuritas Indonesia T"
+  },
+  {
+    "No": 445,
+    "Kode": "TRIO",
+    "Nama Perusahaan": "Trikomsel Oke Tbk."
+  },
+  {
+    "No": 446,
+    "Kode": "TRIS",
+    "Nama Perusahaan": "Trisula International Tbk."
+  },
+  {
+    "No": 447,
+    "Kode": "TRST",
+    "Nama Perusahaan": "Trias Sentosa Tbk."
+  },
+  {
+    "No": 448,
+    "Kode": "TRUS",
+    "Nama Perusahaan": "Trust Finance Indonesia Tbk"
+  },
+  {
+    "No": 449,
+    "Kode": "TSPC",
+    "Nama Perusahaan": "Tempo Scan Pacific Tbk."
+  },
+  {
+    "No": 450,
+    "Kode": "ULTJ",
+    "Nama Perusahaan": "Ultrajaya Milk Industry & Trad"
+  },
+  {
+    "No": 451,
+    "Kode": "UNIC",
+    "Nama Perusahaan": "Unggul Indah Cahaya Tbk."
+  },
+  {
+    "No": 452,
+    "Kode": "UNIT",
+    "Nama Perusahaan": "Nusantara Inti Corpora Tbk"
+  },
+  {
+    "No": 453,
+    "Kode": "UNSP",
+    "Nama Perusahaan": "Bakrie Sumatera Plantations Tb"
+  },
+  {
+    "No": 454,
+    "Kode": "UNTR",
+    "Nama Perusahaan": "United Tractors Tbk."
+  },
+  {
+    "No": 455,
+    "Kode": "UNVR",
+    "Nama Perusahaan": "Unilever Indonesia Tbk."
+  },
+  {
+    "No": 456,
+    "Kode": "VICO",
+    "Nama Perusahaan": "Victoria Investama Tbk."
+  },
+  {
+    "No": 457,
+    "Kode": "VINS",
+    "Nama Perusahaan": "Victoria Insurance Tbk."
+  },
+  {
+    "No": 458,
+    "Kode": "VIVA",
+    "Nama Perusahaan": "Visi Media Asia Tbk."
+  },
+  {
+    "No": 459,
+    "Kode": "VOKS",
+    "Nama Perusahaan": "Voksel Electric Tbk."
+  },
+  {
+    "No": 460,
+    "Kode": "VRNA",
+    "Nama Perusahaan": "Mizuho Leasing Indonesia Tbk."
+  },
+  {
+    "No": 461,
+    "Kode": "WAPO",
+    "Nama Perusahaan": "Wahana Pronatural Tbk."
+  },
+  {
+    "No": 462,
+    "Kode": "WEHA",
+    "Nama Perusahaan": "WEHA Transportasi Indonesia Tb"
+  },
+  {
+    "No": 463,
+    "Kode": "WICO",
+    "Nama Perusahaan": "Wicaksana Overseas Internation"
+  },
+  {
+    "No": 464,
+    "Kode": "WIIM",
+    "Nama Perusahaan": "Wismilak Inti Makmur Tbk."
+  },
+  {
+    "No": 465,
+    "Kode": "WIKA",
+    "Nama Perusahaan": "Wijaya Karya (Persero) Tbk."
+  },
+  {
+    "No": 466,
+    "Kode": "WINS",
+    "Nama Perusahaan": "Wintermar Offshore Marine Tbk."
+  },
+  {
+    "No": 467,
+    "Kode": "WOMF",
+    "Nama Perusahaan": "Wahana Ottomitra Multiartha Tb"
+  },
+  {
+    "No": 468,
+    "Kode": "WSKT",
+    "Nama Perusahaan": "Waskita Karya (Persero) Tbk."
+  },
+  {
+    "No": 469,
+    "Kode": "WTON",
+    "Nama Perusahaan": "Wijaya Karya Beton Tbk."
+  },
+  {
+    "No": 470,
+    "Kode": "YPAS",
+    "Nama Perusahaan": "Yanaprima Hastapersada Tbk"
+  },
+  {
+    "No": 471,
+    "Kode": "YULE",
+    "Nama Perusahaan": "Yulie Sekuritas Indonesia Tbk."
+  },
+  {
+    "No": 472,
+    "Kode": "ZBRA",
+    "Nama Perusahaan": "Dosni Roha Indonesia Tbk."
+  },
+  {
+    "No": 473,
+    "Kode": "SHIP",
+    "Nama Perusahaan": "Sillo Maritime Perdana Tbk."
+  },
+  {
+    "No": 474,
+    "Kode": "CASA",
+    "Nama Perusahaan": "Capital Financial Indonesia Tb"
+  },
+  {
+    "No": 475,
+    "Kode": "DAYA",
+    "Nama Perusahaan": "Duta Intidaya Tbk."
+  },
+  {
+    "No": 476,
+    "Kode": "DPUM",
+    "Nama Perusahaan": "Dua Putra Utama Makmur Tbk."
+  },
+  {
+    "No": 477,
+    "Kode": "IDPR",
+    "Nama Perusahaan": "Indonesia Pondasi Raya Tbk."
+  },
+  {
+    "No": 478,
+    "Kode": "JGLE",
+    "Nama Perusahaan": "Graha Andrasentra Propertindo "
+  },
+  {
+    "No": 479,
+    "Kode": "KINO",
+    "Nama Perusahaan": "Kino Indonesia Tbk."
+  },
+  {
+    "No": 480,
+    "Kode": "MARI",
+    "Nama Perusahaan": "Mahaka Radio Integra Tbk."
+  },
+  {
+    "No": 481,
+    "Kode": "MKNT",
+    "Nama Perusahaan": "Mitra Komunikasi Nusantara Tbk"
+  },
+  {
+    "No": 482,
+    "Kode": "MTRA",
+    "Nama Perusahaan": "Mitra Pemuda Tbk."
+  },
+  {
+    "No": 483,
+    "Kode": "OASA",
+    "Nama Perusahaan": "Maharaksa Biru Energi Tbk."
+  },
+  {
+    "No": 484,
+    "Kode": "POWR",
+    "Nama Perusahaan": "Cikarang Listrindo Tbk."
+  },
+  {
+    "No": 485,
+    "Kode": "INCF",
+    "Nama Perusahaan": "Indo Komoditi Korpora Tbk."
+  },
+  {
+    "No": 486,
+    "Kode": "WSBP",
+    "Nama Perusahaan": "Waskita Beton Precast Tbk."
+  },
+  {
+    "No": 487,
+    "Kode": "PBSA",
+    "Nama Perusahaan": "Paramita Bangun Sarana Tbk."
+  },
+  {
+    "No": 488,
+    "Kode": "PRDA",
+    "Nama Perusahaan": "Prodia Widyahusada Tbk."
+  },
+  {
+    "No": 489,
+    "Kode": "BOGA",
+    "Nama Perusahaan": "Bintang Oto Global Tbk."
+  },
+  {
+    "No": 490,
+    "Kode": "BRIS",
+    "Nama Perusahaan": "Bank Syariah Indonesia Tbk."
+  },
+  {
+    "No": 491,
+    "Kode": "PORT",
+    "Nama Perusahaan": "Nusantara Pelabuhan Handal Tbk"
+  },
+  {
+    "No": 492,
+    "Kode": "CARS",
+    "Nama Perusahaan": "Industri dan Perdagangan Bintr"
+  },
+  {
+    "No": 493,
+    "Kode": "MINA",
+    "Nama Perusahaan": "Sanurhasta Mitra Tbk."
+  },
+  {
+    "No": 494,
+    "Kode": "CLEO",
+    "Nama Perusahaan": "Sariguna Primatirta Tbk."
+  },
+  {
+    "No": 495,
+    "Kode": "TAMU",
+    "Nama Perusahaan": "Pelayaran Tamarin Samudra Tbk."
+  },
+  {
+    "No": 496,
+    "Kode": "CSIS",
+    "Nama Perusahaan": "Cahayasakti Investindo Sukses "
+  },
+  {
+    "No": 497,
+    "Kode": "TGRA",
+    "Nama Perusahaan": "Terregra Asia Energy Tbk."
+  },
+  {
+    "No": 498,
+    "Kode": "FIRE",
+    "Nama Perusahaan": "Alfa Energi Investama Tbk."
+  },
+  {
+    "No": 499,
+    "Kode": "TOPS",
+    "Nama Perusahaan": "Totalindo Eka Persada Tbk."
+  },
+  {
+    "No": 500,
+    "Kode": "KMTR",
+    "Nama Perusahaan": "Kirana Megatara Tbk."
+  },
+  {
+    "No": 501,
+    "Kode": "ARMY",
+    "Nama Perusahaan": "Armidian Karyatama Tbk."
+  },
+  {
+    "No": 502,
+    "Kode": "MAPB",
+    "Nama Perusahaan": "MAP Boga Adiperkasa Tbk."
+  },
+  {
+    "No": 503,
+    "Kode": "WOOD",
+    "Nama Perusahaan": "Integra Indocabinet Tbk."
+  },
+  {
+    "No": 504,
+    "Kode": "HRTA",
+    "Nama Perusahaan": "Hartadinata Abadi Tbk."
+  },
+  {
+    "No": 505,
+    "Kode": "MABA",
+    "Nama Perusahaan": "Marga Abhinaya Abadi Tbk."
+  },
+  {
+    "No": 506,
+    "Kode": "HOKI",
+    "Nama Perusahaan": "Buyung Poetra Sembada Tbk."
+  },
+  {
+    "No": 507,
+    "Kode": "MPOW",
+    "Nama Perusahaan": "Megapower Makmur Tbk."
+  },
+  {
+    "No": 508,
+    "Kode": "MARK",
+    "Nama Perusahaan": "Mark Dynamics Indonesia Tbk."
+  },
+  {
+    "No": 509,
+    "Kode": "NASA",
+    "Nama Perusahaan": "Andalan Perkasa Abadi Tbk."
+  },
+  {
+    "No": 510,
+    "Kode": "MDKI",
+    "Nama Perusahaan": "Emdeki Utama Tbk."
+  },
+  {
+    "No": 511,
+    "Kode": "BELL",
+    "Nama Perusahaan": "Trisula Textile Industries Tbk"
+  },
+  {
+    "No": 512,
+    "Kode": "KIOS",
+    "Nama Perusahaan": "Kioson Komersial Indonesia Tbk"
+  },
+  {
+    "No": 513,
+    "Kode": "GMFI",
+    "Nama Perusahaan": "Garuda Maintenance Facility Ae"
+  },
+  {
+    "No": 514,
+    "Kode": "MTWI",
+    "Nama Perusahaan": "Malacca Trust Wuwungan Insuran"
+  },
+  {
+    "No": 515,
+    "Kode": "ZINC",
+    "Nama Perusahaan": "Kapuas Prima Coal Tbk."
+  },
+  {
+    "No": 516,
+    "Kode": "MCAS",
+    "Nama Perusahaan": "M Cash Integrasi Tbk."
+  },
+  {
+    "No": 517,
+    "Kode": "PPRE",
+    "Nama Perusahaan": "PP Presisi Tbk."
+  },
+  {
+    "No": 518,
+    "Kode": "WEGE",
+    "Nama Perusahaan": "Wijaya Karya Bangunan Gedung T"
+  },
+  {
+    "No": 519,
+    "Kode": "PSSI",
+    "Nama Perusahaan": "IMC Pelita Logistik Tbk."
+  },
+  {
+    "No": 520,
+    "Kode": "MORA",
+    "Nama Perusahaan": "Mora Telematika Indonesia Tbk."
+  },
+  {
+    "No": 521,
+    "Kode": "DWGL",
+    "Nama Perusahaan": "Dwi Guna Laksana Tbk."
+  },
+  {
+    "No": 522,
+    "Kode": "PBID",
+    "Nama Perusahaan": "Panca Budi Idaman Tbk."
+  },
+  {
+    "No": 523,
+    "Kode": "JMAS",
+    "Nama Perusahaan": "Asuransi Jiwa Syariah Jasa Mit"
+  },
+  {
+    "No": 524,
+    "Kode": "CAMP",
+    "Nama Perusahaan": "Campina Ice Cream Industry Tbk"
+  },
+  {
+    "No": 525,
+    "Kode": "IPCM",
+    "Nama Perusahaan": "Jasa Armada Indonesia Tbk."
+  },
+  {
+    "No": 526,
+    "Kode": "PCAR",
+    "Nama Perusahaan": "Prima Cakrawala Abadi Tbk."
+  },
+  {
+    "No": 527,
+    "Kode": "LCKM",
+    "Nama Perusahaan": "LCK Global Kedaton Tbk."
+  },
+  {
+    "No": 528,
+    "Kode": "BOSS",
+    "Nama Perusahaan": "Borneo Olah Sarana Sukses Tbk."
+  },
+  {
+    "No": 529,
+    "Kode": "HELI",
+    "Nama Perusahaan": "Jaya Trishindo Tbk."
+  },
+  {
+    "No": 530,
+    "Kode": "JSKY",
+    "Nama Perusahaan": "Sky Energy Indonesia Tbk."
+  },
+  {
+    "No": 531,
+    "Kode": "INPS",
+    "Nama Perusahaan": "Indah Prakasa Sentosa Tbk."
+  },
+  {
+    "No": 532,
+    "Kode": "GHON",
+    "Nama Perusahaan": "Gihon Telekomunikasi Indonesia"
+  },
+  {
+    "No": 533,
+    "Kode": "TDPM",
+    "Nama Perusahaan": "Tianrong Chemicals Industry Tb"
+  },
+  {
+    "No": 534,
+    "Kode": "DFAM",
+    "Nama Perusahaan": "Dafam Property Indonesia Tbk."
+  },
+  {
+    "No": 535,
+    "Kode": "NICK",
+    "Nama Perusahaan": "Charnic Capital Tbk."
+  },
+  {
+    "No": 536,
+    "Kode": "BTPS",
+    "Nama Perusahaan": "Bank BTPN Syariah Tbk."
+  },
+  {
+    "No": 537,
+    "Kode": "SPTO",
+    "Nama Perusahaan": "Surya Pertiwi Tbk."
+  },
+  {
+    "No": 538,
+    "Kode": "PRIM",
+    "Nama Perusahaan": "Royal Prima Tbk."
+  },
+  {
+    "No": 539,
+    "Kode": "HEAL",
+    "Nama Perusahaan": "Medikaloka Hermina Tbk."
+  },
+  {
+    "No": 540,
+    "Kode": "TRUK",
+    "Nama Perusahaan": "Guna Timur Raya Tbk."
+  },
+  {
+    "No": 541,
+    "Kode": "PZZA",
+    "Nama Perusahaan": "Sarimelati Kencana Tbk."
+  },
+  {
+    "No": 542,
+    "Kode": "TUGU",
+    "Nama Perusahaan": "Asuransi Tugu Pratama Indonesi"
+  },
+  {
+    "No": 543,
+    "Kode": "MSIN",
+    "Nama Perusahaan": "MNC Digital Entertainment Tbk."
+  },
+  {
+    "No": 544,
+    "Kode": "SWAT",
+    "Nama Perusahaan": "Sriwahana Adityakarta Tbk."
+  },
+  {
+    "No": 545,
+    "Kode": "TNCA",
+    "Nama Perusahaan": "Trimuda Nuansa Citra Tbk."
+  },
+  {
+    "No": 546,
+    "Kode": "MAPA",
+    "Nama Perusahaan": "Map Aktif Adiperkasa Tbk."
+  },
+  {
+    "No": 547,
+    "Kode": "TCPI",
+    "Nama Perusahaan": "Transcoal Pacific Tbk."
+  },
+  {
+    "No": 548,
+    "Kode": "IPCC",
+    "Nama Perusahaan": "Indonesia Kendaraan Terminal T"
+  },
+  {
+    "No": 549,
+    "Kode": "RISE",
+    "Nama Perusahaan": "Jaya Sukses Makmur Sentosa Tbk"
+  },
+  {
+    "No": 550,
+    "Kode": "BPTR",
+    "Nama Perusahaan": "Batavia Prosperindo Trans Tbk."
+  },
+  {
+    "No": 551,
+    "Kode": "POLL",
+    "Nama Perusahaan": "Pollux Properties Indonesia Tb"
+  },
+  {
+    "No": 552,
+    "Kode": "NFCX",
+    "Nama Perusahaan": "NFC Indonesia Tbk."
+  },
+  {
+    "No": 553,
+    "Kode": "MGRO",
+    "Nama Perusahaan": "Mahkota Group Tbk."
+  },
+  {
+    "No": 554,
+    "Kode": "NUSA",
+    "Nama Perusahaan": "Sinergi Megah Internusa Tbk."
+  },
+  {
+    "No": 555,
+    "Kode": "FILM",
+    "Nama Perusahaan": "MD Entertainment Tbk."
+  },
+  {
+    "No": 556,
+    "Kode": "ANDI",
+    "Nama Perusahaan": "Andira Agro Tbk."
+  },
+  {
+    "No": 557,
+    "Kode": "LAND",
+    "Nama Perusahaan": "Trimitra Propertindo Tbk."
+  },
+  {
+    "No": 558,
+    "Kode": "MOLI",
+    "Nama Perusahaan": "Madusari Murni Indah Tbk."
+  },
+  {
+    "No": 559,
+    "Kode": "PANI",
+    "Nama Perusahaan": "Pantai Indah Kapuk Dua Tbk."
+  },
+  {
+    "No": 560,
+    "Kode": "DIGI",
+    "Nama Perusahaan": "Arkadia Digital Media Tbk."
+  },
+  {
+    "No": 561,
+    "Kode": "CITY",
+    "Nama Perusahaan": "Natura City Developments Tbk."
+  },
+  {
+    "No": 562,
+    "Kode": "SAPX",
+    "Nama Perusahaan": "Satria Antaran Prima Tbk."
+  },
+  {
+    "No": 563,
+    "Kode": "SURE",
+    "Nama Perusahaan": "Super Energy Tbk."
+  },
+  {
+    "No": 564,
+    "Kode": "HKMU",
+    "Nama Perusahaan": "HK Metals Utama Tbk."
+  },
+  {
+    "No": 565,
+    "Kode": "MPRO",
+    "Nama Perusahaan": "Maha Properti Indonesia Tbk."
+  },
+  {
+    "No": 566,
+    "Kode": "DUCK",
+    "Nama Perusahaan": "Jaya Bersama Indo Tbk."
+  },
+  {
+    "No": 567,
+    "Kode": "GOOD",
+    "Nama Perusahaan": "Garudafood Putra Putri Jaya Tb"
+  },
+  {
+    "No": 568,
+    "Kode": "SKRN",
+    "Nama Perusahaan": "Superkrane Mitra Utama Tbk."
+  },
+  {
+    "No": 569,
+    "Kode": "YELO",
+    "Nama Perusahaan": "Yelooo Integra Datanet Tbk."
+  },
+  {
+    "No": 570,
+    "Kode": "CAKK",
+    "Nama Perusahaan": "Cahayaputra Asa Keramik Tbk."
+  },
+  {
+    "No": 571,
+    "Kode": "SATU",
+    "Nama Perusahaan": "Kota Satu Properti Tbk."
+  },
+  {
+    "No": 572,
+    "Kode": "SOSS",
+    "Nama Perusahaan": "Shield On Service Tbk."
+  },
+  {
+    "No": 573,
+    "Kode": "DEAL",
+    "Nama Perusahaan": "Dewata Freightinternational Tb"
+  },
+  {
+    "No": 574,
+    "Kode": "POLA",
+    "Nama Perusahaan": "Pool Advista Finance Tbk."
+  },
+  {
+    "No": 575,
+    "Kode": "DIVA",
+    "Nama Perusahaan": "Distribusi Voucher Nusantara T"
+  },
+  {
+    "No": 576,
+    "Kode": "LUCK",
+    "Nama Perusahaan": "Sentral Mitra Informatika Tbk."
+  },
+  {
+    "No": 577,
+    "Kode": "URBN",
+    "Nama Perusahaan": "Urban Jakarta Propertindo Tbk."
+  },
+  {
+    "No": 578,
+    "Kode": "SOTS",
+    "Nama Perusahaan": "Satria Mega Kencana Tbk."
+  },
+  {
+    "No": 579,
+    "Kode": "ZONE",
+    "Nama Perusahaan": "Mega Perintis Tbk."
+  },
+  {
+    "No": 580,
+    "Kode": "PEHA",
+    "Nama Perusahaan": "Phapros Tbk."
+  },
+  {
+    "No": 581,
+    "Kode": "FOOD",
+    "Nama Perusahaan": "Sentra Food Indonesia Tbk."
+  },
+  {
+    "No": 582,
+    "Kode": "BEEF",
+    "Nama Perusahaan": "Estika Tata Tiara Tbk."
+  },
+  {
+    "No": 583,
+    "Kode": "POLI",
+    "Nama Perusahaan": "Pollux Hotels Group Tbk."
+  },
+  {
+    "No": 584,
+    "Kode": "CLAY",
+    "Nama Perusahaan": "Citra Putra Realty Tbk."
+  },
+  {
+    "No": 585,
+    "Kode": "NATO",
+    "Nama Perusahaan": "Surya Permata Andalan Tbk."
+  },
+  {
+    "No": 586,
+    "Kode": "JAYA",
+    "Nama Perusahaan": "Armada Berjaya Trans Tbk."
+  },
+  {
+    "No": 587,
+    "Kode": "COCO",
+    "Nama Perusahaan": "Wahana Interfood Nusantara Tbk"
+  },
+  {
+    "No": 588,
+    "Kode": "MTPS",
+    "Nama Perusahaan": "Meta Epsi Tbk."
+  },
+  {
+    "No": 589,
+    "Kode": "CPRI",
+    "Nama Perusahaan": "Capri Nusa Satu Properti Tbk."
+  },
+  {
+    "No": 590,
+    "Kode": "HRME",
+    "Nama Perusahaan": "Menteng Heritage Realty Tbk."
+  },
+  {
+    "No": 591,
+    "Kode": "POSA",
+    "Nama Perusahaan": "Bliss Properti Indonesia Tbk."
+  },
+  {
+    "No": 592,
+    "Kode": "JAST",
+    "Nama Perusahaan": "Jasnita Telekomindo Tbk."
+  },
+  {
+    "No": 593,
+    "Kode": "FITT",
+    "Nama Perusahaan": "Hotel Fitra International Tbk."
+  },
+  {
+    "No": 594,
+    "Kode": "BOLA",
+    "Nama Perusahaan": "Bali Bintang Sejahtera Tbk."
+  },
+  {
+    "No": 595,
+    "Kode": "CCSI",
+    "Nama Perusahaan": "Communication Cable Systems In"
+  },
+  {
+    "No": 596,
+    "Kode": "SFAN",
+    "Nama Perusahaan": "Surya Fajar Capital Tbk."
+  },
+  {
+    "No": 597,
+    "Kode": "POLU",
+    "Nama Perusahaan": "Golden Flower Tbk."
+  },
+  {
+    "No": 598,
+    "Kode": "KJEN",
+    "Nama Perusahaan": "Krida Jaringan Nusantara Tbk."
+  },
+  {
+    "No": 599,
+    "Kode": "KAYU",
+    "Nama Perusahaan": "Darmi Bersaudara Tbk."
+  },
+  {
+    "No": 600,
+    "Kode": "ITIC",
+    "Nama Perusahaan": "Indonesian Tobacco Tbk."
+  },
+  {
+    "No": 601,
+    "Kode": "PAMG",
+    "Nama Perusahaan": "Bima Sakti Pertiwi Tbk."
+  },
+  {
+    "No": 602,
+    "Kode": "IPTV",
+    "Nama Perusahaan": "MNC Vision Networks Tbk."
+  },
+  {
+    "No": 603,
+    "Kode": "BLUE",
+    "Nama Perusahaan": "Berkah Prima Perkasa Tbk."
+  },
+  {
+    "No": 604,
+    "Kode": "ENVY",
+    "Nama Perusahaan": "Envy Technologies Indonesia Tb"
+  },
+  {
+    "No": 605,
+    "Kode": "EAST",
+    "Nama Perusahaan": "Eastparc Hotel Tbk."
+  },
+  {
+    "No": 606,
+    "Kode": "LIFE",
+    "Nama Perusahaan": "MSIG Life Insurance Indonesia "
+  },
+  {
+    "No": 607,
+    "Kode": "FUJI",
+    "Nama Perusahaan": "Fuji Finance Indonesia Tbk."
+  },
+  {
+    "No": 608,
+    "Kode": "KOTA",
+    "Nama Perusahaan": "DMS Propertindo Tbk."
+  },
+  {
+    "No": 609,
+    "Kode": "INOV",
+    "Nama Perusahaan": "Inocycle Technology Group Tbk."
+  },
+  {
+    "No": 610,
+    "Kode": "ARKA",
+    "Nama Perusahaan": "Arkha Jayanti Persada Tbk."
+  },
+  {
+    "No": 611,
+    "Kode": "SMKL",
+    "Nama Perusahaan": "Satyamitra Kemas Lestari Tbk."
+  },
+  {
+    "No": 612,
+    "Kode": "HDIT",
+    "Nama Perusahaan": "Hensel Davest Indonesia Tbk."
+  },
+  {
+    "No": 613,
+    "Kode": "KEEN",
+    "Nama Perusahaan": "Kencana Energi Lestari Tbk."
+  },
+  {
+    "No": 614,
+    "Kode": "BAPI",
+    "Nama Perusahaan": "Bhakti Agung Propertindo Tbk."
+  },
+  {
+    "No": 615,
+    "Kode": "TFAS",
+    "Nama Perusahaan": "Telefast Indonesia Tbk."
+  },
+  {
+    "No": 616,
+    "Kode": "GGRP",
+    "Nama Perusahaan": "Gunung Raja Paksi Tbk."
+  },
+  {
+    "No": 617,
+    "Kode": "OPMS",
+    "Nama Perusahaan": "Optima Prima Metal Sinergi Tbk"
+  },
+  {
+    "No": 618,
+    "Kode": "NZIA",
+    "Nama Perusahaan": "Nusantara Almazia Tbk."
+  },
+  {
+    "No": 619,
+    "Kode": "SLIS",
+    "Nama Perusahaan": "Gaya Abadi Sempurna Tbk."
+  },
+  {
+    "No": 620,
+    "Kode": "PURE",
+    "Nama Perusahaan": "Trinitan Metals and Minerals T"
+  },
+  {
+    "No": 621,
+    "Kode": "IRRA",
+    "Nama Perusahaan": "Itama Ranoraya Tbk."
+  },
+  {
+    "No": 622,
+    "Kode": "DMMX",
+    "Nama Perusahaan": "Digital Mediatama Maxima Tbk."
+  },
+  {
+    "No": 623,
+    "Kode": "SINI",
+    "Nama Perusahaan": "Singaraja Putra Tbk."
+  },
+  {
+    "No": 624,
+    "Kode": "WOWS",
+    "Nama Perusahaan": "Ginting Jaya Energi Tbk."
+  },
+  {
+    "No": 625,
+    "Kode": "ESIP",
+    "Nama Perusahaan": "Sinergi Inti Plastindo Tbk."
+  },
+  {
+    "No": 626,
+    "Kode": "TEBE",
+    "Nama Perusahaan": "Dana Brata Luhur Tbk."
+  },
+  {
+    "No": 627,
+    "Kode": "KEJU",
+    "Nama Perusahaan": "Mulia Boga Raya Tbk."
+  },
+  {
+    "No": 628,
+    "Kode": "PSGO",
+    "Nama Perusahaan": "Palma Serasih Tbk."
+  },
+  {
+    "No": 629,
+    "Kode": "AGAR",
+    "Nama Perusahaan": "Asia Sejahtera Mina Tbk."
+  },
+  {
+    "No": 630,
+    "Kode": "IFSH",
+    "Nama Perusahaan": "Ifishdeco Tbk."
+  },
+  {
+    "No": 631,
+    "Kode": "REAL",
+    "Nama Perusahaan": "Repower Asia Indonesia Tbk."
+  },
+  {
+    "No": 632,
+    "Kode": "IFII",
+    "Nama Perusahaan": "Indonesia Fibreboard Industry "
+  },
+  {
+    "No": 633,
+    "Kode": "PMJS",
+    "Nama Perusahaan": "Putra Mandiri Jembar Tbk."
+  },
+  {
+    "No": 634,
+    "Kode": "UCID",
+    "Nama Perusahaan": "Uni-Charm Indonesia Tbk."
+  },
+  {
+    "No": 635,
+    "Kode": "GLVA",
+    "Nama Perusahaan": "Galva Technologies Tbk."
+  },
+  {
+    "No": 636,
+    "Kode": "PGJO",
+    "Nama Perusahaan": "Bahtera Bumi Raya Tbk."
+  },
+  {
+    "No": 637,
+    "Kode": "AMAR",
+    "Nama Perusahaan": "Bank Amar Indonesia Tbk."
+  },
+  {
+    "No": 638,
+    "Kode": "CSRA",
+    "Nama Perusahaan": "Cisadane Sawit Raya Tbk."
+  },
+  {
+    "No": 639,
+    "Kode": "INDO",
+    "Nama Perusahaan": "Royalindo Investa Wijaya Tbk."
+  },
+  {
+    "No": 640,
+    "Kode": "AMOR",
+    "Nama Perusahaan": "Ashmore Asset Management Indon"
+  },
+  {
+    "No": 641,
+    "Kode": "TRIN",
+    "Nama Perusahaan": "Perintis Triniti Properti Tbk."
+  },
+  {
+    "No": 642,
+    "Kode": "DMND",
+    "Nama Perusahaan": "Diamond Food Indonesia Tbk."
+  },
+  {
+    "No": 643,
+    "Kode": "PURA",
+    "Nama Perusahaan": "Putra Rajawali Kencana Tbk."
+  },
+  {
+    "No": 644,
+    "Kode": "PTPW",
+    "Nama Perusahaan": "Pratama Widya Tbk."
+  },
+  {
+    "No": 645,
+    "Kode": "TAMA",
+    "Nama Perusahaan": "Lancartama Sejati Tbk."
+  },
+  {
+    "No": 646,
+    "Kode": "IKAN",
+    "Nama Perusahaan": "Era Mandiri Cemerlang Tbk."
+  },
+  {
+    "No": 647,
+    "Kode": "SAMF",
+    "Nama Perusahaan": "Saraswanti Anugerah Makmur Tbk"
+  },
+  {
+    "No": 648,
+    "Kode": "SBAT",
+    "Nama Perusahaan": "Sejahtera Bintang Abadi Textil"
+  },
+  {
+    "No": 649,
+    "Kode": "KBAG",
+    "Nama Perusahaan": "Karya Bersama Anugerah Tbk."
+  },
+  {
+    "No": 650,
+    "Kode": "CBMF",
+    "Nama Perusahaan": "Cahaya Bintang Medan Tbk."
+  },
+  {
+    "No": 651,
+    "Kode": "RONY",
+    "Nama Perusahaan": "Aracord Nusantara Group Tbk."
+  },
+  {
+    "No": 652,
+    "Kode": "CSMI",
+    "Nama Perusahaan": "Cipta Selera Murni Tbk."
+  },
+  {
+    "No": 653,
+    "Kode": "BBSS",
+    "Nama Perusahaan": "Bumi Benowo Sukses Sejahtera T"
+  },
+  {
+    "No": 654,
+    "Kode": "BHAT",
+    "Nama Perusahaan": "Bhakti Multi Artha Tbk."
+  },
+  {
+    "No": 655,
+    "Kode": "CASH",
+    "Nama Perusahaan": "Cashlez Worldwide Indonesia Tb"
+  },
+  {
+    "No": 656,
+    "Kode": "TECH",
+    "Nama Perusahaan": "Indosterling Technomedia Tbk."
+  },
+  {
+    "No": 657,
+    "Kode": "EPAC",
+    "Nama Perusahaan": "Megalestari Epack Sentosaraya "
+  },
+  {
+    "No": 658,
+    "Kode": "UANG",
+    "Nama Perusahaan": "Pakuan Tbk."
+  },
+  {
+    "No": 659,
+    "Kode": "PGUN",
+    "Nama Perusahaan": "Pradiksi Gunatama Tbk."
+  },
+  {
+    "No": 660,
+    "Kode": "SOFA",
+    "Nama Perusahaan": "Solusi Environment Asia Tbk."
+  },
+  {
+    "No": 661,
+    "Kode": "PPGL",
+    "Nama Perusahaan": "Prima Globalindo Logistik Tbk."
+  },
+  {
+    "No": 662,
+    "Kode": "TOYS",
+    "Nama Perusahaan": "Sunindo Adipersada Tbk."
+  },
+  {
+    "No": 663,
+    "Kode": "SGER",
+    "Nama Perusahaan": "Sumber Global Energy Tbk."
+  },
+  {
+    "No": 664,
+    "Kode": "TRJA",
+    "Nama Perusahaan": "Transkon Jaya Tbk."
+  },
+  {
+    "No": 665,
+    "Kode": "PNGO",
+    "Nama Perusahaan": "Pinago Utama Tbk."
+  },
+  {
+    "No": 666,
+    "Kode": "SCNP",
+    "Nama Perusahaan": "Selaras Citra Nusantara Perkas"
+  },
+  {
+    "No": 667,
+    "Kode": "BBSI",
+    "Nama Perusahaan": "Krom Bank Indonesia Tbk."
+  },
+  {
+    "No": 668,
+    "Kode": "KMDS",
+    "Nama Perusahaan": "Kurniamitra Duta Sentosa Tbk."
+  },
+  {
+    "No": 669,
+    "Kode": "PURI",
+    "Nama Perusahaan": "Puri Global Sukses Tbk."
+  },
+  {
+    "No": 670,
+    "Kode": "SOHO",
+    "Nama Perusahaan": "Soho Global Health Tbk."
+  },
+  {
+    "No": 671,
+    "Kode": "HOMI",
+    "Nama Perusahaan": "Grand House Mulia Tbk."
+  },
+  {
+    "No": 672,
+    "Kode": "ROCK",
+    "Nama Perusahaan": "Rockfields Properti Indonesia "
+  },
+  {
+    "No": 673,
+    "Kode": "ENZO",
+    "Nama Perusahaan": "Morenzo Abadi Perkasa Tbk."
+  },
+  {
+    "No": 674,
+    "Kode": "PLAN",
+    "Nama Perusahaan": "Planet Properindo Jaya Tbk."
+  },
+  {
+    "No": 675,
+    "Kode": "PTDU",
+    "Nama Perusahaan": "Djasa Ubersakti Tbk."
+  },
+  {
+    "No": 676,
+    "Kode": "ATAP",
+    "Nama Perusahaan": "Trimitra Prawara Goldland Tbk."
+  },
+  {
+    "No": 677,
+    "Kode": "VICI",
+    "Nama Perusahaan": "Victoria Care Indonesia Tbk."
+  },
+  {
+    "No": 678,
+    "Kode": "PMMP",
+    "Nama Perusahaan": "Panca Mitra Multiperdana Tbk."
+  },
+  {
+    "No": 679,
+    "Kode": "BANK",
+    "Nama Perusahaan": "Bank Aladin Syariah Tbk."
+  },
+  {
+    "No": 680,
+    "Kode": "WMUU",
+    "Nama Perusahaan": "Widodo Makmur Unggas Tbk."
+  },
+  {
+    "No": 681,
+    "Kode": "EDGE",
+    "Nama Perusahaan": "Indointernet Tbk."
+  },
+  {
+    "No": 682,
+    "Kode": "UNIQ",
+    "Nama Perusahaan": "Ulima Nitra Tbk."
+  },
+  {
+    "No": 683,
+    "Kode": "BEBS",
+    "Nama Perusahaan": "Berkah Beton Sadaya Tbk."
+  },
+  {
+    "No": 684,
+    "Kode": "SNLK",
+    "Nama Perusahaan": "Sunter Lakeside Hotel Tbk."
+  },
+  {
+    "No": 685,
+    "Kode": "ZYRX",
+    "Nama Perusahaan": "Zyrexindo Mandiri Buana Tbk."
+  },
+  {
+    "No": 686,
+    "Kode": "LFLO",
+    "Nama Perusahaan": "Imago Mulia Persada Tbk."
+  },
+  {
+    "No": 687,
+    "Kode": "FIMP",
+    "Nama Perusahaan": "Fimperkasa Utama Tbk."
+  },
+  {
+    "No": 688,
+    "Kode": "TAPG",
+    "Nama Perusahaan": "Triputra Agro Persada Tbk."
+  },
+  {
+    "No": 689,
+    "Kode": "NPGF",
+    "Nama Perusahaan": "Nusa Palapa Gemilang Tbk."
+  },
+  {
+    "No": 690,
+    "Kode": "LUCY",
+    "Nama Perusahaan": "Lima Dua Lima Tiga Tbk."
+  },
+  {
+    "No": 691,
+    "Kode": "ADCP",
+    "Nama Perusahaan": "Adhi Commuter Properti Tbk."
+  },
+  {
+    "No": 692,
+    "Kode": "HOPE",
+    "Nama Perusahaan": "Harapan Duta Pertiwi Tbk."
+  },
+  {
+    "No": 693,
+    "Kode": "MGLV",
+    "Nama Perusahaan": "Panca Anugrah Wisesa Tbk."
+  },
+  {
+    "No": 694,
+    "Kode": "TRUE",
+    "Nama Perusahaan": "Triniti Dinamik Tbk."
+  },
+  {
+    "No": 695,
+    "Kode": "LABA",
+    "Nama Perusahaan": "Green Power Group Tbk."
+  },
+  {
+    "No": 696,
+    "Kode": "ARCI",
+    "Nama Perusahaan": "Archi Indonesia Tbk."
+  },
+  {
+    "No": 697,
+    "Kode": "IPAC",
+    "Nama Perusahaan": "Era Graharealty Tbk."
+  },
+  {
+    "No": 698,
+    "Kode": "MASB",
+    "Nama Perusahaan": "Bank Multiarta Sentosa Tbk."
+  },
+  {
+    "No": 699,
+    "Kode": "BMHS",
+    "Nama Perusahaan": "Bundamedik Tbk."
+  },
+  {
+    "No": 700,
+    "Kode": "FLMC",
+    "Nama Perusahaan": "Falmaco Nonwoven Industri Tbk."
+  },
+  {
+    "No": 701,
+    "Kode": "NICL",
+    "Nama Perusahaan": "PAM Mineral Tbk."
+  },
+  {
+    "No": 702,
+    "Kode": "UVCR",
+    "Nama Perusahaan": "Trimegah Karya Pratama Tbk."
+  },
+  {
+    "No": 703,
+    "Kode": "BUKA",
+    "Nama Perusahaan": "Bukalapak.com Tbk."
+  },
+  {
+    "No": 704,
+    "Kode": "HAIS",
+    "Nama Perusahaan": "Hasnur Internasional Shipping "
+  },
+  {
+    "No": 705,
+    "Kode": "OILS",
+    "Nama Perusahaan": "Indo Oil Perkasa Tbk."
+  },
+  {
+    "No": 706,
+    "Kode": "GPSO",
+    "Nama Perusahaan": "Geoprima Solusi Tbk."
+  },
+  {
+    "No": 707,
+    "Kode": "MCOL",
+    "Nama Perusahaan": "Prima Andalan Mandiri Tbk."
+  },
+  {
+    "No": 708,
+    "Kode": "RSGK",
+    "Nama Perusahaan": "Kedoya Adyaraya Tbk."
+  },
+  {
+    "No": 709,
+    "Kode": "RUNS",
+    "Nama Perusahaan": "Global Sukses Solusi Tbk."
+  },
+  {
+    "No": 710,
+    "Kode": "SBMA",
+    "Nama Perusahaan": "Surya Biru Murni Acetylene Tbk"
+  },
+  {
+    "No": 711,
+    "Kode": "CMNT",
+    "Nama Perusahaan": "Cemindo Gemilang Tbk."
+  },
+  {
+    "No": 712,
+    "Kode": "GTSI",
+    "Nama Perusahaan": "GTS Internasional Tbk."
+  },
+  {
+    "No": 713,
+    "Kode": "IDEA",
+    "Nama Perusahaan": "Idea Indonesia Akademi Tbk."
+  },
+  {
+    "No": 714,
+    "Kode": "KUAS",
+    "Nama Perusahaan": "Ace Oldfields Tbk."
+  },
+  {
+    "No": 715,
+    "Kode": "BOBA",
+    "Nama Perusahaan": "Formosa Ingredient Factory Tbk"
+  },
+  {
+    "No": 716,
+    "Kode": "MTEL",
+    "Nama Perusahaan": "Dayamitra Telekomunikasi Tbk."
+  },
+  {
+    "No": 717,
+    "Kode": "DEPO",
+    "Nama Perusahaan": "Caturkarda Depo Bangunan Tbk."
+  },
+  {
+    "No": 718,
+    "Kode": "BINO",
+    "Nama Perusahaan": "Perma Plasindo Tbk."
+  },
+  {
+    "No": 719,
+    "Kode": "CMRY",
+    "Nama Perusahaan": "Cisarua Mountain Dairy Tbk."
+  },
+  {
+    "No": 720,
+    "Kode": "WGSH",
+    "Nama Perusahaan": "Wira Global Solusi Tbk."
+  },
+  {
+    "No": 721,
+    "Kode": "TAYS",
+    "Nama Perusahaan": "Jaya Swarasa Agung Tbk."
+  },
+  {
+    "No": 722,
+    "Kode": "WMPP",
+    "Nama Perusahaan": "Widodo Makmur Perkasa Tbk."
+  },
+  {
+    "No": 723,
+    "Kode": "RMKE",
+    "Nama Perusahaan": "RMK Energy Tbk."
+  },
+  {
+    "No": 724,
+    "Kode": "OBMD",
+    "Nama Perusahaan": "OBM Drilchem Tbk."
+  },
+  {
+    "No": 725,
+    "Kode": "AVIA",
+    "Nama Perusahaan": "Avia Avian Tbk."
+  },
+  {
+    "No": 726,
+    "Kode": "IPPE",
+    "Nama Perusahaan": "Indo Pureco Pratama Tbk."
+  },
+  {
+    "No": 727,
+    "Kode": "NASI",
+    "Nama Perusahaan": "Wahana Inti Makmur Tbk."
+  },
+  {
+    "No": 728,
+    "Kode": "BSML",
+    "Nama Perusahaan": "Bintang Samudera Mandiri Lines"
+  },
+  {
+    "No": 729,
+    "Kode": "DRMA",
+    "Nama Perusahaan": "Dharma Polimetal Tbk."
+  },
+  {
+    "No": 730,
+    "Kode": "ADMR",
+    "Nama Perusahaan": "Alamtri Minerals Indonesia Tbk"
+  },
+  {
+    "No": 731,
+    "Kode": "SEMA",
+    "Nama Perusahaan": "Semacom Integrated Tbk."
+  },
+  {
+    "No": 732,
+    "Kode": "ASLC",
+    "Nama Perusahaan": "Autopedia Sukses Lestari Tbk."
+  },
+  {
+    "No": 733,
+    "Kode": "NETV",
+    "Nama Perusahaan": "MDTV Media Technologies Tbk."
+  },
+  {
+    "No": 734,
+    "Kode": "BAUT",
+    "Nama Perusahaan": "Mitra Angkasa Sejahtera Tbk."
+  },
+  {
+    "No": 735,
+    "Kode": "ENAK",
+    "Nama Perusahaan": "Champ Resto Indonesia Tbk."
+  },
+  {
+    "No": 736,
+    "Kode": "NTBK",
+    "Nama Perusahaan": "Nusatama Berkah Tbk."
+  },
+  {
+    "No": 737,
+    "Kode": "SMKM",
+    "Nama Perusahaan": "Sumber Mas Konstruksi Tbk."
+  },
+  {
+    "No": 738,
+    "Kode": "STAA",
+    "Nama Perusahaan": "Sumber Tani Agung Resources Tb"
+  },
+  {
+    "No": 739,
+    "Kode": "NANO",
+    "Nama Perusahaan": "Nanotech Indonesia Global Tbk."
+  },
+  {
+    "No": 740,
+    "Kode": "BIKE",
+    "Nama Perusahaan": "Sepeda Bersama Indonesia Tbk."
+  },
+  {
+    "No": 741,
+    "Kode": "WIRG",
+    "Nama Perusahaan": "WIR ASIA Tbk."
+  },
+  {
+    "No": 742,
+    "Kode": "SICO",
+    "Nama Perusahaan": "Sigma Energy Compressindo Tbk."
+  },
+  {
+    "No": 743,
+    "Kode": "GOTO",
+    "Nama Perusahaan": "GoTo Gojek Tokopedia Tbk."
+  },
+  {
+    "No": 744,
+    "Kode": "TLDN",
+    "Nama Perusahaan": "Teladan Prima Agro Tbk."
+  },
+  {
+    "No": 745,
+    "Kode": "MTMH",
+    "Nama Perusahaan": "Murni Sadar Tbk."
+  },
+  {
+    "No": 746,
+    "Kode": "WINR",
+    "Nama Perusahaan": "Winner Nusantara Jaya Tbk."
+  },
+  {
+    "No": 747,
+    "Kode": "IBOS",
+    "Nama Perusahaan": "Indo Boga Sukses Tbk."
+  },
+  {
+    "No": 748,
+    "Kode": "OLIV",
+    "Nama Perusahaan": "Oscar Mitra Sukses Sejahtera T"
+  },
+  {
+    "No": 749,
+    "Kode": "ASHA",
+    "Nama Perusahaan": "Cilacap Samudera Fishing Indus"
+  },
+  {
+    "No": 750,
+    "Kode": "SWID",
+    "Nama Perusahaan": "Saraswanti Indoland Developmen"
+  },
+  {
+    "No": 751,
+    "Kode": "TRGU",
+    "Nama Perusahaan": "Cerestar Indonesia Tbk."
+  },
+  {
+    "No": 752,
+    "Kode": "ARKO",
+    "Nama Perusahaan": "Arkora Hydro Tbk."
+  },
+  {
+    "No": 753,
+    "Kode": "CHEM",
+    "Nama Perusahaan": "Chemstar Indonesia Tbk."
+  },
+  {
+    "No": 754,
+    "Kode": "DEWI",
+    "Nama Perusahaan": "Dewi Shri Farmindo Tbk."
+  },
+  {
+    "No": 755,
+    "Kode": "AXIO",
+    "Nama Perusahaan": "Tera Data Indonusa Tbk."
+  },
+  {
+    "No": 756,
+    "Kode": "KRYA",
+    "Nama Perusahaan": "Bangun Karya Perkasa Jaya Tbk."
+  },
+  {
+    "No": 757,
+    "Kode": "HATM",
+    "Nama Perusahaan": "Habco Trans Maritima Tbk."
+  },
+  {
+    "No": 758,
+    "Kode": "RCCC",
+    "Nama Perusahaan": "Utama Radar Cahaya Tbk."
+  },
+  {
+    "No": 759,
+    "Kode": "GULA",
+    "Nama Perusahaan": "Aman Agrindo Tbk."
+  },
+  {
+    "No": 760,
+    "Kode": "JARR",
+    "Nama Perusahaan": "Jhonlin Agro Raya Tbk."
+  },
+  {
+    "No": 761,
+    "Kode": "AMMS",
+    "Nama Perusahaan": "Agung Menjangan Mas Tbk."
+  },
+  {
+    "No": 762,
+    "Kode": "RAFI",
+    "Nama Perusahaan": "Sari Kreasi Boga Tbk."
+  },
+  {
+    "No": 763,
+    "Kode": "KKES",
+    "Nama Perusahaan": "Kusuma Kemindo Sentosa Tbk."
+  },
+  {
+    "No": 764,
+    "Kode": "ELPI",
+    "Nama Perusahaan": "Pelayaran Nasional Ekalya Purn"
+  },
+  {
+    "No": 765,
+    "Kode": "EURO",
+    "Nama Perusahaan": "Estee Gold Feet Tbk."
+  },
+  {
+    "No": 766,
+    "Kode": "KLIN",
+    "Nama Perusahaan": "Klinko Karya Imaji Tbk."
+  },
+  {
+    "No": 767,
+    "Kode": "TOOL",
+    "Nama Perusahaan": "Rohartindo Nusantara Luas Tbk."
+  },
+  {
+    "No": 768,
+    "Kode": "BUAH",
+    "Nama Perusahaan": "Segar Kumala Indonesia Tbk."
+  },
+  {
+    "No": 769,
+    "Kode": "CRAB",
+    "Nama Perusahaan": "Toba Surimi Industries Tbk."
+  },
+  {
+    "No": 770,
+    "Kode": "MEDS",
+    "Nama Perusahaan": "Hetzer Medical Indonesia Tbk."
+  },
+  {
+    "No": 771,
+    "Kode": "COAL",
+    "Nama Perusahaan": "Black Diamond Resources Tbk."
+  },
+  {
+    "No": 772,
+    "Kode": "PRAY",
+    "Nama Perusahaan": "Famon Awal Bros Sedaya Tbk."
+  },
+  {
+    "No": 773,
+    "Kode": "CBUT",
+    "Nama Perusahaan": "Citra Borneo Utama Tbk."
+  },
+  {
+    "No": 774,
+    "Kode": "BELI",
+    "Nama Perusahaan": "Global Digital Niaga Tbk."
+  },
+  {
+    "No": 775,
+    "Kode": "MKTR",
+    "Nama Perusahaan": "Menthobi Karyatama Raya Tbk."
+  },
+  {
+    "No": 776,
+    "Kode": "OMED",
+    "Nama Perusahaan": "Jayamas Medica Industri Tbk."
+  },
+  {
+    "No": 777,
+    "Kode": "BSBK",
+    "Nama Perusahaan": "Wulandari Bangun Laksana Tbk."
+  },
+  {
+    "No": 778,
+    "Kode": "PDPP",
+    "Nama Perusahaan": "Primadaya Plastisindo Tbk."
+  },
+  {
+    "No": 779,
+    "Kode": "KDTN",
+    "Nama Perusahaan": "Puri Sentul Permai Tbk."
+  },
+  {
+    "No": 780,
+    "Kode": "ZATA",
+    "Nama Perusahaan": "Bersama Zatta Jaya Tbk."
+  },
+  {
+    "No": 781,
+    "Kode": "NINE",
+    "Nama Perusahaan": "Techno9 Indonesia Tbk."
+  },
+  {
+    "No": 782,
+    "Kode": "MMIX",
+    "Nama Perusahaan": "Multi Medika Internasional Tbk"
+  },
+  {
+    "No": 783,
+    "Kode": "PADA",
+    "Nama Perusahaan": "Personel Alih Daya Tbk."
+  },
+  {
+    "No": 784,
+    "Kode": "ISAP",
+    "Nama Perusahaan": "Isra Presisi Indonesia Tbk."
+  },
+  {
+    "No": 785,
+    "Kode": "VTNY",
+    "Nama Perusahaan": "Venteny Fortuna International "
+  },
+  {
+    "No": 786,
+    "Kode": "SOUL",
+    "Nama Perusahaan": "Mitra Tirta Buwana Tbk."
+  },
+  {
+    "No": 787,
+    "Kode": "ELIT",
+    "Nama Perusahaan": "Data Sinergitama Jaya Tbk."
+  },
+  {
+    "No": 788,
+    "Kode": "BEER",
+    "Nama Perusahaan": "Jobubu Jarum Minahasa Tbk."
+  },
+  {
+    "No": 789,
+    "Kode": "CBPE",
+    "Nama Perusahaan": "Citra Buana Prasida Tbk."
+  },
+  {
+    "No": 790,
+    "Kode": "SUNI",
+    "Nama Perusahaan": "Sunindo Pratama Tbk."
+  },
+  {
+    "No": 791,
+    "Kode": "CBRE",
+    "Nama Perusahaan": "Cakra Buana Resources Energi T"
+  },
+  {
+    "No": 792,
+    "Kode": "WINE",
+    "Nama Perusahaan": "Hatten Bali Tbk."
+  },
+  {
+    "No": 793,
+    "Kode": "BMBL",
+    "Nama Perusahaan": "Lavender Bina Cendikia Tbk."
+  },
+  {
+    "No": 794,
+    "Kode": "PEVE",
+    "Nama Perusahaan": "Penta Valent Tbk."
+  },
+  {
+    "No": 795,
+    "Kode": "LAJU",
+    "Nama Perusahaan": "Jasa Berdikari Logistics Tbk."
+  },
+  {
+    "No": 796,
+    "Kode": "FWCT",
+    "Nama Perusahaan": "Wijaya Cahaya Timber Tbk."
+  },
+  {
+    "No": 797,
+    "Kode": "NAYZ",
+    "Nama Perusahaan": "Hassana Boga Sejahtera Tbk."
+  },
+  {
+    "No": 798,
+    "Kode": "IRSX",
+    "Nama Perusahaan": "Folago Global Nusantara Tbk."
+  },
+  {
+    "No": 799,
+    "Kode": "PACK",
+    "Nama Perusahaan": "Abadi Nusantara Hijau Investam"
+  },
+  {
+    "No": 800,
+    "Kode": "VAST",
+    "Nama Perusahaan": "Vastland Indonesia Tbk."
+  },
+  {
+    "No": 801,
+    "Kode": "CHIP",
+    "Nama Perusahaan": "Pelita Teknologi Global Tbk."
+  },
+  {
+    "No": 802,
+    "Kode": "HALO",
+    "Nama Perusahaan": "Haloni Jane Tbk."
+  },
+  {
+    "No": 803,
+    "Kode": "KING",
+    "Nama Perusahaan": "Hoffmen Cleanindo Tbk."
+  },
+  {
+    "No": 804,
+    "Kode": "PGEO",
+    "Nama Perusahaan": "Pertamina Geothermal Energy Tb"
+  },
+  {
+    "No": 805,
+    "Kode": "FUTR",
+    "Nama Perusahaan": "Futura Energi Global Tbk."
+  },
+  {
+    "No": 806,
+    "Kode": "HILL",
+    "Nama Perusahaan": "Hillcon Tbk."
+  },
+  {
+    "No": 807,
+    "Kode": "BDKR",
+    "Nama Perusahaan": "Berdikari Pondasi Perkasa Tbk."
+  },
+  {
+    "No": 808,
+    "Kode": "PTMP",
+    "Nama Perusahaan": "Mitra Pack Tbk."
+  },
+  {
+    "No": 809,
+    "Kode": "SAGE",
+    "Nama Perusahaan": "Saptausaha Gemilangindah Tbk."
+  },
+  {
+    "No": 810,
+    "Kode": "TRON",
+    "Nama Perusahaan": "Teknologi Karya Digital Nusa T"
+  },
+  {
+    "No": 811,
+    "Kode": "CUAN",
+    "Nama Perusahaan": "Petrindo Jaya Kreasi Tbk."
+  },
+  {
+    "No": 812,
+    "Kode": "NSSS",
+    "Nama Perusahaan": "Nusantara Sawit Sejahtera Tbk."
+  },
+  {
+    "No": 813,
+    "Kode": "GTRA",
+    "Nama Perusahaan": "Grahaprima Suksesmandiri Tbk."
+  },
+  {
+    "No": 814,
+    "Kode": "HAJJ",
+    "Nama Perusahaan": "Arsy Buana Travelindo Tbk."
+  },
+  {
+    "No": 815,
+    "Kode": "JATI",
+    "Nama Perusahaan": "Informasi Teknologi Indonesia "
+  },
+  {
+    "No": 816,
+    "Kode": "TYRE",
+    "Nama Perusahaan": "King Tire Indonesia Tbk."
+  },
+  {
+    "No": 817,
+    "Kode": "MPXL",
+    "Nama Perusahaan": "MPX Logistics International Tb"
+  },
+  {
+    "No": 818,
+    "Kode": "SMIL",
+    "Nama Perusahaan": "Sarana Mitra Luas Tbk."
+  },
+  {
+    "No": 819,
+    "Kode": "KLAS",
+    "Nama Perusahaan": "Pelayaran Kurnia Lautan Semest"
+  },
+  {
+    "No": 820,
+    "Kode": "MAXI",
+    "Nama Perusahaan": "Maxindo Karya Anugerah Tbk."
+  },
+  {
+    "No": 821,
+    "Kode": "VKTR",
+    "Nama Perusahaan": "VKTR Teknologi Mobilitas Tbk."
+  },
+  {
+    "No": 822,
+    "Kode": "RELF",
+    "Nama Perusahaan": "Graha Mitra Asia Tbk."
+  },
+  {
+    "No": 823,
+    "Kode": "AMMN",
+    "Nama Perusahaan": "Amman Mineral Internasional Tb"
+  },
+  {
+    "No": 824,
+    "Kode": "CRSN",
+    "Nama Perusahaan": "Carsurin Tbk."
+  },
+  {
+    "No": 825,
+    "Kode": "GRPM",
+    "Nama Perusahaan": "Graha Prima Mentari Tbk."
+  },
+  {
+    "No": 826,
+    "Kode": "WIDI",
+    "Nama Perusahaan": "Widiant Jaya Krenindo Tbk."
+  },
+  {
+    "No": 827,
+    "Kode": "TGUK",
+    "Nama Perusahaan": "Platinum Wahab Nusantara Tbk."
+  },
+  {
+    "No": 828,
+    "Kode": "INET",
+    "Nama Perusahaan": "Sinergi Inti Andalan Prima Tbk"
+  },
+  {
+    "No": 829,
+    "Kode": "MAHA",
+    "Nama Perusahaan": "Mandiri Herindo Adiperkasa Tbk"
+  },
+  {
+    "No": 830,
+    "Kode": "RMKO",
+    "Nama Perusahaan": "Royaltama Mulia Kontraktorindo"
+  },
+  {
+    "No": 831,
+    "Kode": "CNMA",
+    "Nama Perusahaan": "Nusantara Sejahtera Raya Tbk."
+  },
+  {
+    "No": 832,
+    "Kode": "FOLK",
+    "Nama Perusahaan": "Multi Garam Utama Tbk."
+  },
+  {
+    "No": 833,
+    "Kode": "HBAT",
+    "Nama Perusahaan": "Minahasa Membangun Hebat Tbk."
+  },
+  {
+    "No": 834,
+    "Kode": "GRIA",
+    "Nama Perusahaan": "Ingria Pratama Capitalindo Tbk"
+  },
+  {
+    "No": 835,
+    "Kode": "PPRI",
+    "Nama Perusahaan": "Paperocks Indonesia Tbk."
+  },
+  {
+    "No": 836,
+    "Kode": "ERAL",
+    "Nama Perusahaan": "Sinar Eka Selaras Tbk."
+  },
+  {
+    "No": 837,
+    "Kode": "CYBR",
+    "Nama Perusahaan": "ITSEC Asia Tbk."
+  },
+  {
+    "No": 838,
+    "Kode": "MUTU",
+    "Nama Perusahaan": "Mutuagung Lestari Tbk."
+  },
+  {
+    "No": 839,
+    "Kode": "LMAX",
+    "Nama Perusahaan": "Lupromax Pelumas Indonesia Tbk"
+  },
+  {
+    "No": 840,
+    "Kode": "HUMI",
+    "Nama Perusahaan": "Humpuss Maritim Internasional "
+  },
+  {
+    "No": 841,
+    "Kode": "MSIE",
+    "Nama Perusahaan": "Multisarana Intan Eduka Tbk."
+  },
+  {
+    "No": 842,
+    "Kode": "RSCH",
+    "Nama Perusahaan": "Charlie Hospital Semarang Tbk."
+  },
+  {
+    "No": 843,
+    "Kode": "BABY",
+    "Nama Perusahaan": "Multitrend Indo Tbk."
+  },
+  {
+    "No": 844,
+    "Kode": "AEGS",
+    "Nama Perusahaan": "Anugerah Spareparts Sejahtera "
+  },
+  {
+    "No": 845,
+    "Kode": "IOTF",
+    "Nama Perusahaan": "Sumber Sinergi Makmur Tbk."
+  },
+  {
+    "No": 846,
+    "Kode": "KOCI",
+    "Nama Perusahaan": "Kokoh Exa Nusantara Tbk."
+  },
+  {
+    "No": 847,
+    "Kode": "PTPS",
+    "Nama Perusahaan": "Pulau Subur Tbk."
+  },
+  {
+    "No": 848,
+    "Kode": "BREN",
+    "Nama Perusahaan": "Barito Renewables Energy Tbk."
+  },
+  {
+    "No": 849,
+    "Kode": "STRK",
+    "Nama Perusahaan": "Lovina Beach Brewery Tbk."
+  },
+  {
+    "No": 850,
+    "Kode": "KOKA",
+    "Nama Perusahaan": "Koka Indonesia Tbk."
+  },
+  {
+    "No": 851,
+    "Kode": "LOPI",
+    "Nama Perusahaan": "Logisticsplus International Tb"
+  },
+  {
+    "No": 852,
+    "Kode": "UDNG",
+    "Nama Perusahaan": "Agro Bahari Nusantara Tbk."
+  },
+  {
+    "No": 853,
+    "Kode": "RGAS",
+    "Nama Perusahaan": "Kian Santang Muliatama Tbk."
+  },
+  {
+    "No": 854,
+    "Kode": "MSTI",
+    "Nama Perusahaan": "Mastersystem Infotama Tbk."
+  },
+  {
+    "No": 855,
+    "Kode": "IKPM",
+    "Nama Perusahaan": "Ikapharmindo Putramas Tbk."
+  },
+  {
+    "No": 856,
+    "Kode": "AYAM",
+    "Nama Perusahaan": "Janu Putra Sejahtera Tbk."
+  },
+  {
+    "No": 857,
+    "Kode": "SURI",
+    "Nama Perusahaan": "Maja Agung Latexindo Tbk."
+  },
+  {
+    "No": 858,
+    "Kode": "ASLI",
+    "Nama Perusahaan": "Asri Karya Lestari Tbk."
+  },
+  {
+    "No": 859,
+    "Kode": "GRPH",
+    "Nama Perusahaan": "Griptha Putra Persada Tbk."
+  },
+  {
+    "No": 860,
+    "Kode": "SMGA",
+    "Nama Perusahaan": "Sumber Mineral Global Abadi Tb"
+  },
+  {
+    "No": 861,
+    "Kode": "UNTD",
+    "Nama Perusahaan": "Terang Dunia Internusa Tbk."
+  },
+  {
+    "No": 862,
+    "Kode": "TOSK",
+    "Nama Perusahaan": "Topindo Solusi Komunika Tbk."
+  },
+  {
+    "No": 863,
+    "Kode": "MPIX",
+    "Nama Perusahaan": "Mitra Pedagang Indonesia Tbk."
+  },
+  {
+    "No": 864,
+    "Kode": "ALII",
+    "Nama Perusahaan": "Ancara Logistics Indonesia Tbk"
+  },
+  {
+    "No": 865,
+    "Kode": "MKAP",
+    "Nama Perusahaan": "Multikarya Asia Pasifik Raya T"
+  },
+  {
+    "No": 866,
+    "Kode": "MEJA",
+    "Nama Perusahaan": "Harta Djaya Karya Tbk."
+  },
+  {
+    "No": 867,
+    "Kode": "LIVE",
+    "Nama Perusahaan": "Homeco Victoria Makmur Tbk."
+  },
+  {
+    "No": 868,
+    "Kode": "HYGN",
+    "Nama Perusahaan": "Ecocare Indo Pasifik Tbk."
+  },
+  {
+    "No": 869,
+    "Kode": "BAIK",
+    "Nama Perusahaan": "Bersama Mencapai Puncak Tbk."
+  },
+  {
+    "No": 870,
+    "Kode": "VISI",
+    "Nama Perusahaan": "Satu Visi Putra Tbk."
+  },
+  {
+    "No": 871,
+    "Kode": "AREA",
+    "Nama Perusahaan": "Dunia Virtual Online Tbk."
+  },
+  {
+    "No": 872,
+    "Kode": "MHKI",
+    "Nama Perusahaan": "Multi Hanna Kreasindo Tbk."
+  },
+  {
+    "No": 873,
+    "Kode": "ATLA",
+    "Nama Perusahaan": "Atlantis Subsea Indonesia Tbk."
+  },
+  {
+    "No": 874,
+    "Kode": "DATA",
+    "Nama Perusahaan": "Remala Abadi Tbk."
+  },
+  {
+    "No": 875,
+    "Kode": "SOLA",
+    "Nama Perusahaan": "Xolare RCR Energy Tbk."
+  },
+  {
+    "No": 876,
+    "Kode": "BATR",
+    "Nama Perusahaan": "Benteng Api Technic Tbk."
+  },
+  {
+    "No": 877,
+    "Kode": "SPRE",
+    "Nama Perusahaan": "Soraya Berjaya Indonesia Tbk."
+  },
+  {
+    "No": 878,
+    "Kode": "PART",
+    "Nama Perusahaan": "Cipta Perdana Lancar Tbk."
+  },
+  {
+    "No": 879,
+    "Kode": "GOLF",
+    "Nama Perusahaan": "Intra Golflink Resorts Tbk."
+  },
+  {
+    "No": 880,
+    "Kode": "ISEA",
+    "Nama Perusahaan": "Indo American Seafoods Tbk."
+  },
+  {
+    "No": 881,
+    "Kode": "BLES",
+    "Nama Perusahaan": "Superior Prima Sukses Tbk."
+  },
+  {
+    "No": 882,
+    "Kode": "GUNA",
+    "Nama Perusahaan": "Gunanusa Eramandiri Tbk."
+  },
+  {
+    "No": 883,
+    "Kode": "LABS",
+    "Nama Perusahaan": "UBC Medical Indonesia Tbk."
+  },
+  {
+    "No": 884,
+    "Kode": "DOSS",
+    "Nama Perusahaan": "Global Sukses Digital Tbk."
+  },
+  {
+    "No": 885,
+    "Kode": "NEST",
+    "Nama Perusahaan": "Esta Indonesia Tbk."
+  },
+  {
+    "No": 886,
+    "Kode": "PTMR",
+    "Nama Perusahaan": "Master Print Tbk."
+  },
+  {
+    "No": 887,
+    "Kode": "VERN",
+    "Nama Perusahaan": "Verona Indah Pictures Tbk."
+  },
+  {
+    "No": 888,
+    "Kode": "DAAZ",
+    "Nama Perusahaan": "Daaz Bara Lestari Tbk."
+  },
+  {
+    "No": 889,
+    "Kode": "BOAT",
+    "Nama Perusahaan": "Newport Marine Services Tbk."
+  },
+  {
+    "No": 890,
+    "Kode": "NAIK",
+    "Nama Perusahaan": "Adiwarna Anugerah Abadi Tbk."
+  },
+  {
+    "No": 891,
+    "Kode": "AADI",
+    "Nama Perusahaan": "Adaro Andalan Indonesia Tbk."
+  },
+  {
+    "No": 892,
+    "Kode": "MDIY",
+    "Nama Perusahaan": "Daya Intiguna Yasa Tbk."
+  },
+  {
+    "No": 893,
+    "Kode": "KSIX",
+    "Nama Perusahaan": "Kentanix Supra International T"
+  },
+  {
+    "No": 894,
+    "Kode": "RATU",
+    "Nama Perusahaan": "Raharja Energi Cepu Tbk."
+  },
+  {
+    "No": 895,
+    "Kode": "YOII",
+    "Nama Perusahaan": "Asuransi Digital Bersama Tbk."
+  },
+  {
+    "No": 896,
+    "Kode": "HGII",
+    "Nama Perusahaan": "Hero Global Investment Tbk."
+  },
+  {
+    "No": 897,
+    "Kode": "BRRC",
+    "Nama Perusahaan": "Raja Roti Cemerlang Tbk."
+  },
+  {
+    "No": 898,
+    "Kode": "DGWG",
+    "Nama Perusahaan": "Delta Giri Wacana Tbk."
+  },
+  {
+    "No": 899,
+    "Kode": "CBDK",
+    "Nama Perusahaan": "Bangun Kosambi Sukses Tbk."
+  },
+  {
+    "No": 900,
+    "Kode": "OBAT",
+    "Nama Perusahaan": "Brigit Biofarmaka Teknologi Tb"
+  },
+  {
+    "No": 901,
+    "Kode": "MINE",
+    "Nama Perusahaan": "Sinar Terang Mandiri Tbk."
+  },
+  {
+    "No": 902,
+    "Kode": "ASPR",
+    "Nama Perusahaan": "Asia Pramulia Tbk."
+  },
+  {
+    "No": 903,
+    "Kode": "PSAT",
+    "Nama Perusahaan": "Pancaran Samudera Transport Tb"
+  },
+  {
+    "No": 904,
+    "Kode": "COIN",
+    "Nama Perusahaan": "Indokripto Koin Semesta Tbk."
+  },
+  {
+    "No": 905,
+    "Kode": "CDIA",
+    "Nama Perusahaan": "Chandra Daya Investasi Tbk."
+  },
+  {
+    "No": 906,
+    "Kode": "BLOG",
+    "Nama Perusahaan": "Trimitra Trans Persada Tbk."
+  },
+  {
+    "No": 907,
+    "Kode": "MERI",
+    "Nama Perusahaan": "Merry Riana Edukasi Tbk."
+  },
+  {
+    "No": 908,
+    "Kode": "CHEK",
+    "Nama Perusahaan": "Diastika Biotekindo Tbk."
+  },
+  {
+    "No": 909,
+    "Kode": "PMUI",
+    "Nama Perusahaan": "Prima Multi Usaha Indonesia Tb"
+  },
+  {
+    "No": 910,
+    "Kode": "EMAS",
+    "Nama Perusahaan": "Merdeka Gold Resources Tbk."
+  },
+  {
+    "No": 911,
+    "Kode": "PJHB",
+    "Nama Perusahaan": "Pelayaran Jaya Hidup Baru Tbk."
+  },
+  {
+    "No": 912,
+    "Kode": "RLCO",
+    "Nama Perusahaan": "Abadi Lestari Indonesia Tbk."
+  },
+  {
+    "No": 913,
+    "Kode": "SUPA",
+    "Nama Perusahaan": "Super Bank Indonesia Tbk."
+  },
+  {
+    "No": 914,
+    "Kode": "KAQI",
+    "Nama Perusahaan": "Jantra Grupo Indonesia Tbk."
+  },
+  {
+    "No": 915,
+    "Kode": "YUPI",
+    "Nama Perusahaan": "Yupi Indo Jelly Gum Tbk."
+  },
+  {
+    "No": 916,
+    "Kode": "FORE",
+    "Nama Perusahaan": "Fore Kopi Indonesia Tbk."
+  },
+  {
+    "No": 917,
+    "Kode": "MDLA",
+    "Nama Perusahaan": "Medela Potentia Tbk."
+  },
+  {
+    "No": 918,
+    "Kode": "DKHH",
+    "Nama Perusahaan": "Cipta Sarana Medika Tbk."
+  },
+  {
+    "No": 919,
+    "Kode": "AYLS",
+    "Nama Perusahaan": "Agro Yasa Lestari Tbk."
+  },
+  {
+    "No": 920,
+    "Kode": "DADA",
+    "Nama Perusahaan": "Diamond Citra Propertindo Tbk."
+  },
+  {
+    "No": 921,
+    "Kode": "ASPI",
+    "Nama Perusahaan": "Andalan Sakti Primaindo Tbk."
+  },
+  {
+    "No": 922,
+    "Kode": "ESTA",
+    "Nama Perusahaan": "Esta Multi Usaha Tbk."
+  },
+  {
+    "No": 923,
+    "Kode": "BESS",
+    "Nama Perusahaan": "Batulicin Nusantara Maritim Tb"
+  },
+  {
+    "No": 924,
+    "Kode": "AMAN",
+    "Nama Perusahaan": "Makmur Berkah Amanda Tbk."
+  },
+  {
+    "No": 925,
+    "Kode": "CARE",
+    "Nama Perusahaan": "Metro Healthcare Indonesia Tbk"
+  },
+  {
+    "No": 926,
+    "Kode": "PIPA",
+    "Nama Perusahaan": "Multi Makmur Lemindo Tbk."
+  },
+  {
+    "No": 927,
+    "Kode": "NCKL",
+    "Nama Perusahaan": "Trimegah Bangun Persada Tbk."
+  },
+  {
+    "No": 928,
+    "Kode": "MENN",
+    "Nama Perusahaan": "Menn Teknologi Indonesia Tbk."
+  },
+  {
+    "No": 929,
+    "Kode": "AWAN",
+    "Nama Perusahaan": "Era Digital Media Tbk."
+  },
+  {
+    "No": 930,
+    "Kode": "MBMA",
+    "Nama Perusahaan": "Merdeka Battery Materials Tbk."
+  },
+  {
+    "No": 931,
+    "Kode": "RAAM",
+    "Nama Perusahaan": "Tripar Multivision Plus Tbk."
+  },
+  {
+    "No": 932,
+    "Kode": "DOOH",
+    "Nama Perusahaan": "Era Media Sejahtera Tbk."
+  },
+  {
+    "No": 933,
+    "Kode": "CGAS",
+    "Nama Perusahaan": "Citra Nusantara Gemilang Tbk."
+  },
+  {
+    "No": 934,
+    "Kode": "NICE",
+    "Nama Perusahaan": "Adhi Kartiko Pratama Tbk."
+  },
+  {
+    "No": 935,
+    "Kode": "MSJA",
+    "Nama Perusahaan": "Multi Spunindo Jaya Tbk."
+  },
+  {
+    "No": 936,
+    "Kode": "SMLE",
+    "Nama Perusahaan": "Sinergi Multi Lestarindo Tbk."
+  },
+  {
+    "No": 937,
+    "Kode": "ACRO",
+    "Nama Perusahaan": "Samcro Hyosung Adilestari Tbk."
+  },
+  {
+    "No": 938,
+    "Kode": "MANG",
+    "Nama Perusahaan": "Manggung Polahraya Tbk."
+  },
+  {
+    "No": 939,
+    "Kode": "WIFI",
+    "Nama Perusahaan": "Solusi Sinergi Digital Tbk."
+  },
+  {
+    "No": 940,
+    "Kode": "FAPA",
+    "Nama Perusahaan": "FAP Agri Tbk."
+  },
+  {
+    "No": 941,
+    "Kode": "DCII",
+    "Nama Perusahaan": "DCI Indonesia Tbk."
+  },
+  {
+    "No": 942,
+    "Kode": "KETR",
+    "Nama Perusahaan": "Ketrosden Triasmitra Tbk."
+  },
+  {
+    "No": 943,
+    "Kode": "DGNS",
+    "Nama Perusahaan": "Diagnos Laboratorium Utama Tbk"
+  },
+  {
+    "No": 944,
+    "Kode": "UFOE",
+    "Nama Perusahaan": "Damai Sejahtera Abadi Tbk."
+  },
+  {
+    "No": 945,
+    "Kode": "ADMF",
+    "Nama Perusahaan": "Adira Dinamika Multi Finance T"
+  },
+  {
+    "No": 946,
+    "Kode": "ADMG",
+    "Nama Perusahaan": "Polychem Indonesia Tbk"
+  },
+  {
+    "No": 947,
+    "Kode": "ADRO",
+    "Nama Perusahaan": "Alamtri Resources Indonesia Tb"
+  },
+  {
+    "No": 948,
+    "Kode": "AGII",
+    "Nama Perusahaan": "Samator Indo Gas Tbk."
+  },
+  {
+    "No": 949,
+    "Kode": "AGRO",
+    "Nama Perusahaan": "Bank Raya Indonesia Tbk."
+  },
+  {
+    "No": 950,
+    "Kode": "AGRS",
+    "Nama Perusahaan": "Bank IBK Indonesia Tbk."
+  },
+  {
+    "No": 951,
+    "Kode": "AHAP",
+    "Nama Perusahaan": "Asuransi Harta Aman Pratama Tb"
+  },
+  {
+    "No": 952,
+    "Kode": "AIMS",
+    "Nama Perusahaan": "Artha Mahiya Investama Tbk."
+  },
+  {
+    "No": 953,
+    "Kode": "PNSE",
+    "Nama Perusahaan": "Pudjiadi & Sons Tbk."
+  },
+  {
+    "No": 954,
+    "Kode": "POLY",
+    "Nama Perusahaan": "Asia Pacific Fibers Tbk"
+  },
+  {
+    "No": 955,
+    "Kode": "POOL",
+    "Nama Perusahaan": "Pool Advista Indonesia Tbk."
+  },
+  {
+    "No": 956,
+    "Kode": "PPRO",
+    "Nama Perusahaan": "PP Properti Tbk."
+  }
+]
