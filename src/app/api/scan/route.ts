@@ -2,28 +2,45 @@ import { NextResponse } from 'next/server';
 import yahooFinance from 'yahoo-finance2';
 import fs from 'fs';
 import path from 'path';
+import axios from 'axios';
+
+// Fungsi Helper untuk kirim notifikasi ke Telegram
+async function sendToTelegram(message: string) {
+  const token = process.env.TELEGRAM_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!token || !chatId) return; // Lewati jika env belum diisi
+
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+  try {
+    await axios.post(url, {
+      chat_id: chatId,
+      text: message,
+      parse_mode: 'HTML',
+    });
+  } catch (error) {
+    console.error('Telegram Error:', error);
+  }
+}
 
 export async function GET() {
   try {
-    // Memastikan path ke public/saham_target.json benar
     const jsonPath = path.join(process.cwd(), 'public', 'saham_target.json');
     const rawData = fs.readFileSync(jsonPath, 'utf-8');
     const sahamList = JSON.parse(rawData);
 
-    // Ambil 10-15 saham saja agar tidak kena limit durasi 10 detik Vercel
+    // Tetap 15 saham agar tidak timeout di Vercel
     const targetSaham = sahamList.slice(0, 15);
     
     const results = await Promise.all(
       targetSaham.map(async (s: any) => {
         try {
           const ticker = `${s.Kode}.JK`;
-          
-          // Ambil data historis 2 bulan terakhir
           const today = new Date();
           const twoMonthsAgo = new Date();
           twoMonthsAgo.setMonth(today.getMonth() - 2);
 
-          // Gunakan 'as any' untuk menghindari error "Property quotes does not exist"
+          // @ts-ignore
           const history = await yahooFinance.chart(ticker, { 
             period1: twoMonthsAgo, 
             interval: '1d' 
@@ -31,8 +48,7 @@ export async function GET() {
           
           if (!history || !history.quotes) return null;
 
-          const quotes = history.quotes;
-          const closePrices = quotes
+          const closePrices = history.quotes
             .map((q: any) => q.close)
             .filter((c: any): c is number => c !== null && c !== undefined);
 
@@ -57,7 +73,6 @@ export async function GET() {
             rsi = 100;
           }
 
-          // Logika Sinyal Lintang Predator
           let signal: 'BUY' | 'SELL' | 'HOLD' = 'HOLD';
           if (rsi < 35) signal = 'BUY';
           else if (rsi > 70) signal = 'SELL';
@@ -75,7 +90,24 @@ export async function GET() {
       })
     );
 
-    const finalData = results.filter(item => item !== null);
+    const finalData = results.filter((item): item is any => item !== null);
+
+    // --- LOGIKA NOTIFIKASI TELEGRAM ---
+    const buySignals = finalData.filter(s => s.signal === 'BUY');
+    
+    if (buySignals.length > 0) {
+      let message = `🎯 <b>PREDATOR SIGNAL DETECTED!</b>\n`;
+      message += `----------------------------------\n`;
+      buySignals.forEach(s => {
+        message += `✅ <b>${s.kode}</b>\n`;
+        message += `💰 Price: Rp ${s.price.toLocaleString('id-ID')}\n`;
+        message += `📊 RSI: ${s.rsi}\n\n`;
+      });
+      message += `🚀 <i>Segera cek chart, Tuan Lintang!</i>`;
+      
+      await sendToTelegram(message);
+    }
+
     return NextResponse.json(finalData);
 
   } catch (error: any) {
