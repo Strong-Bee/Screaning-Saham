@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Clock,
   RefreshCw,
@@ -10,6 +10,8 @@ import {
   Target,
   PieChart,
   Layers,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
@@ -27,6 +29,10 @@ export default function NewsSection() {
   const [loading, setLoading] = useState(true);
   const [lastSync, setLastSync] = useState(new Date());
 
+  // --- Pagination States ---
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // Jumlah berita per halaman
+
   const fetchNews = async (cat = activeCat, silent = false) => {
     if (!silent) setLoading(true);
     try {
@@ -35,6 +41,7 @@ export default function NewsSection() {
       if (Array.isArray(data)) {
         setNews(data);
         setLastSync(new Date());
+        setCurrentPage(1); // Reset ke hal 1 setiap ganti kategori
       }
     } catch (e) {
       console.error(e);
@@ -43,12 +50,22 @@ export default function NewsSection() {
     }
   };
 
-  // Real-time Polling 30s
   useEffect(() => {
     fetchNews(activeCat);
     const timer = setInterval(() => fetchNews(activeCat, true), 30000);
     return () => clearInterval(timer);
   }, [activeCat]);
+
+  // --- Pagination Logic ---
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNews = news.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(news.length / itemsPerPage);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="bg-[#050505] min-h-screen text-white p-4 md:p-10 font-sans">
@@ -89,7 +106,7 @@ export default function NewsSection() {
       </div>
 
       {/* Main News Stream */}
-      <div className="grid grid-cols-1 gap-4 max-w-6xl">
+      <div className="grid grid-cols-1 gap-4 max-w-6xl mb-10">
         {loading
           ? [1, 2, 3, 4, 5].map((i) => (
               <div
@@ -97,7 +114,7 @@ export default function NewsSection() {
                 className="h-28 bg-zinc-900/30 rounded-[24px] animate-pulse border border-zinc-900"
               />
             ))
-          : news.map((item, i) => (
+          : currentNews.map((item, i) => (
               <div
                 key={item.id}
                 className="group flex flex-col md:flex-row md:items-center gap-4 bg-[#0d0d0e] border border-zinc-900 hover:border-blue-500/50 p-5 rounded-[28px] transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
@@ -161,6 +178,44 @@ export default function NewsSection() {
               </div>
             ))}
       </div>
+
+      {/* --- Predator Pagination UI --- */}
+      {!loading && news.length > itemsPerPage && (
+        <div className="flex justify-center items-center gap-2 mt-8 pb-10">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-30 hover:text-blue-500 transition-all"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <div className="flex gap-2">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+              <button
+                key={num}
+                onClick={() => paginate(num)}
+                className={`w-10 h-10 rounded-xl font-black text-xs transition-all border
+                  ${
+                    currentPage === num
+                      ? "bg-blue-600 border-blue-500 text-white"
+                      : "bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-700"
+                  }`}
+              >
+                {num}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-30 hover:text-blue-500 transition-all"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
