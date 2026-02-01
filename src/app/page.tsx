@@ -11,18 +11,15 @@ import {
   ChevronLeft,
   ChevronRight,
   LayoutDashboard,
-  Database, // Tambahkan ini
+  Database,
   Activity,
-  Bell,
   Menu,
 } from "lucide-react";
 
-// Import komponen internal Tuan
-// Pastikan file ini ada di: src/app/Signal/page.tsx dan src/app/News/page.tsx
 import SignalSection from "./Signal/page";
 import NewsSection from "./News/page";
 
-// --- WIDGET MINI ---
+// --- WIDGET MINI (Tetap Sama) ---
 const TradingViewWidget = ({ symbol }: { symbol: string }) => {
   const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -57,7 +54,7 @@ const TradingViewWidget = ({ symbol }: { symbol: string }) => {
   );
 };
 
-// --- MODAL FULL CHART ---
+// --- MODAL FULL CHART (Tetap Sama) ---
 const AdvancedChartModal = ({
   symbol,
   onClose,
@@ -97,7 +94,7 @@ const AdvancedChartModal = ({
       <div className="relative w-full h-full max-w-6xl bg-[#0F0F0F] border border-zinc-800 rounded-[32px] overflow-hidden flex flex-col shadow-2xl">
         <div className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/40">
           <h2 className="text-xl font-black italic tracking-tighter uppercase">
-            {symbol} <span className="text-green-500">PRO CHART</span>
+            {symbol} PRO CHART
           </h2>
           <button
             onClick={onClose}
@@ -116,6 +113,7 @@ export default function LintangPredatorDashboard() {
   const [activeTab, setActiveTab] = useState<"radar" | "signal" | "news">(
     "radar",
   );
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Burger state
   const [sahamList, setSahamList] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -123,11 +121,19 @@ export default function LintangPredatorDashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
+  const navItems = [
+    { id: "radar", label: "Radar", icon: LayoutDashboard },
+    { id: "signal", label: "Signal", icon: Database },
+    { id: "news", label: "News", icon: Activity },
+  ];
+
   const loadJsonData = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get("/api/scan");
-      if (Array.isArray(response.data)) setSahamList(response.data);
+      if (Array.isArray(response.data)) {
+        setSahamList(response.data);
+      }
     } catch (error) {
       console.error("Load Error:", error);
     } finally {
@@ -139,6 +145,7 @@ export default function LintangPredatorDashboard() {
     loadJsonData();
   }, []);
 
+  // Filter Data Tetap Ada
   const filteredSaham = useMemo(() => {
     return sahamList.filter((s) =>
       (s.Kode || "").toLowerCase().includes(searchTerm.toLowerCase()),
@@ -146,9 +153,10 @@ export default function LintangPredatorDashboard() {
   }, [sahamList, searchTerm]);
 
   const totalPages = Math.ceil(filteredSaham.length / itemsPerPage);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentSaham = filteredSaham.slice(indexOfFirstItem, indexOfLastItem);
+  const currentSaham = filteredSaham.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
 
   useEffect(() => {
     setCurrentPage(1);
@@ -157,22 +165,19 @@ export default function LintangPredatorDashboard() {
   return (
     <div className="min-h-screen bg-[#050505] text-[#f4f4f5] font-sans pb-20 selection:bg-green-500 selection:text-black">
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/80 backdrop-blur-xl">
+      <nav className="sticky top-0 z-[100] w-full border-b border-zinc-800 bg-black/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-3">
               <ShieldAlert className="text-green-500 w-8 h-8 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
-              <h1 className="text-xl font-black tracking-tighter uppercase text-white hidden sm:block">
+              <h1 className="text-xl font-black tracking-tighter uppercase text-white">
                 LINTANG <span className="text-green-500">PREDATOR</span>
               </h1>
             </div>
 
+            {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-6">
-              {[
-                { id: "radar", label: "Radar", icon: LayoutDashboard },
-                { id: "signal", label: "Signal", icon: Database },
-                { id: "news", label: "News", icon: Activity },
-              ].map((tab) => (
+              {navItems.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
@@ -192,20 +197,48 @@ export default function LintangPredatorDashboard() {
             <button
               onClick={loadJsonData}
               disabled={isLoading || activeTab !== "radar"}
-              className="bg-white text-black px-5 py-2.5 rounded-xl font-black text-[10px] uppercase hover:bg-green-500 transition-all flex items-center gap-2 active:scale-95 disabled:opacity-30"
+              className="hidden sm:flex bg-white text-black px-5 py-2.5 rounded-xl font-black text-[10px] uppercase hover:bg-green-500 transition-all items-center gap-2 active:scale-95 disabled:opacity-30"
             >
               <RefreshCw
                 className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`}
               />{" "}
               SYNC
             </button>
-            <button className="md:hidden p-2 text-zinc-400">
-              <Menu className="w-6 h-6" />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2.5 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`absolute top-20 left-0 w-full bg-[#050505] border-b border-zinc-800 md:hidden transition-all duration-300 overflow-hidden ${isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}
+        >
+          <div className="p-6 flex flex-col gap-4">
+            {navItems.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveTab(tab.id as any);
+                  setIsMenuOpen(false);
+                }}
+                className={`flex items-center gap-4 p-4 rounded-2xl font-black uppercase text-xs ${activeTab === tab.id ? "bg-green-500/10 text-green-500 border border-green-500/20" : "bg-zinc-900/50 text-zinc-500"}`}
+              >
+                <tab.icon className="w-5 h-5" /> {tab.label}
+              </button>
+            ))}
           </div>
         </div>
       </nav>
 
+      {/* MAIN CONTENT AREA */}
       <main className="max-w-7xl mx-auto px-4 mt-10">
         {activeTab === "radar" && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -219,26 +252,27 @@ export default function LintangPredatorDashboard() {
                 </p>
               </div>
               <div className="relative w-full md:w-96 group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 w-4 h-4 group-focus-within:text-green-500 transition-colors" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 w-4 h-4" />
                 <input
                   type="text"
                   placeholder="CARI KODE SAHAM..."
-                  className="w-full bg-zinc-900/40 border border-zinc-800 p-4 pl-12 rounded-2xl outline-none focus:border-green-500 uppercase font-black text-xs transition-all focus:bg-zinc-900/80 shadow-inner"
+                  className="w-full bg-zinc-900/40 border border-zinc-800 p-4 pl-12 rounded-2xl outline-none focus:border-green-500 uppercase font-black text-xs transition-all"
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
             </div>
 
+            {/* Grid Kartu Saham */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {currentSaham.length > 0 ? (
                 currentSaham.map((s, index) => (
                   <div
                     key={`${s.Kode}-${index}`}
-                    className="bg-[#0d0d0e] border border-zinc-800 p-6 rounded-[32px] hover:border-zinc-600 transition-all group hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
+                    className="bg-[#0d0d0e] border border-zinc-800 p-6 rounded-[32px] hover:border-zinc-600 transition-all group"
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <h3 className="text-2xl font-black italic group-hover:text-green-500 uppercase leading-none transition-colors tracking-tight">
+                        <h3 className="text-2xl font-black italic group-hover:text-green-500 uppercase leading-none transition-colors">
                           {s.Kode}
                         </h3>
                         <p className="text-[10px] text-zinc-500 font-bold uppercase truncate max-w-[180px] mt-2">
@@ -247,7 +281,7 @@ export default function LintangPredatorDashboard() {
                       </div>
                       <button
                         onClick={() => setSelectedStock(s.Kode)}
-                        className="p-3 bg-zinc-900 border border-zinc-800 rounded-2xl text-zinc-400 hover:text-green-500 hover:border-green-500/50 transition-all active:scale-90"
+                        className="p-3 bg-zinc-900 border border-zinc-800 rounded-2xl text-zinc-400 hover:text-green-500"
                       >
                         <Maximize2 className="w-4 h-4" />
                       </button>
@@ -264,38 +298,32 @@ export default function LintangPredatorDashboard() {
               )}
             </div>
 
+            {/* Pagination Tetap Aman */}
             {totalPages > 1 && (
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-zinc-800 pt-10">
-                <div className="bg-zinc-900/40 px-5 py-2.5 rounded-full border border-zinc-800 text-[10px] font-black text-zinc-500 uppercase tracking-widest">
-                  Data{" "}
-                  <span className="text-white">
-                    {indexOfFirstItem + 1} -{" "}
-                    {Math.min(indexOfLastItem, filteredSaham.length)}
-                  </span>{" "}
-                  of <span className="text-white">{filteredSaham.length}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    disabled={currentPage === 1}
-                    onClick={() => {
-                      setCurrentPage((prev) => prev - 1);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="p-3.5 rounded-2xl border border-zinc-800 bg-zinc-900/50 disabled:opacity-20 hover:border-zinc-500 transition-all active:scale-90"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => {
-                      setCurrentPage((prev) => prev + 1);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="p-3.5 rounded-2xl border border-zinc-800 bg-zinc-900/50 disabled:opacity-20 hover:border-zinc-500 transition-all active:scale-90"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
+              <div className="flex justify-center items-center gap-3 pt-10 border-t border-zinc-800">
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => {
+                    setCurrentPage((p) => p - 1);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="p-3 rounded-2xl border border-zinc-800 bg-zinc-900/50 disabled:opacity-20"
+                >
+                  <ChevronLeft />
+                </button>
+                <span className="text-[10px] font-black uppercase text-zinc-500">
+                  {currentPage} / {totalPages}
+                </span>
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => {
+                    setCurrentPage((p) => p + 1);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="p-3 rounded-2xl border border-zinc-800 bg-zinc-900/50 disabled:opacity-20"
+                >
+                  <ChevronRight />
+                </button>
               </div>
             )}
           </div>
