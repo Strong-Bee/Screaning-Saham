@@ -11,13 +11,16 @@ import {
   ChevronLeft,
   ChevronRight,
   LayoutDashboard,
-  Database,
+  Zap,
   Activity,
   Menu,
   BarChart3,
   Globe,
   ExternalLink,
+  TrendingUp,
+  Code2, // Icon untuk Developer
 } from "lucide-react";
+import Link from "next/link"; // Tambahkan Link untuk navigasi ke page developer
 
 import SignalSection from "./Signal/page";
 import NewsSection from "./News/page";
@@ -51,7 +54,7 @@ const TradingViewWidget = ({ symbol }: { symbol: string }) => {
   }, [symbol]);
   return (
     <div
-      className="w-full h-[180px] mt-4 overflow-hidden rounded-2xl bg-black/20 border border-zinc-800/50 shadow-inner"
+      className="w-full h-[180px] mt-4 overflow-hidden rounded-[24px] bg-black/40 border border-zinc-800/50 shadow-inner"
       ref={container}
     />
   );
@@ -113,26 +116,29 @@ const AdvancedChartModal = ({
       hide_side_toolbar: false,
       allow_symbol_change: true,
       save_image: true,
-      backgroundColor: "#0F0F0F",
+      backgroundColor: "#050505",
       gridColor: "rgba(242, 242, 242, 0.06)",
-      studies: ["RSI@tv-basicstudies"],
+      studies: ["RSI@tv-basicstudies", "MASimple@tv-basicstudies"],
     });
     container.current.innerHTML = "";
     container.current.appendChild(script);
   }, [symbol]);
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4">
-      <div className="relative w-full h-full max-w-6xl bg-[#0F0F0F] border border-zinc-800 rounded-[32px] overflow-hidden flex flex-col shadow-2xl">
-        <div className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/40">
-          <h2 className="text-xl font-black italic tracking-tighter uppercase text-white">
-            {symbol} ANALYTICS
-          </h2>
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-2xl p-2 md:p-8">
+      <div className="relative w-full h-full max-w-7xl bg-[#050505] border border-zinc-800 rounded-[40px] overflow-hidden flex flex-col shadow-2xl">
+        <div className="p-6 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/20">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <h2 className="text-xl font-black italic tracking-tighter uppercase text-white">
+              {symbol} PREDATOR ANALYTICS
+            </h2>
+          </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-zinc-800 rounded-full transition-all active:scale-90"
+            className="p-3 hover:bg-red-500/10 hover:text-red-500 rounded-2xl transition-all active:scale-90 text-zinc-400"
           >
-            <X className="w-6 h-6 text-zinc-400" />
+            <X className="w-6 h-6" />
           </button>
         </div>
         <div className="flex-1 w-full" ref={container} />
@@ -141,7 +147,7 @@ const AdvancedChartModal = ({
   );
 };
 
-// --- KOMPONEN KARTU EMITEN DENGAN SCRAPING ---
+// --- KOMPONEN KARTU EMITEN ---
 const StockCard = ({
   s,
   onMaximize,
@@ -149,99 +155,112 @@ const StockCard = ({
   s: any;
   onMaximize: (symbol: string) => void;
 }) => {
-  const [scrapedData, setScrapedData] = useState<{ about: string } | null>(
-    null,
-  );
-  const [isScraping, setIsScraping] = useState(false);
+  const [intel, setIntel] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsScraping(true);
+    const fetchIntel = async () => {
+      setLoading(true);
       try {
-        const res = await axios.get(`/api/scrape?symbol=${s.Kode}`);
-        setScrapedData(res.data);
+        const res = await axios.get(`/api/signal?symbol=${s.Kode}`);
+        setIntel(res.data);
       } catch (e) {
-        console.error("Scraping failed");
+        console.error("Intel fetch failed for", s.Kode);
       } finally {
-        setIsScraping(false);
+        setLoading(false);
       }
     };
-    fetchData();
+    fetchIntel();
   }, [s.Kode]);
 
   return (
-    <div className="bg-[#0b0b0c] border border-zinc-800/60 rounded-[40px] overflow-hidden flex flex-col group hover:border-zinc-700 transition-all shadow-xl">
-      <div className="p-7 pb-4 flex justify-between items-start">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center border border-zinc-800 font-black text-2xl italic text-white group-hover:text-green-500 transition-all">
-            {s.Kode[0]}
+    <div className="bg-[#0b0b0c] border border-zinc-800/60 rounded-[40px] overflow-hidden flex flex-col group hover:border-green-500/30 transition-all duration-500 shadow-2xl">
+      <div className="p-8 pb-4 flex justify-between items-start">
+        <div className="flex items-center gap-5">
+          <div className="relative">
+            <div className="w-16 h-16 bg-zinc-900 rounded-[22px] flex items-center justify-center border border-zinc-800 font-black text-2xl italic text-white group-hover:bg-green-600 group-hover:text-black transition-all duration-500 uppercase">
+              {s.Kode.substring(0, 2)}
+            </div>
+            {intel?.score > 80 && (
+              <div className="absolute -top-2 -right-2 bg-green-500 p-1.5 rounded-lg shadow-lg">
+                <Zap className="w-3 h-3 text-black fill-black" />
+              </div>
+            )}
           </div>
           <div>
-            <h3 className="text-2xl font-black tracking-tighter text-white uppercase leading-none">
-              {s.Kode}
-            </h3>
-            <p className="text-[10px] font-bold text-zinc-500 uppercase mt-1 truncate max-w-[140px]">
+            <div className="flex items-center gap-2">
+              <h3 className="text-2xl font-black tracking-tighter text-white uppercase leading-none">
+                {s.Kode}
+              </h3>
+              {intel?.price && (
+                <span className="text-green-500 text-[10px] font-black tracking-tighter bg-green-500/10 px-2 py-0.5 rounded">
+                  Rp{intel.price.toLocaleString()}
+                </span>
+              )}
+            </div>
+            <p className="text-[10px] font-bold text-zinc-600 uppercase mt-1.5 tracking-wider truncate max-w-[150px]">
               {s["Nama Perusahaan"]}
             </p>
           </div>
         </div>
         <button
           onClick={() => onMaximize(s.Kode)}
-          className="p-3.5 bg-zinc-900/50 border border-zinc-800 rounded-2xl text-zinc-500 hover:text-green-500 transition-all"
+          className="p-4 bg-zinc-900 border border-zinc-800 rounded-[20px] text-zinc-500 hover:text-green-500 hover:border-green-500/50 transition-all active:scale-95"
         >
           <Maximize2 className="w-5 h-5" />
         </button>
       </div>
 
-      <div className="px-7">
+      <div className="px-8">
         <TradingViewWidget symbol={s.Kode} />
       </div>
 
-      <div className="p-7 space-y-8 flex-1">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-zinc-400">
-            <BarChart3 className="w-4 h-4 text-blue-500" />
-            <span className="text-[10px] font-black uppercase tracking-widest">
-              Live Fundamentals
-            </span>
+      <div className="p-8 space-y-8 flex-1">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-zinc-500">
+              <BarChart3 className="w-4 h-4" />
+              <span className="text-[9px] font-black uppercase tracking-[0.2em]">
+                Financial Matrix
+              </span>
+            </div>
+            {loading && (
+              <RefreshCw className="w-3 h-3 animate-spin text-green-500" />
+            )}
           </div>
-          <div className="rounded-2xl bg-zinc-950/50 border border-zinc-800/40 overflow-hidden">
+          <div className="rounded-[28px] bg-black/40 border border-zinc-800/40 overflow-hidden shadow-inner">
             <FinancialWidget symbol={s.Kode} />
           </div>
         </div>
 
-        <div className="space-y-3 pt-6 border-t border-zinc-800/50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-zinc-400">
-              <Globe className="w-4 h-4 text-green-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest">
-                Tentang Perusahaan
-              </span>
-            </div>
-            {isScraping && (
-              <RefreshCw className="w-3 h-3 animate-spin text-green-500" />
-            )}
+        <div className="pt-6 border-t border-zinc-800/50">
+          <div className="flex items-center gap-2 text-zinc-500 mb-4">
+            <Globe className="w-4 h-4" />
+            <span className="text-[9px] font-black uppercase tracking-[0.2em]">
+              Company Intelligence
+            </span>
           </div>
-
-          <div className="p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 min-h-[140px]">
-            <p className="text-[11px] text-zinc-400 leading-relaxed italic line-clamp-6 font-medium">
-              {scrapedData?.about ||
-                "Mengekstraksi data dari intelijen market..."}
+          <div className="p-6 rounded-[28px] bg-zinc-900/30 border border-zinc-800/50">
+            <p className="text-[11px] text-zinc-400 leading-relaxed italic line-clamp-4 font-medium">
+              {intel?.analysis?.fundamental ||
+                "Connecting to Intelligence Engine..."}
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-5 flex gap-2">
               <a
-                href={`https://www.idnfinancials.com/id/${s.Kode}`}
+                href={`https://www.google.com/finance/quote/${s.Kode}:IDX`}
                 target="_blank"
-                className="text-[9px] bg-zinc-800 hover:bg-zinc-700 p-2 rounded-lg flex items-center gap-1 transition-colors"
+                rel="noopener noreferrer"
+                className="flex-1 text-center text-[9px] font-black uppercase p-3 bg-zinc-800 rounded-xl hover:bg-green-600 hover:text-black transition-all"
               >
-                IDN <ExternalLink className="w-2 h-2" />
+                Google Finance
               </a>
               <a
-                href={`https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/${s.Kode}`}
+                href={`https://www.tradingview.com/symbols/IDX-${s.Kode}`}
                 target="_blank"
-                className="text-[9px] bg-zinc-800 hover:bg-zinc-700 p-2 rounded-lg flex items-center gap-1 transition-colors"
+                rel="noopener noreferrer"
+                className="p-3 bg-zinc-800 rounded-xl hover:bg-blue-600 transition-all text-white"
               >
-                IDX <ExternalLink className="w-2 h-2" />
+                <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>
@@ -265,20 +284,22 @@ export default function LintangPredatorDashboard() {
   const itemsPerPage = 6;
 
   const navItems = [
-    { id: "radar", label: "Scanner", icon: LayoutDashboard },
-    { id: "signal", label: "Signal", icon: Database },
-    { id: "news", label: "News", icon: Activity },
+    { id: "radar", label: "Market Radar", icon: LayoutDashboard },
+    { id: "signal", label: "Predator Signal", icon: Zap },
+    { id: "news", label: "Intel Stream", icon: Activity },
   ];
 
   const loadData = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get("/api/scan");
-      if (Array.isArray(response.data)) setSahamList(response.data);
-    } catch (error) {
-      console.error("API Error:", error);
+      if (Array.isArray(response.data)) {
+        setSahamList(response.data);
+      }
+    } catch (e) {
+      console.error("Critical: Market scan API failed", e);
     } finally {
-      setTimeout(() => setIsLoading(false), 500);
+      setTimeout(() => setIsLoading(false), 800);
     }
   };
 
@@ -299,31 +320,44 @@ export default function LintangPredatorDashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#f4f4f5] font-sans pb-20 selection:bg-green-500 selection:text-black">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-green-500 selection:text-black pb-10">
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-[100] w-full border-b border-zinc-800 bg-black/80 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-8">
+      <nav className="sticky top-0 z-[100] w-full border-b border-zinc-800/50 bg-black/80 backdrop-blur-2xl">
+        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+          <div className="flex items-center gap-12">
             <div className="flex items-center gap-3">
-              <ShieldAlert className="text-green-500 w-8 h-8 drop-shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
-              <h1 className="text-xl font-black tracking-tighter uppercase text-white">
+              <div className="bg-green-500 p-1.5 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                <ShieldAlert className="text-black w-6 h-6" />
+              </div>
+              <h1 className="text-xl font-black tracking-tighter uppercase italic">
                 LINTANG <span className="text-green-500">PREDATOR</span>
               </h1>
             </div>
-            <div className="hidden md:flex items-center gap-6">
+
+            <div className="hidden lg:flex items-center gap-8">
               {navItems.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex items-center gap-2 text-[10px] font-black uppercase transition-all pb-1 border-b-2 ${
+                  className={`flex items-center gap-2.5 text-[10px] font-black uppercase tracking-widest transition-all relative py-2 ${
                     activeTab === tab.id
-                      ? "text-green-500 border-green-500"
-                      : "text-zinc-500 border-transparent hover:text-white"
+                      ? "text-green-500"
+                      : "text-zinc-500 hover:text-white"
                   }`}
                 >
-                  <tab.icon className="w-3.5 h-3.5" /> {tab.label}
+                  <tab.icon className="w-4 h-4" /> {tab.label}
+                  {activeTab === tab.id && (
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                  )}
                 </button>
               ))}
+              {/* Link Khusus ke Developer Page */}
+              <Link
+                href="/developer"
+                className="flex items-center gap-2.5 text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white transition-all py-2"
+              >
+                <Code2 className="w-4 h-4" /> Dev Arch
+              </Link>
             </div>
           </div>
 
@@ -331,16 +365,16 @@ export default function LintangPredatorDashboard() {
             <button
               onClick={loadData}
               disabled={isLoading}
-              className="hidden sm:flex bg-white text-black px-5 py-2.5 rounded-xl font-black text-[10px] uppercase hover:bg-green-500 transition-all items-center gap-2 active:scale-95 disabled:opacity-30"
+              className="hidden md:flex bg-white text-black px-6 py-3 rounded-2xl font-black text-[10px] uppercase hover:bg-green-500 transition-all items-center gap-2 active:scale-95 disabled:opacity-30 shadow-xl"
             >
               <RefreshCw
-                className={`w-3.5 h-3.5 ${isLoading ? "animate-spin" : ""}`}
+                className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
               />{" "}
-              SYNC DATA
+              SYNC ENGINE
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2.5 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 transition-transform active:scale-90"
+              className="lg:hidden p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-zinc-400"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6 text-green-500" />
@@ -351,11 +385,9 @@ export default function LintangPredatorDashboard() {
           </div>
         </div>
 
-        {/* MOBILE MENU PANEL */}
-        <div
-          className={`absolute top-20 left-0 w-full bg-[#050505] border-b border-zinc-800 md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}
-        >
-          <div className="p-6 flex flex-col gap-4 bg-black/95 backdrop-blur-2xl">
+        {/* MOBILE NAV */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-24 left-0 w-full bg-[#050505] border-b border-zinc-800 p-6 flex flex-col gap-4 animate-in slide-in-from-top-4 duration-300 shadow-2xl">
             {navItems.map((tab) => (
               <button
                 key={tab.id}
@@ -363,70 +395,92 @@ export default function LintangPredatorDashboard() {
                   setActiveTab(tab.id as any);
                   setIsMenuOpen(false);
                 }}
-                className={`flex items-center gap-4 p-4 rounded-2xl font-black uppercase text-xs transition-all ${activeTab === tab.id ? "bg-green-500/10 text-green-500 border border-green-500/20" : "bg-zinc-900/50 text-zinc-500 border border-transparent"}`}
+                className={`flex items-center gap-4 p-5 rounded-[24px] font-black uppercase text-xs transition-all ${
+                  activeTab === tab.id
+                    ? "bg-green-500 text-black shadow-lg"
+                    : "bg-zinc-900 text-zinc-500 border border-zinc-800"
+                }`}
               >
                 <tab.icon className="w-5 h-5" /> {tab.label}
               </button>
             ))}
-            <button
-              onClick={() => {
-                loadData();
-                setIsMenuOpen(false);
-              }}
-              className="mt-2 flex items-center justify-center gap-2 p-4 bg-white text-black rounded-2xl font-black uppercase text-[10px]"
+            <Link
+              href="/developer"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center gap-4 p-5 rounded-[24px] font-black uppercase text-xs bg-zinc-900 text-zinc-500 border border-zinc-800"
             >
-              <RefreshCw
-                className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
-              />{" "}
-              SYNC MARKET DATA
-            </button>
+              <Code2 className="w-5 h-5" /> Developer Info
+            </Link>
           </div>
-        </div>
+        )}
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 mt-10">
+      <main className="max-w-7xl mx-auto px-6 mt-16">
         {activeTab === "radar" && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none mb-2">
-                Market <span className="text-zinc-800">Analyzer</span>
-              </h2>
-              <div className="relative w-full md:w-[400px] group">
-                <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-600 w-5 h-5 group-focus-within:text-green-500 transition-colors" />
+          <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16">
+              <div>
+                <div className="flex items-center gap-3 text-green-500 mb-4">
+                  <TrendingUp className="w-5 h-5" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em]">
+                    Real-time Market Scanning
+                  </span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none">
+                  Market{" "}
+                  <span className="text-zinc-800 font-black not-italic">
+                    Analyzer
+                  </span>
+                </h2>
+              </div>
+              <div className="relative w-full lg:w-[450px]">
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-zinc-600 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="IDENTIFIKASI KODE SAHAM..."
-                  className="w-full bg-zinc-900/20 border border-zinc-800 p-5 pl-14 rounded-[22px] outline-none focus:border-green-500/50 uppercase font-black text-xs transition-all"
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="SEARCH TICKER (BBRI, TLKM...)"
+                  className="w-full bg-zinc-900/40 border border-zinc-800 p-6 pl-16 rounded-[28px] outline-none focus:border-green-500/50 uppercase font-black text-xs transition-all placeholder:text-zinc-700 shadow-2xl"
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1);
+                  }}
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-              {currentSaham.map((s, i) => (
-                <StockCard
-                  key={`${s.Kode}-${i}`}
-                  s={s}
-                  onMaximize={setSelectedStock}
-                />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+              {currentSaham.length > 0 ? (
+                currentSaham.map((s, i) => (
+                  <StockCard
+                    key={`${s.Kode}-${i}`}
+                    s={s}
+                    onMaximize={setSelectedStock}
+                  />
+                ))
+              ) : (
+                <div className="col-span-full py-20 text-center">
+                  <p className="text-zinc-700 font-black italic uppercase tracking-widest text-2xl">
+                    No Predator Target Detected
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* PAGINATION */}
             {totalPages > 1 && (
-              <div className="flex justify-center items-center gap-4 mt-20 pt-10 border-t border-zinc-900">
+              <div className="flex justify-center items-center gap-6 mt-24">
                 <button
                   disabled={currentPage === 1}
                   onClick={() => {
                     setCurrentPage((p) => p - 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="p-4 rounded-2xl border border-zinc-800 bg-zinc-900/50 text-zinc-400 disabled:opacity-10 hover:border-zinc-500 transition-all"
+                  className="p-5 rounded-[24px] bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-green-500 disabled:opacity-10 transition-all active:scale-90"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
-                <div className="bg-zinc-900/80 px-6 py-3 rounded-2xl border border-zinc-800 font-black text-[10px] text-zinc-500 tracking-[0.3em]">
-                  {currentPage} / {totalPages}
+                <div className="bg-zinc-900/80 px-8 py-4 rounded-[24px] border border-zinc-800 font-black italic text-lg shadow-2xl min-w-[120px] text-center">
+                  {currentPage} <span className="text-zinc-700 mx-2">/</span>{" "}
+                  {totalPages}
                 </div>
                 <button
                   disabled={currentPage === totalPages}
@@ -434,7 +488,7 @@ export default function LintangPredatorDashboard() {
                     setCurrentPage((p) => p + 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="p-4 rounded-2xl border border-zinc-800 bg-zinc-900/50 text-zinc-400 disabled:opacity-10 hover:border-zinc-500 transition-all"
+                  className="p-5 rounded-[24px] bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-green-500 disabled:opacity-10 transition-all active:scale-90"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
