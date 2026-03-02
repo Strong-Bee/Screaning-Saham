@@ -91,12 +91,12 @@ const ChartModal = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-      <div className="w-full max-w-6xl h-[80vh] bg-[#050505] border border-zinc-800 rounded-3xl overflow-hidden flex flex-col">
-        <div className="flex justify-between items-center p-4 border-b border-zinc-800">
-          <h3 className="font-black">{symbol} Chart</h3>
+      <div className="w-full max-w-6xl h-[80vh] bg-[#050505] border border-zinc-800 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
+        <div className="flex justify-between items-center px-6 py-4 border-b border-zinc-800">
+          <h3 className="font-black tracking-wide">{symbol} Advanced Chart</h3>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl hover:bg-red-500/10 hover:text-red-500"
+            className="p-2 rounded-xl hover:bg-red-500/10 hover:text-red-500 transition"
           >
             <X />
           </button>
@@ -120,13 +120,15 @@ const StockCard = ({
     <div className="bg-[#0b0b0c] border border-zinc-800 rounded-3xl p-6 flex flex-col gap-4 hover:border-blue-500/40 transition">
       <div className="flex justify-between items-start">
         <div>
-          <h3 className="text-2xl font-black">{stock.Kode}</h3>
+          <h3 className="text-xl sm:text-2xl font-black tracking-tight">
+            {stock.Kode}
+          </h3>
           <p className="text-xs text-zinc-500">{stock["Nama Perusahaan"]}</p>
         </div>
 
         <button
           onClick={() => onOpen(stock.Kode)}
-          className="p-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-blue-500 hover:text-blue-400"
+          className="p-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-blue-500 hover:text-blue-400 transition"
         >
           <Maximize2 size={18} />
         </button>
@@ -179,45 +181,57 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
       {/* NAVBAR */}
-      <Navbar
-        activeTab="radar"
-        setActiveTab={() => {}}
-        onSync={loadStocks}
-        isLoading={loading}
-      />
+      <Navbar onSync={loadStocks} isLoading={loading} />
+
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-30%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[140px] rounded-full" />
+          <div className="absolute bottom-[-30%] right-[-10%] w-[50%] h-[50%] bg-blue-500/10 blur-[140px] rounded-full" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-none">
+            Market{" "}
+            <span className="text-blue-500 underline decoration-blue-600 decoration-4 underline-offset-4 sm:underline-offset-8">
+              Radar
+            </span>
+          </h2>
+
+          <p className="text-zinc-400 mt-3 max-w-xl text-sm sm:text-base">
+            AI stock scanner Bursa Efek Indonesia berbasis momentum,
+            fundamental, dan sentimen pasar.
+          </p>
+        </div>
+      </section>
 
       {/* CONTENT */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        {/* HEADER */}
-        <div className="flex flex-col lg:flex-row justify-between gap-6 mb-10">
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-black italic">
-              Market Radar
-            </h1>
-            <p className="text-zinc-500 text-sm">
-              AI stock scanner Bursa Efek Indonesia
-            </p>
-          </div>
-
-          {/* SEARCH */}
-          <div className="relative w-full lg:w-80">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        {/* SEARCH */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 w-4 h-4" />
             <input
-              placeholder="Search ticker…"
+              placeholder="Search ticker..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(1);
               }}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-9 pr-3 py-2 text-sm focus:border-blue-500 outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-9 pr-3 py-2.5 text-sm focus:outline-none focus:border-blue-500"
             />
           </div>
         </div>
 
         {/* GRID */}
         {loading ? (
-          <div className="flex justify-center py-20">
-            <RefreshCw className="animate-spin text-blue-500" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-[240px] bg-zinc-900/40 border border-zinc-800 rounded-3xl animate-pulse"
+              />
+            ))}
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -233,19 +247,19 @@ export default function HomePage() {
             <button
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-20"
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 hover:text-blue-400 transition"
             >
               <ChevronLeft size={18} />
             </button>
 
-            <div className="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-sm">
+            <span className="text-sm text-zinc-400">
               {page} / {totalPages}
-            </div>
+            </span>
 
             <button
               disabled={page === totalPages}
               onClick={() => setPage(page + 1)}
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-20"
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 hover:text-blue-400 transition"
             >
               <ChevronRight size={18} />
             </button>
@@ -253,10 +267,8 @@ export default function HomePage() {
         )}
       </main>
 
-      {/* FOOTER */}
       <Footer />
 
-      {/* MODAL */}
       {selected && (
         <ChartModal symbol={selected} onClose={() => setSelected(null)} />
       )}
