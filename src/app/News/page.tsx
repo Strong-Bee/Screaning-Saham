@@ -52,6 +52,7 @@ export default function NewsPage() {
     try {
       const res = await fetch(`/api/news?category=${cat}`);
       const data = await res.json();
+
       if (Array.isArray(data)) {
         setNews(data);
         setLastSync(new Date());
@@ -71,12 +72,11 @@ export default function NewsPage() {
   }, [activeCat]);
 
   /* ================= PAGINATION ================= */
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const currentNews = news.slice(
-    indexOfLastItem - itemsPerPage,
-    indexOfLastItem,
-  );
   const totalPages = Math.ceil(news.length / itemsPerPage);
+  const currentNews = news.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
 
   const paginate = (page: number) => {
     setCurrentPage(page);
@@ -87,12 +87,7 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
       {/* NAVBAR */}
-      <Navbar
-        activeTab="news"
-        setActiveTab={() => {}}
-        onSync={() => fetchNews(activeCat)}
-        isLoading={loading}
-      />
+      <Navbar onSync={() => fetchNews(activeCat)} isLoading={loading} />
 
       {/* CONTENT */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14 lg:mt-16">
@@ -106,7 +101,7 @@ export default function NewsPage() {
               </span>
             </h2>
 
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-4 sm:mt-6">
+            <div className="flex flex-wrap items-center gap-3 mt-4 sm:mt-6">
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black text-blue-500 uppercase tracking-widest bg-blue-600/10 border border-blue-600/20">
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
                 Live Intel
@@ -122,13 +117,13 @@ export default function NewsPage() {
           <div className="w-full lg:w-auto overflow-x-auto no-scrollbar">
             <div className="flex gap-2 bg-zinc-900/40 p-1.5 rounded-2xl border border-zinc-800/50 min-w-max">
               {CATEGORIES.map((cat) => {
-                const isActive = activeCat === cat.id;
+                const active = activeCat === cat.id;
                 return (
                   <button
                     key={cat.id}
                     onClick={() => setActiveCat(cat.id)}
-                    className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border whitespace-nowrap ${
-                      isActive
+                    className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border ${
+                      active
                         ? "bg-blue-600 text-white border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.35)]"
                         : "bg-zinc-900/50 text-zinc-500 border-zinc-800 hover:border-zinc-600 hover:text-white"
                     }`}
@@ -143,23 +138,23 @@ export default function NewsPage() {
         </div>
 
         {/* NEWS LIST */}
-        <div className="grid gap-4 sm:gap-5 max-w-5xl mx-auto mb-14 sm:mb-16">
+        <div className="grid gap-5 max-w-5xl mx-auto mb-16">
           {loading
-            ? [1, 2, 3, 4].map((i) => (
+            ? Array.from({ length: 4 }).map((_, i) => (
                 <div
                   key={i}
-                  className="h-28 sm:h-32 bg-zinc-900/20 rounded-[28px] animate-pulse border border-zinc-900"
+                  className="h-28 bg-zinc-900/20 rounded-3xl animate-pulse border border-zinc-900"
                 />
               ))
             : currentNews.map((item) => (
                 <div
                   key={item.id}
-                  className="group flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 bg-[#0d0d0e] border border-zinc-800/40 hover:border-blue-500/40 p-4 sm:p-6 md:p-8 rounded-[28px] sm:rounded-[35px] transition-all duration-500 hover:bg-zinc-900/20"
+                  className="group flex flex-col sm:flex-row items-start sm:items-center gap-5 bg-[#0d0d0e] border border-zinc-800/40 hover:border-blue-500/40 p-5 sm:p-7 rounded-3xl transition-all duration-500 hover:bg-zinc-900/20"
                 >
                   {/* ICON */}
-                  <div className="flex sm:flex-col items-center gap-3 sm:gap-4 shrink-0">
+                  <div className="flex flex-col items-center gap-3 shrink-0">
                     <div
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center border-2 ${
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center border-2 ${
                         item.sentiment === "positive"
                           ? "bg-green-500/10 border-green-500/20 text-green-500"
                           : item.sentiment === "negative"
@@ -176,7 +171,7 @@ export default function NewsPage() {
                       )}
                     </div>
 
-                    <div className="text-[9px] font-black text-zinc-600 uppercase tracking-tighter">
+                    <div className="text-[9px] font-black text-zinc-600 uppercase">
                       {formatDistanceToNow(new Date(item.pubDate), {
                         locale: id,
                       })}
@@ -184,7 +179,7 @@ export default function NewsPage() {
                   </div>
 
                   {/* TEXT */}
-                  <div className="flex-1 space-y-1 sm:space-y-2">
+                  <div className="flex-1 space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-black uppercase text-blue-500 tracking-[0.2em]">
                         {item.source}
@@ -200,58 +195,51 @@ export default function NewsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-black text-zinc-300 group-hover:text-white leading-tight transition-colors">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-black text-zinc-300 group-hover:text-white leading-tight transition-colors">
                         {item.title}
                       </h3>
                     </a>
                   </div>
 
-                  {/* OPEN BUTTON */}
-                  <div className="sm:ml-auto">
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Open news source"
-                      className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-2xl 
-                      bg-zinc-900 border border-zinc-800 text-zinc-500
-                      hover:bg-blue-600 hover:text-white hover:border-blue-500
-                      transition-all duration-300 active:scale-95"
-                    >
-                      <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </a>
-                  </div>
+                  {/* OPEN */}
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-11 h-11 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-500 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
                 </div>
               ))}
         </div>
 
         {/* PAGINATION */}
-        {!loading && news.length > itemsPerPage && (
-          <div className="flex justify-center items-center gap-3 sm:gap-6 mb-14 sm:mb-16">
+        {!loading && totalPages > 1 && (
+          <div className="flex justify-center items-center gap-4 mb-16">
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 hover:text-blue-400 transition-all"
+              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 hover:text-blue-400"
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronLeft />
             </button>
 
-            <div className="px-4 sm:px-6 py-2 sm:py-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-xs sm:text-sm font-black text-zinc-400">
+            <div className="px-5 py-2 rounded-2xl bg-zinc-900 border border-zinc-800 text-sm font-black text-zinc-400">
               {currentPage} / {totalPages}
             </div>
 
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 hover:text-blue-400 transition-all"
+              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 disabled:opacity-20 hover:border-blue-500 hover:text-blue-400"
             >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronRight />
             </button>
           </div>
         )}
       </main>
 
-      {/* FOOTER */}
       <Footer />
     </div>
   );
