@@ -87,7 +87,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                 }`}
               >
                 <Code2 className="w-4 h-4" />
-                Dev
+                Developer
               </Link>
             </div>
           </div>
