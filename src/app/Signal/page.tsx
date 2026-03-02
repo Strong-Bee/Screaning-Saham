@@ -14,72 +14,74 @@ interface SignalItem {
   dayChange: number;
 }
 
-/* ================= STOCK LIST ================= */
-/* bisa kamu ganti sesuai watchlist */
-const STOCKS = [
-  "BBCA",
-  "TLKM",
-  "BMRI",
-  "ASII",
-  "BBRI",
-  "BBNI",
-  "GOTO",
-  "ADRO",
-  "ANTM",
-];
-
-/* ================= FETCH SIGNAL ================= */
+/* ================= AUTO FETCH ================= */
 async function fetchSignals(): Promise<SignalItem[]> {
-  const results: SignalItem[] = [];
+  try {
+    // ambil daftar saham dari scanner
+    const scanRes = await fetch("/api/scan", { cache: "no-store" });
+    const scanData = await scanRes.json();
 
-  await Promise.all(
-    STOCKS.map(async (symbol) => {
-      try {
-        const res = await fetch(`/api/signal?symbol=${symbol}`);
-        const data = await res.json();
+    if (!Array.isArray(scanData)) return [];
 
-        if (!data?.symbol) return;
+    // batasi top 30 saham agar cepat
+    const symbols = scanData.slice(0, 30).map((s: any) => s.Kode);
 
-        results.push({
-          symbol: data.symbol,
-          score: data.score,
-          action: data.action,
-          dayChange: data.dayChange ?? 0,
-        });
-      } catch (e) {
-        console.error("Signal fetch error", symbol);
-      }
-    }),
-  );
+    const results: SignalItem[] = [];
 
-  // sort by score desc
-  return results.sort((a, b) => b.score - a.score);
+    await Promise.all(
+      symbols.map(async (symbol: string) => {
+        try {
+          const res = await fetch(`/api/signal?symbol=${symbol}`, {
+            cache: "no-store",
+          });
+          const data = await res.json();
+
+          if (!data?.symbol) return;
+
+          results.push({
+            symbol: data.symbol,
+            score: data.score,
+            action: data.action,
+            dayChange: data.dayChange ?? 0,
+          });
+        } catch {
+          // skip error symbol
+        }
+      }),
+    );
+
+    // ranking strongest
+    return results.sort((a, b) => b.score - a.score);
+  } catch (e) {
+    console.error("Signal fetch error:", e);
+    return [];
+  }
 }
 
 /* ================= CARD ================= */
 function SignalCard({ s }: { s: SignalItem }) {
-  const isBuy = s.action === "BUY" || s.action === "STRONG BUY";
-  const isSell = s.action === "SELL";
-
   const color =
     s.action === "STRONG BUY"
-      ? "text-green-400 border-green-500/30 bg-green-500/10"
+      ? "text-green-500 border-green-500/30 bg-green-500/10"
       : s.action === "BUY"
-        ? "text-blue-400 border-blue-500/30 bg-blue-500/10"
+        ? "text-blue-500 border-blue-500/30 bg-blue-500/10"
         : s.action === "SELL"
-          ? "text-red-400 border-red-500/30 bg-red-500/10"
+          ? "text-red-500 border-red-500/30 bg-red-500/10"
           : "text-zinc-400 border-zinc-700 bg-zinc-800/40";
 
-  const Icon = isBuy ? TrendingUp : isSell ? TrendingDown : Minus;
+  const Icon =
+    s.action === "STRONG BUY" || s.action === "BUY"
+      ? TrendingUp
+      : s.action === "SELL"
+        ? TrendingDown
+        : Minus;
 
   return (
-    <div className="bg-[#0b0b0c] border border-zinc-800 rounded-3xl p-6 sm:p-7 hover:border-blue-500/40 transition">
-      {/* header */}
-      <div className="flex justify-between items-start mb-5">
+    <div className="relative bg-[#0b0b0c] border border-zinc-800 rounded-3xl p-6 hover:border-blue-500/40 transition overflow-hidden">
+      {/* HEADER */}
+      <div className="flex justify-between items-start mb-4">
         <div>
-          <h3 className="text-2xl sm:text-3xl font-black tracking-tight">
-            {s.symbol}
-          </h3>
+          <h3 className="text-2xl font-black tracking-tight">{s.symbol}</h3>
           <p className="text-xs text-zinc-500">AI Signal Score</p>
         </div>
 
@@ -90,8 +92,8 @@ function SignalCard({ s }: { s: SignalItem }) {
         </div>
       </div>
 
-      {/* change + icon */}
-      <div className="flex items-center gap-4">
+      {/* BODY */}
+      <div className="flex items-center gap-3 mt-4">
         <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800">
           <Icon className="w-5 h-5" />
         </div>
@@ -102,13 +104,13 @@ function SignalCard({ s }: { s: SignalItem }) {
             <span
               className={
                 s.dayChange > 0
-                  ? "text-green-400"
+                  ? "text-green-500"
                   : s.dayChange < 0
-                    ? "text-red-400"
+                    ? "text-red-500"
                     : "text-zinc-400"
               }
             >
-              {s.dayChange?.toFixed(2)}%
+              {s.dayChange}%
             </span>
           </p>
 
@@ -118,7 +120,7 @@ function SignalCard({ s }: { s: SignalItem }) {
         </div>
       </div>
 
-      {/* score bar */}
+      {/* SCORE BAR */}
       <div className="mt-6 h-2 bg-zinc-800 rounded-full overflow-hidden">
         <div className="h-full bg-blue-500" style={{ width: `${s.score}%` }} />
       </div>
@@ -144,6 +146,7 @@ export default function SignalPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
+      {/* NAVBAR */}
       <Navbar onSync={loadSignals} isLoading={loading} />
 
       {/* HERO */}
@@ -169,8 +172,9 @@ export default function SignalPage() {
           </h2>
 
           <p className="mt-6 max-w-xl text-zinc-400 text-sm sm:text-base leading-relaxed">
-            AI trading signal berbasis momentum, RSI, MACD, dan probabilitas
-            multibagger saham Indonesia.
+            AI trading signal otomatis seluruh saham Bursa Efek Indonesia
+            berdasarkan momentum, probabilitas multibagger, dan pergerakan smart
+            money.
           </p>
         </div>
       </section>
@@ -178,8 +182,13 @@ export default function SignalPage() {
       {/* CONTENT */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {loading ? (
-          <div className="flex justify-center py-24">
-            <RefreshCw className="animate-spin text-blue-500 w-6 h-6" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-[160px] bg-zinc-900/40 border border-zinc-800 rounded-3xl animate-pulse"
+              />
+            ))}
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -189,8 +198,8 @@ export default function SignalPage() {
           </div>
         )}
 
-        {/* legend */}
-        <div className="mt-16 text-center text-xs text-zinc-500">
+        {/* LEGEND */}
+        <div className="mt-14 text-center text-xs text-zinc-500">
           STRONG BUY = Predator Entry Zone • BUY = Momentum Build • HOLD =
           Consolidation • SELL = Distribution
         </div>
