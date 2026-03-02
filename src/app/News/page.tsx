@@ -159,7 +159,7 @@ export default function NewsPage() {
                           ? "bg-green-500/10 border-green-500/20 text-green-500"
                           : item.sentiment === "negative"
                             ? "bg-red-500/10 border-red-500/20 text-red-500"
-                            : "bg-zinc-800/50 border-zinc-700/50 text-zinc-500"
+                            : "bg-zinc-800/50 border-zinc-700/50 text-yellow-500"
                       }`}
                     >
                       {item.sentiment === "positive" ? (
