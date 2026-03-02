@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  Zap,
-  TrendingUp,
-  TrendingDown,
-  Minus,
-  RefreshCw,
-  Target,
-  Shield,
-} from "lucide-react";
+import { Zap, TrendingUp, TrendingDown, Minus, RefreshCw } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,43 +11,75 @@ interface SignalItem {
   symbol: string;
   score: number;
   action: "STRONG BUY" | "BUY" | "HOLD" | "SELL";
-  change: number;
+  dayChange: number;
 }
 
-/* ================= MOCK FETCH ================= */
-/* nanti bisa diganti API real */
-const fetchSignals = async (): Promise<SignalItem[]> => {
-  return [
-    { symbol: "BBCA", score: 92, action: "STRONG BUY", change: 3.4 },
-    { symbol: "TLKM", score: 78, action: "BUY", change: 1.8 },
-    { symbol: "ASII", score: 55, action: "HOLD", change: 0.2 },
-    { symbol: "GOTO", score: 32, action: "SELL", change: -2.1 },
-  ];
-};
+/* ================= STOCK LIST ================= */
+/* bisa kamu ganti sesuai watchlist */
+const STOCKS = [
+  "BBCA",
+  "TLKM",
+  "BMRI",
+  "ASII",
+  "BBRI",
+  "BBNI",
+  "GOTO",
+  "ADRO",
+  "ANTM",
+];
+
+/* ================= FETCH SIGNAL ================= */
+async function fetchSignals(): Promise<SignalItem[]> {
+  const results: SignalItem[] = [];
+
+  await Promise.all(
+    STOCKS.map(async (symbol) => {
+      try {
+        const res = await fetch(`/api/signal?symbol=${symbol}`);
+        const data = await res.json();
+
+        if (!data?.symbol) return;
+
+        results.push({
+          symbol: data.symbol,
+          score: data.score,
+          action: data.action,
+          dayChange: data.dayChange ?? 0,
+        });
+      } catch (e) {
+        console.error("Signal fetch error", symbol);
+      }
+    }),
+  );
+
+  // sort by score desc
+  return results.sort((a, b) => b.score - a.score);
+}
 
 /* ================= CARD ================= */
 function SignalCard({ s }: { s: SignalItem }) {
+  const isBuy = s.action === "BUY" || s.action === "STRONG BUY";
+  const isSell = s.action === "SELL";
+
   const color =
     s.action === "STRONG BUY"
-      ? "text-green-500 border-green-500/30 bg-green-500/10"
+      ? "text-green-400 border-green-500/30 bg-green-500/10"
       : s.action === "BUY"
-        ? "text-blue-500 border-blue-500/30 bg-blue-500/10"
+        ? "text-blue-400 border-blue-500/30 bg-blue-500/10"
         : s.action === "SELL"
-          ? "text-red-500 border-red-500/30 bg-red-500/10"
+          ? "text-red-400 border-red-500/30 bg-red-500/10"
           : "text-zinc-400 border-zinc-700 bg-zinc-800/40";
 
-  const Icon =
-    s.action === "STRONG BUY" || s.action === "BUY"
-      ? TrendingUp
-      : s.action === "SELL"
-        ? TrendingDown
-        : Minus;
+  const Icon = isBuy ? TrendingUp : isSell ? TrendingDown : Minus;
 
   return (
-    <div className="relative bg-[#0b0b0c] border border-zinc-800 rounded-3xl p-6 hover:border-blue-500/40 transition overflow-hidden">
-      <div className="flex justify-between items-start mb-4">
+    <div className="bg-[#0b0b0c] border border-zinc-800 rounded-3xl p-6 sm:p-7 hover:border-blue-500/40 transition">
+      {/* header */}
+      <div className="flex justify-between items-start mb-5">
         <div>
-          <h3 className="text-2xl font-black tracking-tight">{s.symbol}</h3>
+          <h3 className="text-2xl sm:text-3xl font-black tracking-tight">
+            {s.symbol}
+          </h3>
           <p className="text-xs text-zinc-500">AI Signal Score</p>
         </div>
 
@@ -66,7 +90,8 @@ function SignalCard({ s }: { s: SignalItem }) {
         </div>
       </div>
 
-      <div className="flex items-center gap-3 mt-4">
+      {/* change + icon */}
+      <div className="flex items-center gap-4">
         <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800">
           <Icon className="w-5 h-5" />
         </div>
@@ -76,14 +101,14 @@ function SignalCard({ s }: { s: SignalItem }) {
             Change:{" "}
             <span
               className={
-                s.change > 0
-                  ? "text-green-500"
-                  : s.change < 0
-                    ? "text-red-500"
+                s.dayChange > 0
+                  ? "text-green-400"
+                  : s.dayChange < 0
+                    ? "text-red-400"
                     : "text-zinc-400"
               }
             >
-              {s.change}%
+              {s.dayChange?.toFixed(2)}%
             </span>
           </p>
 
@@ -136,7 +161,6 @@ export default function SignalPage() {
             </span>
           </div>
 
-          {/* CONSISTENT HEADING */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-none">
             Signal{" "}
             <span className="text-blue-500 underline decoration-blue-600 decoration-4 underline-offset-4 sm:underline-offset-8">
@@ -145,8 +169,8 @@ export default function SignalPage() {
           </h2>
 
           <p className="mt-6 max-w-xl text-zinc-400 text-sm sm:text-base leading-relaxed">
-            AI trading signal berbasis momentum, probabilitas multibagger, dan
-            analisis pergerakan smart money saham Indonesia.
+            AI trading signal berbasis momentum, RSI, MACD, dan probabilitas
+            multibagger saham Indonesia.
           </p>
         </div>
       </section>
@@ -154,8 +178,8 @@ export default function SignalPage() {
       {/* CONTENT */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {loading ? (
-          <div className="flex justify-center py-20">
-            <RefreshCw className="animate-spin text-blue-500" />
+          <div className="flex justify-center py-24">
+            <RefreshCw className="animate-spin text-blue-500 w-6 h-6" />
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -166,7 +190,7 @@ export default function SignalPage() {
         )}
 
         {/* legend */}
-        <div className="mt-14 text-center text-xs text-zinc-500">
+        <div className="mt-16 text-center text-xs text-zinc-500">
           STRONG BUY = Predator Entry Zone • BUY = Momentum Build • HOLD =
           Consolidation • SELL = Distribution
         </div>
