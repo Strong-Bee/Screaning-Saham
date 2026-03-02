@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lintangpredator.com"),
+  metadataBase: new URL("https://screaning-saham.vercel.app/"),
 
   title: {
     default: "Lintang Predator — AI Stock Radar Indonesia",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Lintang Predator — AI Stock Radar Indonesia",
     description:
       "AI Stock Radar Indonesia untuk screening saham BEI otomatis berbasis RSI dan algoritma Lintang-GPT.",
-    url: "https://lintangpredator.com",
+    url: "https://screaning-saham.vercel.app/",
     siteName: "Lintang Predator",
     locale: "id_ID",
     type: "website",
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://lintangpredator.com",
+    canonical: "https://screaning-saham.vercel.app/",
   },
 };
 
@@ -112,7 +112,7 @@ export default function RootLayout({
     applicationCategory: "FinanceApplication",
     description:
       "AI Stock Radar Indonesia untuk screening saham BEI otomatis berbasis RSI dan algoritma Lintang-GPT.",
-    url: "https://lintangpredator.com",
+    url: "https://screaning-saham.vercel.app/",
     offers: {
       "@type": "Offer",
       price: "0",
