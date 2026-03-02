@@ -10,6 +10,7 @@ import {
   X,
   RefreshCw,
   Code2,
+  HomeIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,7 +25,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const pathname = usePathname();
 
   const navItems = [
-    { href: "/", label: "Home", icon: LayoutDashboard },
+    { href: "/", label: "Home", icon: HomeIcon },
     { href: "/Market", label: "Market Radar", icon: LayoutDashboard },
     { href: "/Signal", label: "Signal", icon: Zap },
     { href: "/News", label: "News", icon: Activity },
