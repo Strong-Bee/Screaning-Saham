@@ -7,6 +7,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ================= TYPES ================= */
+interface ScanItem {
+  Kode: string;
+}
+
 interface SignalItem {
   symbol: string;
   score: number;
@@ -14,51 +18,7 @@ interface SignalItem {
   dayChange: number;
 }
 
-/* ================= AUTO FETCH ================= */
-async function fetchSignals(): Promise<SignalItem[]> {
-  try {
-    // ambil daftar saham dari scanner
-    const scanRes = await fetch("/api/scan", { cache: "no-store" });
-    const scanData = await scanRes.json();
-
-    if (!Array.isArray(scanData)) return [];
-
-    // batasi top 30 saham agar cepat
-    const symbols = scanData.slice(0, 30).map((s: any) => s.Kode);
-
-    const results: SignalItem[] = [];
-
-    await Promise.all(
-      symbols.map(async (symbol: string) => {
-        try {
-          const res = await fetch(`/api/signal?symbol=${symbol}`, {
-            cache: "no-store",
-          });
-          const data = await res.json();
-
-          if (!data?.symbol) return;
-
-          results.push({
-            symbol: data.symbol,
-            score: data.score,
-            action: data.action,
-            dayChange: data.dayChange ?? 0,
-          });
-        } catch {
-          // skip error symbol
-        }
-      }),
-    );
-
-    // ranking strongest
-    return results.sort((a, b) => b.score - a.score);
-  } catch (e) {
-    console.error("Signal fetch error:", e);
-    return [];
-  }
-}
-
-/* ================= CARD ================= */
+/* ================= SIGNAL CARD ================= */
 function SignalCard({ s }: { s: SignalItem }) {
   const color =
     s.action === "STRONG BUY"
@@ -77,29 +37,29 @@ function SignalCard({ s }: { s: SignalItem }) {
         : Minus;
 
   return (
-    <div className="relative bg-[#0b0b0c] border border-zinc-800 rounded-3xl p-6 hover:border-blue-500/40 transition overflow-hidden">
+    <div className="relative bg-[#0b0b0c] border border-zinc-800 rounded-[32px] p-8 hover:border-blue-500/40 transition overflow-hidden">
       {/* HEADER */}
-      <div className="flex justify-between items-start mb-4">
+      <div className="flex justify-between items-start mb-6">
         <div>
-          <h3 className="text-2xl font-black tracking-tight">{s.symbol}</h3>
-          <p className="text-xs text-zinc-500">AI Signal Score</p>
+          <h3 className="text-3xl font-black tracking-tight">{s.symbol}</h3>
+          <p className="text-sm text-zinc-500 mt-1">AI Signal Score</p>
         </div>
 
         <div
-          className={`px-3 py-1 rounded-lg text-[10px] font-black border ${color}`}
+          className={`px-4 py-1.5 rounded-xl text-[11px] font-black border ${color}`}
         >
           {s.action}
         </div>
       </div>
 
       {/* BODY */}
-      <div className="flex items-center gap-3 mt-4">
-        <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800">
-          <Icon className="w-5 h-5" />
+      <div className="flex items-center gap-4">
+        <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
+          <Icon className="w-6 h-6" />
         </div>
 
         <div>
-          <p className="text-sm text-zinc-400">
+          <p className="text-base text-zinc-400">
             Change:{" "}
             <span
               className={
@@ -114,14 +74,14 @@ function SignalCard({ s }: { s: SignalItem }) {
             </span>
           </p>
 
-          <p className="text-xs text-zinc-600">
-            Score: <span className="text-white">{s.score}</span>
+          <p className="text-sm text-zinc-500 mt-1">
+            Score: <span className="text-white font-bold">{s.score}</span>
           </p>
         </div>
       </div>
 
       {/* SCORE BAR */}
-      <div className="mt-6 h-2 bg-zinc-800 rounded-full overflow-hidden">
+      <div className="mt-8 h-2.5 bg-zinc-800 rounded-full overflow-hidden">
         <div className="h-full bg-blue-500" style={{ width: `${s.score}%` }} />
       </div>
     </div>
@@ -133,10 +93,54 @@ export default function SignalPage() {
   const [signals, setSignals] = useState<SignalItem[]>([]);
   const [loading, setLoading] = useState(true);
 
+  /* ================= LOAD SIGNALS ================= */
   const loadSignals = async () => {
     setLoading(true);
-    const data = await fetchSignals();
-    setSignals(data);
+
+    try {
+      // 1️⃣ ambil daftar saham dari scanner
+      const scanRes = await fetch("/api/scan");
+      const scanData: ScanItem[] = await scanRes.json();
+
+      if (!Array.isArray(scanData)) {
+        setSignals([]);
+        setLoading(false);
+        return;
+      }
+
+      // 2️⃣ ambil signal tiap saham
+      const results: SignalItem[] = [];
+
+      for (const s of scanData.slice(0, 12)) {
+        try {
+          const sigRes = await fetch(`/api/signal?symbol=${s.Kode}`);
+          const sig = await sigRes.json();
+
+          results.push({
+            symbol: sig.symbol ?? s.Kode,
+            score: sig.score ?? 50,
+            action: sig.action ?? "HOLD",
+            dayChange: sig.dayChange ?? 0,
+          });
+        } catch {
+          results.push({
+            symbol: s.Kode,
+            score: 50,
+            action: "HOLD",
+            dayChange: 0,
+          });
+        }
+      }
+
+      // urutkan dari skor tertinggi
+      results.sort((a, b) => b.score - a.score);
+
+      setSignals(results);
+    } catch (e) {
+      console.error("Signal load error:", e);
+      setSignals([]);
+    }
+
     setLoading(false);
   };
 
@@ -144,9 +148,9 @@ export default function SignalPage() {
     loadSignals();
   }, []);
 
+  /* ================= UI ================= */
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
-      {/* NAVBAR */}
       <Navbar onSync={loadSignals} isLoading={loading} />
 
       {/* HERO */}
@@ -172,9 +176,8 @@ export default function SignalPage() {
           </h2>
 
           <p className="mt-6 max-w-xl text-zinc-400 text-sm sm:text-base leading-relaxed">
-            AI trading signal otomatis seluruh saham Bursa Efek Indonesia
-            berdasarkan momentum, probabilitas multibagger, dan pergerakan smart
-            money.
+            AI trading signal berbasis momentum, probabilitas multibagger, dan
+            analisis pergerakan smart money saham Indonesia.
           </p>
         </div>
       </section>
@@ -186,7 +189,7 @@ export default function SignalPage() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="h-[160px] bg-zinc-900/40 border border-zinc-800 rounded-3xl animate-pulse"
+                className="h-[220px] bg-zinc-900/40 border border-zinc-800 rounded-[32px] animate-pulse"
               />
             ))}
           </div>
