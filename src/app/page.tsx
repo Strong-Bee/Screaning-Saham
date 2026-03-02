@@ -286,7 +286,7 @@ export default function LintangPredatorDashboard() {
   const navItems = [
     { id: "radar", label: "Market Radar", icon: LayoutDashboard },
     { id: "signal", label: "Predator Signal", icon: Zap },
-    { id: "news", label: "Intel Stream", icon: Activity },
+    { id: "news", label: "News", icon: Activity },
   ];
 
   const loadData = async () => {
