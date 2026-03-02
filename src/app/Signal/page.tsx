@@ -8,8 +8,6 @@ export default function SignalPage() {
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
       {/* NAVBAR */}
       <Navbar
-        // activeTab="signal"
-        // setActiveTab={() => {}}
         onSync={() => {}}
         isLoading={false}
       />
