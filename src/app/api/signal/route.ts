@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 
+// ==========================
+// MENCEGAH NEXT.JS MELAKUKAN CACHING (WAJIB UNTUK REALTIME)
+// ==========================
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+
 interface StockSignalResponse {
   symbol: string;
   companyName: string;
@@ -63,16 +70,22 @@ export async function GET(request: Request) {
     let macdHist = 0;
     let recommendation = 0;
 
+    // Cache-buster timestamp untuk memastikan bypass CDN cache
+    const timestampBuster = Date.now();
+
     // ==========================
     // 1. YAHOO FINANCE (Price Data)
     // ==========================
     try {
-      const yahooUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbol}.JK`;
+      // Tambahkan parameter t=timestamp untuk bypass cache proxy/CDN
+      const yahooUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbol}.JK&t=${timestampBuster}`;
 
       const yahooRes = await fetch(yahooUrl, {
         headers: {
           "User-Agent": "Mozilla/5.0 (compatible; LintangPredatorAI/2.1)",
-          Accept: "application/json",
+          "Accept": "application/json",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          "Pragma": "no-cache",
         },
         cache: "no-store",
       });
@@ -114,12 +127,13 @@ export async function GET(request: Request) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            Accept: "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "Accept": "application/json",
             "Accept-Language": "en-US,en;q=0.9,id;q=0.8",
-            Origin: "https://www.tradingview.com",
-            Referer: "https://www.tradingview.com/",
+            "Origin": "https://www.tradingview.com",
+            "Referer": "https://www.tradingview.com/",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache"
           },
           body: JSON.stringify({
             symbols: {
@@ -151,8 +165,8 @@ export async function GET(request: Request) {
           macdHist = d[4] ?? 0;         // MACD Histogram
         }
       }
-    } catch (e: any) {
-      console.warn("TradingView fetch failed:", e?.message);
+    } catch (e: unknown) {
+      console.warn("TradingView fetch failed:", e instanceof Error ? e.message : e);
     }
 
     // ==========================
@@ -251,9 +265,18 @@ export async function GET(request: Request) {
       timestamp: new Date().toISOString(),
     };
 
-    return NextResponse.json(response);
-  } catch (error: any) {
-    console.error("Signal Engine Error:", error?.message);
+    // Return response dengan header Cache-Control spesifik agar browser/client tidak menyimpannya
+    return NextResponse.json(response, {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+      },
+    });
+
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : "Unknown Error";
+    console.error("Signal Engine Error:", errorMsg);
 
     return NextResponse.json(
       {

@@ -66,6 +66,14 @@ export default function Footer() {
                   News
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/Calendar"
+                  className="text-zinc-500 hover:text-blue-500 transition"
+                >
+                  Calendar
+                </Link>
+              </li>
             </ul>
           </div>
 

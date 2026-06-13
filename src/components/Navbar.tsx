@@ -11,6 +11,7 @@ import {
   RefreshCw,
   Code2,
   HomeIcon,
+  CalendarDays,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -29,6 +30,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     { href: "/Market", label: "Market Radar", icon: LayoutDashboard },
     { href: "/Signal", label: "Signal", icon: Zap },
     { href: "/News", label: "News", icon: Activity },
+    { href: "/Calendar", label: "Calendar", icon: CalendarDays },
   ];
 
   const isActive = (href: string) => {
