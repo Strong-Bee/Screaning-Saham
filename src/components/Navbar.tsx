@@ -19,12 +19,12 @@ import {
   Sparkles,
   Zap,
   Wrench,
-  Pencil,
-  Check,
   TrendingUp,
   TrendingDown,
   Minus,
   Globe,
+  Image as ImageIcon,
+  ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -36,6 +36,113 @@ interface NavbarProps {
   onSync?: () => void;
   isLoading?: boolean;
 }
+
+/* ---------- AI MODELS LIST ---------- */
+const AI_MODELS = [
+  {
+    group: "Gemini (Google)",
+    models: [
+      "gemini-3.5-flash",
+      "gemini-3.1-flash-lite",
+      "gemini-3.1-pro-preview",
+      "gemini-3-flash-preview",
+      "gemini-3-pro-preview",
+      "gemini-2.5-flash-lite-preview-09-2025",
+      "gemini-2.5-flash-preview-09-2025",
+      "gemini-2.5-flash-lite",
+      "gemini-2.5-pro-preview",
+      "gemini-2.5-pro-preview-05-06",
+      "gemini-2.5-flash",
+      "gemini-2.5-pro",
+      "gemini-2.0-flash",
+      "gemini-2.0-flash-lite",
+    ],
+  },
+  {
+    group: "GPT & O-Series (OpenAI)",
+    models: [
+      "gpt-5.5-pro",
+      "gpt-5.5",
+      "gpt-5.4-mini",
+      "gpt-5.4-nano",
+      "gpt-5.4",
+      "gpt-5.4-pro",
+      "gpt-5.3-chat",
+      "gpt-5.2",
+      "gpt-5.2-chat",
+      "gpt-5.2-pro",
+      "gpt-5.1",
+      "gpt-5.1-chat-latest",
+      "gpt-5.3-codex",
+      "gpt-5.2-codex",
+      "gpt-5.1-codex",
+      "gpt-5.1-codex-mini",
+      "gpt-5.1-codex-max",
+      "gpt-5-codex",
+      "gpt-5",
+      "gpt-5-mini",
+      "gpt-5-nano",
+      "gpt-5-chat-latest",
+      "gpt-4.1",
+      "gpt-4.1-mini",
+      "gpt-4.1-nano",
+      "gpt-4.5-preview",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "o1",
+      "o1-mini",
+      "o1-pro",
+      "o3",
+      "o3-mini",
+      "o4-mini",
+    ],
+  },
+  {
+    group: "Claude (Anthropic)",
+    models: [
+      "claude-fable-5",
+      "claude-opus-4.8-fast",
+      "claude-opus-4-8",
+      "claude-opus-4.7-fast",
+      "claude-opus-4-7",
+      "claude-opus-4.6-fast",
+      "claude-sonnet-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-5",
+      "claude-haiku-4-5",
+      "claude-sonnet-4-5",
+      "claude-opus-4-1",
+      "claude-opus-4",
+      "claude-sonnet-4",
+    ],
+  },
+  {
+    group: "Grok (xAI)",
+    models: [
+      "x-ai/grok-build-0.1",
+      "x-ai/grok-4.3",
+      "x-ai/grok-4.20",
+      "x-ai/grok-4.20-multi-agent",
+      "x-ai/grok-4-1-fast",
+      "x-ai/grok-4-1-fast-non-reasoning",
+      "x-ai/grok-code-fast-1",
+      "x-ai/grok-4",
+      "x-ai/grok-4-fast",
+      "x-ai/grok-4-fast-non-reasoning",
+      "x-ai/grok-4-0709",
+      "x-ai/grok-3",
+      "x-ai/grok-3-fast",
+      "x-ai/grok-3-mini",
+      "x-ai/grok-3-mini-fast",
+      "x-ai/grok-2-vision-1212",
+      "x-ai/grok-2-image",
+      "x-ai/grok-beta",
+      "x-ai/grok-vision-beta",
+      "x-ai/grok-2",
+      "x-ai/grok-2-vision",
+    ],
+  },
+];
 
 /* ---------- TOOLS DEFINITION (Function Calling) ---------- */
 const tools = [
@@ -49,7 +156,7 @@ const tools = [
         properties: {
           location: {
             type: "string",
-            description: "Nama kota (contoh: Jakarta, New York, Tokyo)",
+            description: "Nama kota (contoh: Jakarta, New York)",
           },
         },
         required: ["location"],
@@ -66,7 +173,7 @@ const tools = [
         properties: {
           location: {
             type: "string",
-            description: "Nama kota (contoh: Jakarta, London, Sydney)",
+            description: "Nama kota (contoh: Jakarta, London)",
           },
         },
         required: ["location"],
@@ -77,13 +184,8 @@ const tools = [
     type: "function" as const,
     function: {
       name: "get_ihsg_data",
-      description:
-        "Dapatkan data pasar IHSG real-time: harga terkini, perubahan poin & persentase, high/low, volume, dan previous close.",
-      parameters: {
-        type: "object",
-        properties: {},
-        required: [],
-      },
+      description: "Dapatkan data pasar IHSG real-time",
+      parameters: { type: "object", properties: {}, required: [] },
     },
   },
   {
@@ -91,35 +193,13 @@ const tools = [
     function: {
       name: "get_stock_data",
       description:
-        "Dapatkan data saham tertentu berdasarkan simbol ticker (contoh: TLKM, BBCA) tanpa akhiran .JK. Saham Indonesia otomatis menggunakan IDX.",
+        "Dapatkan data saham tertentu berdasarkan simbol ticker (contoh: TLKM, BBCA)",
       parameters: {
         type: "object",
         properties: {
-          symbol: {
-            type: "string",
-            description: "Simbol saham (contoh: TLKM, BBCA, ASII)",
-          },
+          symbol: { type: "string", description: "Simbol saham" },
         },
         required: ["symbol"],
-      },
-    },
-  },
-  {
-    type: "function" as const,
-    function: {
-      name: "scrape_webpage",
-      description:
-        "Scrape konten teks dari sebuah halaman web. Gunakan untuk mendapatkan informasi terkini dari berita, artikel, atau halaman publik.",
-      parameters: {
-        type: "object",
-        properties: {
-          url: {
-            type: "string",
-            description:
-              "URL lengkap halaman yang akan di-scrape (contoh: https://www.cnbcindonesia.com/market/...)",
-          },
-        },
-        required: ["url"],
       },
     },
   },
@@ -127,30 +207,17 @@ const tools = [
 
 /* ---------- MOCK / UTILITY FUNCTIONS ---------- */
 function getWeather(location: string) {
-  const data: Record<
-    string,
-    { temp: string; condition: string; humidity: string }
-  > = {
-    Jakarta: { temp: "32°C", condition: "Cerah berawan", humidity: "75%" },
-    "New York": { temp: "72°F", condition: "Partly cloudy", humidity: "65%" },
-    London: { temp: "18°C", condition: "Rainy", humidity: "80%" },
-    Tokyo: { temp: "28°C", condition: "Sunny", humidity: "70%" },
+  const data: Record<string, { temp: string; condition: string }> = {
+    Jakarta: { temp: "32°C", condition: "Cerah berawan" },
+    "New York": { temp: "72°F", condition: "Partly cloudy" },
   };
-  return (
-    data[location] || {
-      temp: "Tidak diketahui",
-      condition: "Data tidak tersedia",
-      humidity: "Tidak diketahui",
-    }
-  );
+  return data[location] || { temp: "N/A", condition: "Tidak diketahui" };
 }
 
 function getCurrentTime(location: string) {
   const times: Record<string, string> = {
     Jakarta: "14:30 WIB",
-    "New York": "2:30 AM EST",
     London: "7:30 AM GMT",
-    Tokyo: "4:30 PM JST",
   };
   return times[location] || "Waktu tidak tersedia";
 }
@@ -158,7 +225,7 @@ function getCurrentTime(location: string) {
 async function getIHSGData() {
   try {
     const res = await fetch("/api/ihsg");
-    if (!res.ok) throw new Error("Gagal mengambil data IHSG");
+    if (!res.ok) throw new Error("Error");
     return await res.json();
   } catch {
     return { error: "Data IHSG tidak tersedia" };
@@ -171,22 +238,10 @@ async function getStockData(symbol: string) {
     const res = await fetch(
       `/api/tradingview/stock?symbol=${encodeURIComponent(cleanSymbol)}`,
     );
-    if (!res.ok) throw new Error("Gagal mengambil data saham");
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-    return data;
-  } catch {
-    return { error: `Data ${symbol} tidak ditemukan` };
-  }
-}
-
-async function scrapeWebpage(url: string) {
-  try {
-    const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}`);
-    if (!res.ok) throw new Error("Gagal scraping");
+    if (!res.ok) throw new Error("Error");
     return await res.json();
   } catch {
-    return { error: `Gagal mengakses ${url}` };
+    return { error: `Data ${symbol} tidak ditemukan` };
   }
 }
 
@@ -205,18 +260,12 @@ const MarkdownComponents: any = {
   ),
   th: ({ node, ...props }: any) => (
     <th
-      className="px-3 py-2.5 font-semibold border-b border-zinc-700 text-zinc-200"
+      className="px-3 py-2.5 font-semibold border-b border-zinc-700"
       {...props}
     />
   ),
   td: ({ node, ...props }: any) => (
-    <td
-      className="px-3 py-2 border-b border-zinc-800/50 text-zinc-300"
-      {...props}
-    />
-  ),
-  tr: ({ node, ...props }: any) => (
-    <tr className="hover:bg-zinc-800/30 transition-colors" {...props} />
+    <td className="px-3 py-2 border-b border-zinc-800/50" {...props} />
   ),
   p: ({ node, ...props }: any) => (
     <p className="mb-2.5 last:mb-0 leading-relaxed" {...props} />
@@ -224,40 +273,22 @@ const MarkdownComponents: any = {
   ul: ({ node, ...props }: any) => (
     <ul className="list-disc list-outside ml-4 mb-3 space-y-1" {...props} />
   ),
-  ol: ({ node, ...props }: any) => (
-    <ol className="list-decimal list-outside ml-4 mb-3 space-y-1" {...props} />
-  ),
-  li: ({ node, ...props }: any) => <li className="pl-1" {...props} />,
-  strong: ({ node, ...props }: any) => (
-    <strong className="font-semibold text-white" {...props} />
-  ),
-  a: ({ node, ...props }: any) => (
-    <a
-      className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
-      target="_blank"
-      rel="noreferrer"
-      {...props}
-    />
-  ),
   code: ({ node, className, children, ...props }: any) => {
     const match = /language-(\w+)/.exec(className || "");
     return match ? (
       <div className="my-3 overflow-hidden rounded-lg border border-zinc-800 bg-[#050505]">
-        <div className="flex items-center px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-[10px] font-mono text-zinc-500 uppercase">
+        <div className="px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-[10px] font-mono text-zinc-500 uppercase">
           {match[1]}
         </div>
-        <div className="overflow-x-auto p-3 scrollbar-thin scrollbar-thumb-zinc-800">
-          <code
-            className={`text-[12px] font-mono text-zinc-300 ${className || ""}`}
-            {...props}
-          >
+        <div className="overflow-x-auto p-3">
+          <code className={`text-[12px] font-mono text-zinc-300`} {...props}>
             {children}
           </code>
         </div>
       </div>
     ) : (
       <code
-        className="bg-zinc-800/80 text-blue-300 px-1.5 py-0.5 rounded-md text-[11px] font-mono border border-zinc-700/50"
+        className="bg-zinc-800/80 text-blue-300 px-1.5 py-0.5 rounded-md text-[11px] font-mono"
         {...props}
       >
         {children}
@@ -266,22 +297,32 @@ const MarkdownComponents: any = {
   },
 };
 
+/* ---------- CHAT TYPES ---------- */
+interface ChatMessage {
+  role: "user" | "assistant";
+  content:
+    | string
+    | Array<
+        | { type: "text"; text: string }
+        | { type: "image_url"; image_url: { url: string } }
+      >;
+  imagePreview?: string;
+}
+
 export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  // Chat states
-  const [chatMessages, setChatMessages] = useState<
-    { role: "user" | "assistant"; content: string }[]
-  >([]);
+  // Chat & Model States
+  const [selectedModel, setSelectedModel] = useState("gemini-2.0-flash");
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [chatInput, setChatInput] = useState("");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
   const [toolCallStatus, setToolCallStatus] = useState<string | null>(null);
-  const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  const [editInput, setEditInput] = useState("");
 
-  // IHSG Mini Ticker state
+  // IHSG Ticker
   const [ihsgData, setIhsgData] = useState<{
     price: number | null;
     change: number | null;
@@ -297,6 +338,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
   });
 
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
 
   const navItems = [
@@ -306,59 +348,66 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     { href: "/Calendar", label: "Calendar", icon: CalendarDays },
   ];
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
-
-  // Fetch IHSG mini data untuk ticker navbar
-  const fetchMiniIHSG = async () => {
-    try {
-      const res = await fetch("/api/ihsg", { cache: "no-store" });
-      if (!res.ok) throw new Error("Gagal");
-      const json = await res.json();
-      setIhsgData({
-        price: json.price,
-        change: json.change,
-        changePercent: json.changePercent,
-        loading: false,
-        error: null,
-      });
-    } catch (err: any) {
-      setIhsgData((prev) => ({ ...prev, loading: false, error: err.message }));
-    }
-  };
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   useEffect(() => {
+    const fetchMiniIHSG = async () => {
+      try {
+        const res = await fetch("/api/ihsg");
+        if (res.ok) {
+          const json = await res.json();
+          setIhsgData({
+            price: json.price,
+            change: json.change,
+            changePercent: json.changePercent,
+            loading: false,
+            error: null,
+          });
+        }
+      } catch (err: any) {
+        setIhsgData((prev) => ({ ...prev, loading: false, error: "Error" }));
+      }
+    };
     fetchMiniIHSG();
-    const interval = setInterval(fetchMiniIHSG, 60_000);
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chatMessages, streamingContent, toolCallStatus, editingIndex]);
+  }, [chatMessages, streamingContent, toolCallStatus]);
 
-  /* ---------- CORE AI FETCH LOGIC ---------- */
-  const fetchAIResponse = async (
-    history: { role: "user" | "assistant"; content: string }[],
-  ) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setSelectedImage(reader.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
+
+  /* ---------- AI FETCH LOGIC DENGAN MULTI-MODEL ---------- */
+  const fetchAIResponse = async (history: ChatMessage[]) => {
     setIsChatLoading(true);
     setStreamingContent("");
     setToolCallStatus(null);
 
     try {
+      const formattedHistory = history.map((msg) => ({
+        role: msg.role,
+        content: msg.content,
+      }));
+
       const messages: any[] = [
         {
           role: "system",
-          content:
-            "Kamu adalah Lintang AI, asisten AI untuk platform Lintang Predator — AI Market Intelligence untuk Bursa Efek Indonesia. Kamu dapat mengakses data pasar real-time (dari TradingView), cuaca, waktu, dan melakukan scraping halaman web untuk mendapatkan berita terkini. Bantu pengguna dengan analisis saham, teknikal, sentimen pasar, dan berita ekonomi. Gunakan format markdown (tabel, list, tebal) agar penjelasanmu rapi. Gunakan fungsi yang tersedia untuk mendapatkan informasi real-time jika diperlukan.",
+          content: `Kamu adalah Lintang AI, asisten AI Market Intelligence. Kamu menggunakan model ${selectedModel}. Bantu pengguna dengan analisis teknikal, market, dan bursa efek. Format dengan markdown.`,
         },
-        ...history,
+        ...formattedHistory,
       ];
 
+      // Panggil API dengan Model yang dipilih User
       const completion = (await puter.ai.chat(messages, {
-        model: "x-ai/grok-4.3",
+        model: selectedModel,
         tools: tools,
         stream: false,
       })) as any;
@@ -370,7 +419,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
         completion.message.tool_calls.length > 0
       ) {
         messages.push(completion.message);
-        setToolCallStatus("🔍 Mengakses data eksternal...");
+        setToolCallStatus(`🔍 ${selectedModel} mengakses data eksternal...`);
 
         for (const toolCall of completion.message.tool_calls) {
           const args = JSON.parse(toolCall.function.arguments);
@@ -389,13 +438,9 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
             case "get_stock_data":
               result = await getStockData(args.symbol);
               break;
-            case "scrape_webpage":
-              result = await scrapeWebpage(args.url);
-              break;
             default:
               result = { error: "Fungsi tidak dikenal" };
           }
-
           messages.push({
             role: "tool",
             tool_call_id: toolCall.id,
@@ -403,10 +448,10 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
           });
         }
 
-        setToolCallStatus("🧠 Menganalisis data...");
+        setToolCallStatus(`🧠 ${selectedModel} menganalisis data...`);
 
         const finalStream = await puter.ai.chat(messages, {
-          model: "x-ai/grok-4.3",
+          model: selectedModel,
           stream: true,
         });
 
@@ -433,7 +478,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
         ...prev,
         {
           role: "assistant",
-          content: "⚠️ Gagal terhubung ke AI. Silakan coba lagi nanti.",
+          content: `⚠️ Gagal terhubung ke model ${selectedModel}. Model mungkin belum didukung untuk input ini.`,
         },
       ]);
     } finally {
@@ -443,38 +488,34 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     }
   };
 
-  /* ---------- MESSAGE HANDLERS ---------- */
   const handleSendMessage = () => {
-    if (!chatInput.trim() || isChatLoading) return;
+    if (!chatInput.trim() && !selectedImage) return;
+    if (isChatLoading) return;
 
-    const userMessage = chatInput.trim();
-    setChatInput("");
+    let contentPayload: any = chatInput.trim();
 
-    const newHistory: { role: "user" | "assistant"; content: string }[] = [
-      ...chatMessages,
-      { role: "user", content: userMessage },
-    ];
-    setChatMessages(newHistory);
-    fetchAIResponse(newHistory);
-  };
-
-  const handleSaveEdit = (index: number) => {
-    if (!editInput.trim() || isChatLoading) return;
-    const newContent = editInput.trim();
-
-    if (newContent === chatMessages[index].content) {
-      setEditingIndex(null);
-      return;
+    if (selectedImage) {
+      contentPayload = [];
+      if (chatInput.trim())
+        contentPayload.push({ type: "text", text: chatInput.trim() });
+      contentPayload.push({
+        type: "image_url",
+        image_url: { url: selectedImage },
+      });
     }
 
-    setEditingIndex(null);
-
-    const newHistory: { role: "user" | "assistant"; content: string }[] = [
-      ...chatMessages.slice(0, index),
-      { role: "user", content: newContent },
-    ];
+    const newMessage: ChatMessage = {
+      role: "user",
+      content: contentPayload,
+      imagePreview: selectedImage || undefined,
+    };
+    const newHistory = [...chatMessages, newMessage];
 
     setChatMessages(newHistory);
+    setChatInput("");
+    setSelectedImage(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+
     fetchAIResponse(newHistory);
   };
 
@@ -485,10 +526,8 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     }
   };
 
-  // Mini ticker formatting & colors
   const formatRupiahCompact = (value: number) =>
     "Rp " + value.toLocaleString("id-ID", { maximumFractionDigits: 2 });
-
   const changeDirection = !ihsgData.change
     ? "netral"
     : ihsgData.change > 0
@@ -512,69 +551,38 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
       <nav className="sticky top-0 z-50 w-full border-b border-zinc-800/50 bg-[#050505]/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 sm:h-18 lg:h-20 items-center justify-between">
-            {/* LEFT */}
             <div className="flex items-center gap-6 lg:gap-10">
               <Link href="/" className="flex items-center gap-2.5 group">
-                <div className="relative bg-blue-600 p-1.5 rounded-md shadow-[0_0_12px_rgba(37,99,235,0.5)] group-hover:shadow-[0_0_20px_rgba(37,99,235,0.8)] transition-shadow">
-                  <ShieldAlert className="text-white w-5 h-5 sm:w-6 sm:h-6" />
-                  <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-300 rounded-full animate-ping" />
+                <div className="relative bg-blue-600 p-1.5 rounded-md shadow-[0_0_12px_rgba(37,99,235,0.5)]">
+                  <ShieldAlert className="text-white w-5 h-5" />
                 </div>
-                <span className="text-sm sm:text-base font-black tracking-tight uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                <span className="text-sm font-black tracking-tight uppercase italic">
                   <strong>
                     LINTANG <span className="text-blue-500">PREDATOR</span>
                   </strong>
                 </span>
               </Link>
-
               <div className="hidden lg:flex items-center gap-8">
-                {navItems.map((item) => {
-                  const active = isActive(item.href);
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`relative flex items-center gap-2 text-[11px] font-black uppercase tracking-widest transition-all duration-300 ${
-                        active
-                          ? "text-blue-500"
-                          : "text-zinc-500 hover:text-white"
-                      }`}
-                    >
-                      <item.icon className="w-4 h-4" />
-                      {item.label}
-                      {active && (
-                        <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 to-blue-300 shadow-[0_0_10px_rgba(37,99,235,0.7)]" />
-                      )}
-                    </Link>
-                  );
-                })}
-
-                <Link
-                  href="/Developer"
-                  className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-widest transition ${
-                    pathname.startsWith("/Developer")
-                      ? "text-blue-500"
-                      : "text-zinc-500 hover:text-white"
-                  }`}
-                >
-                  <Code2 className="w-4 h-4" />
-                  Developer
-                </Link>
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center gap-2 text-[11px] font-black uppercase transition ${isActive(item.href) ? "text-blue-500" : "text-zinc-500 hover:text-white"}`}
+                  >
+                    <item.icon className="w-4 h-4" />
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </div>
 
-            {/* RIGHT */}
             <div className="flex items-center gap-2 sm:gap-4">
-              {/* IHSG Mini Ticker */}
-              <div className="hidden sm:flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 hover:border-blue-500/30 transition-colors">
+              <div className="hidden sm:flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800">
                 <Globe className="w-3 h-3 text-blue-500" />
-                <span className="text-zinc-500 font-semibold uppercase tracking-widest text-[10px]">
+                <span className="text-zinc-500 font-semibold uppercase text-[10px]">
                   IHSG
                 </span>
-                {ihsgData.loading ? (
-                  <span className="text-zinc-500 animate-pulse">...</span>
-                ) : ihsgData.error ? (
-                  <span className="text-red-400 text-[10px]">Error</span>
-                ) : (
+                {!ihsgData.loading && !ihsgData.error && (
                   <>
                     <span className="text-white font-bold">
                       {formatRupiahCompact(ihsgData.price!)}
@@ -589,183 +597,93 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
 
               <button
                 onClick={() => setIsChatOpen(!isChatOpen)}
-                className={`relative hidden sm:flex items-center gap-2 px-4 lg:px-5 py-2 rounded-xl text-[11px] font-black uppercase transition-all duration-300 border ${
-                  isChatOpen
-                    ? "bg-blue-600 border-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]"
-                    : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-blue-500/50 hover:text-white hover:shadow-[0_0_10px_rgba(37,99,235,0.2)]"
-                }`}
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span className="hidden lg:inline">AI Chat</span>
-                {!isChatOpen && (
-                  <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                )}
-              </button>
-
-              {onSync && (
-                <button
-                  onClick={onSync}
-                  disabled={isLoading}
-                  className="hidden sm:flex items-center gap-2 px-4 lg:px-6 py-2 rounded-xl bg-blue-600 text-white text-[11px] font-black uppercase hover:bg-blue-500 transition disabled:opacity-40 shadow-[0_0_10px_rgba(37,99,235,0.3)]"
-                >
-                  <RefreshCw
-                    className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
-                  />
-                  <span className="hidden lg:inline">SYNC</span>
-                </button>
-              )}
-
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400"
-              >
-                {isMenuOpen ? (
-                  <X className="w-5 h-5 text-blue-500" />
-                ) : (
-                  <Menu className="w-5 h-5" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* MOBILE MENU */}
-        {isMenuOpen && (
-          <div className="lg:hidden border-t border-zinc-800 bg-[#050505]">
-            <div className="px-4 py-4 flex flex-col gap-2">
-              {navItems.map((item) => {
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-black uppercase transition ${
-                      active
-                        ? "bg-blue-600 text-white"
-                        : "bg-zinc-900 text-zinc-400 border border-zinc-800"
-                    }`}
-                  >
-                    <item.icon className="w-4 h-4" />
-                    {item.label}
-                  </Link>
-                );
-              })}
-
-              <Link
-                href="/Developer"
-                onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-black uppercase transition ${
-                  pathname.startsWith("/Developer")
-                    ? "bg-blue-600 text-white"
-                    : "bg-zinc-900 text-zinc-400 border border-zinc-800"
-                }`}
-              >
-                <Code2 className="w-4 h-4" />
-                Developer
-              </Link>
-
-              <button
-                onClick={() => {
-                  setIsChatOpen(true);
-                  setIsMenuOpen(false);
-                }}
-                className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs font-black uppercase hover:border-blue-500/50 hover:text-white transition"
+                className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-[11px] font-black uppercase transition border ${isChatOpen ? "bg-blue-600 border-blue-500 text-white" : "bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-blue-500/50 hover:text-white"}`}
               >
                 <MessageSquare className="w-4 h-4" />
                 AI Chat
               </button>
-
-              {onSync && (
-                <button
-                  onClick={() => {
-                    onSync();
-                    setIsMenuOpen(false);
-                  }}
-                  disabled={isLoading}
-                  className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white text-xs font-black uppercase disabled:opacity-40"
-                >
-                  <RefreshCw
-                    className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
-                  />
-                  <span className="hidden lg:inline">Sync Engine</span>
-                </button>
-              )}
             </div>
           </div>
-        )}
+        </div>
       </nav>
 
-      {/* CHAT AI PANEL */}
+      {/* CHAT AI PANEL MULTI-MODEL */}
       {isChatOpen && (
         <div className="fixed inset-0 z-50 flex justify-end">
           <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity"
+            className="absolute inset-0 bg-black/70 backdrop-blur-md"
             onClick={() => setIsChatOpen(false)}
           />
-          <div className="relative w-full max-w-md h-full bg-gradient-to-b from-[#0a0a0b] via-[#0a0a0b] to-[#050505] border-l border-zinc-800 shadow-2xl flex flex-col animate-in slide-in-from-right">
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-10 left-5 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-40 right-10 w-48 h-48 bg-blue-600/5 rounded-full blur-3xl" />
-            </div>
-
-            <div className="relative flex items-center justify-between p-5 border-b border-zinc-800 bg-[#0a0a0b]/80 backdrop-blur-md">
-              <div className="flex items-center gap-3">
-                <div className="relative p-1.5 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 shadow-[0_0_15px_rgba(37,99,235,0.5)]">
-                  <Bot className="w-5 h-5 text-white" />
-                  <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-yellow-400 animate-pulse" />
+          <div className="relative w-full max-w-md h-full bg-[#0a0a0b] border-l border-zinc-800 flex flex-col shadow-2xl animate-in slide-in-from-right">
+            {/* HEADER CHAT WITH DROPDOWN MODEL */}
+            <div className="p-4 border-b border-zinc-800 bg-[#0a0a0b]/80 backdrop-blur-md">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-1.5 rounded-lg bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                    <Bot className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase text-white">
+                      Lintang AI
+                    </h3>
+                    <p className="text-[10px] text-zinc-400">
+                      Multi-Model & Multi-Modal
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-black uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300">
-                    Lintang AI
-                  </h3>
-                  <p className="text-[10px] text-zinc-500 flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-blue-500" />
-                    Grok 4.3 • TradingView + Scraping
-                  </p>
-                </div>
+                <button
+                  onClick={() => setIsChatOpen(false)}
+                  className="text-zinc-500 hover:text-white"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
-              <button
-                onClick={() => setIsChatOpen(false)}
-                className="p-2 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
+
+              {/* DROPDOWN SELECTOR AI */}
+              <div className="relative">
+                <select
+                  value={selectedModel}
+                  onChange={(e) => setSelectedModel(e.target.value)}
+                  disabled={isChatLoading}
+                  className="w-full appearance-none bg-zinc-900 border border-zinc-700 text-zinc-200 text-[11px] font-mono px-3 py-2 rounded-lg focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50"
+                >
+                  {AI_MODELS.map((group) => (
+                    <optgroup
+                      key={group.group}
+                      label={group.group}
+                      className="bg-zinc-900 text-blue-400 font-semibold"
+                    >
+                      {group.models.map((model) => (
+                        <option
+                          key={model}
+                          value={model}
+                          className="text-zinc-300 font-normal"
+                        >
+                          {model}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 pointer-events-none" />
+              </div>
             </div>
 
+            {/* MESSAGE CONTAINER */}
             <div className="flex-1 overflow-y-auto p-5 space-y-5 scrollbar-thin scrollbar-thumb-zinc-800">
               {chatMessages.length === 0 &&
                 !streamingContent &&
                 !toolCallStatus && (
-                  <div className="flex flex-col items-center justify-center h-full text-center text-zinc-500 space-y-6">
-                    <div className="relative">
-                      <Bot className="w-16 h-16 text-zinc-700" />
-                      <div className="absolute -bottom-2 -right-2 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                        <Zap className="w-3 h-3 text-white" />
-                      </div>
-                    </div>
+                  <div className="flex flex-col items-center justify-center h-full text-center text-zinc-500 space-y-4">
+                    <Bot className="w-12 h-12 text-zinc-700" />
                     <div>
-                      <p className="text-lg font-black text-zinc-400">
-                        Lintang AI Siap Membantu
+                      <p className="text-sm font-bold text-zinc-400">
+                        Pilih Model di Atas
                       </p>
-                      <p className="text-sm mt-2 text-zinc-600">
-                        Tanyakan analisis saham, cuaca, berita pasar, atau
-                        scraping halaman web!
+                      <p className="text-xs mt-1 text-zinc-600">
+                        Model saat ini:{" "}
+                        <span className="text-blue-500">{selectedModel}</span>
                       </p>
-                      <div className="mt-3 flex justify-center gap-2 text-xs text-zinc-500 flex-wrap">
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
-                          📈 IHSG
-                        </span>
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
-                          🏢 Saham
-                        </span>
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
-                          🌤 Cuaca
-                        </span>
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
-                          🌐 Scraping
-                        </span>
-                      </div>
                     </div>
                   </div>
                 )}
@@ -773,33 +691,10 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
               {chatMessages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`flex ${
-                    msg.role === "user" ? "justify-end" : "justify-start"
-                  } group animate-in fade-in slide-in-from-${
-                    msg.role === "user" ? "right" : "left"
-                  }-2 duration-300`}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  {msg.role === "user" &&
-                    editingIndex !== idx &&
-                    !isChatLoading && (
-                      <button
-                        onClick={() => {
-                          setEditingIndex(idx);
-                          setEditInput(msg.content);
-                        }}
-                        className="opacity-0 group-hover:opacity-100 p-2 text-zinc-500 hover:text-blue-400 transition-all h-fit mt-1 mr-1"
-                        title="Edit Pesan"
-                      >
-                        <Pencil className="w-3.5 h-3.5" />
-                      </button>
-                    )}
-
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg overflow-hidden ${
-                      msg.role === "user"
-                        ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-blue-500/20"
-                        : "bg-zinc-900 border border-zinc-800 text-zinc-300 shadow-black/20"
-                    }`}
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg ${msg.role === "user" ? "bg-blue-600 text-white" : "bg-zinc-900 border border-zinc-800 text-zinc-300"}`}
                   >
                     <div className="flex items-center gap-2 mb-2">
                       {msg.role === "user" ? (
@@ -807,122 +702,122 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                       ) : (
                         <Bot className="w-3 h-3 text-blue-500" />
                       )}
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">
-                        {msg.role === "user" ? "You" : "Lintang AI"}
+                      <span className="text-[10px] font-bold uppercase text-zinc-500">
+                        {msg.role === "user" ? "You" : selectedModel}
                       </span>
                     </div>
 
                     {msg.role === "user" ? (
-                      editingIndex === idx ? (
-                        <div className="flex flex-col gap-3 min-w-[200px] sm:min-w-[280px]">
-                          <textarea
-                            value={editInput}
-                            onChange={(e) => setEditInput(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" && !e.shiftKey) {
-                                e.preventDefault();
-                                handleSaveEdit(idx);
-                              }
-                            }}
-                            className="w-full bg-black/20 border border-white/20 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-300 focus:outline-none focus:border-white/50 resize-none"
-                            rows={Math.max(2, editInput.split("\n").length)}
-                            autoFocus
+                      <div className="space-y-2">
+                        {msg.imagePreview && (
+                          <img
+                            src={msg.imagePreview}
+                            alt="Upload"
+                            className="max-w-[180px] rounded-lg border border-white/20"
                           />
-                          <div className="flex justify-end gap-2">
-                            <button
-                              onClick={() => setEditingIndex(null)}
-                              className="p-1.5 rounded-lg bg-black/20 hover:bg-black/40 text-white/80 hover:text-white transition-colors"
-                              title="Batal"
-                            >
-                              <X className="w-4 h-4" />
-                            </button>
-                            <button
-                              onClick={() => handleSaveEdit(idx)}
-                              disabled={!editInput.trim() || isChatLoading}
-                              className="p-1.5 rounded-lg bg-white/20 hover:bg-white/40 text-white disabled:opacity-40 transition-colors"
-                              title="Simpan & Kirim Ulang"
-                            >
-                              <Check className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <p className="whitespace-pre-wrap leading-relaxed">
-                          {msg.content}
+                        )}
+                        <p className="whitespace-pre-wrap">
+                          {typeof msg.content === "string"
+                            ? msg.content
+                            : (msg.content as any[]).find(
+                                (c) => c.type === "text",
+                              )?.text || ""}
                         </p>
-                      )
-                    ) : (
-                      <div className="w-full">
-                        <ReactMarkdown
-                          remarkPlugins={[remarkGfm]}
-                          components={MarkdownComponents}
-                        >
-                          {msg.content}
-                        </ReactMarkdown>
                       </div>
+                    ) : (
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={MarkdownComponents}
+                      >
+                        {msg.content as string}
+                      </ReactMarkdown>
                     )}
                   </div>
                 </div>
               ))}
 
-              {toolCallStatus && (
-                <div className="flex justify-start animate-in fade-in slide-in-from-left-2 duration-300">
-                  <div className="bg-zinc-900 border border-blue-500/30 rounded-2xl px-4 py-3 text-sm text-zinc-300 flex items-center gap-3">
-                    <Wrench className="w-4 h-4 text-blue-400 animate-pulse" />
-                    <span>{toolCallStatus}</span>
-                  </div>
-                </div>
-              )}
-
               {streamingContent && (
-                <div className="flex justify-start animate-in fade-in slide-in-from-left-2 duration-300">
-                  <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-zinc-900 border border-blue-500/30 text-zinc-300 shadow-[0_0_10px_rgba(37,99,235,0.2)] overflow-hidden">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Bot className="w-3 h-3 text-blue-500" />
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">
-                        Lintang AI
-                      </span>
-                      <span className="inline-block w-2 h-4 bg-blue-500 animate-pulse" />
-                    </div>
-                    <div className="w-full">
-                      <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        components={MarkdownComponents}
-                      >
-                        {streamingContent}
-                      </ReactMarkdown>
-                    </div>
+                <div className="flex justify-start">
+                  <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-zinc-900 border border-zinc-800 text-zinc-300">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={MarkdownComponents}
+                    >
+                      {streamingContent}
+                    </ReactMarkdown>
                   </div>
                 </div>
               )}
 
-              {isChatLoading && !streamingContent && !toolCallStatus && (
+              {toolCallStatus && (
                 <div className="flex justify-start">
-                  <div className="bg-zinc-900 border border-zinc-800 rounded-2xl px-4 py-3 flex items-center gap-3">
-                    <Loader2 className="w-4 h-4 text-blue-500 animate-spin" />
-                    <span className="text-xs text-zinc-500">Memproses...</span>
+                  <div className="flex items-center gap-2 text-xs text-zinc-500 bg-zinc-900/50 px-3 py-1.5 rounded-xl border border-zinc-800/60">
+                    <Wrench className="w-3 h-3 text-blue-400 animate-spin" />
+                    <span>{toolCallStatus}</span>
                   </div>
                 </div>
               )}
               <div ref={chatEndRef} />
             </div>
 
-            <div className="relative p-4 border-t border-zinc-800 bg-[#0a0a0b]/90 backdrop-blur-sm">
-              <div className="flex gap-2">
+            {/* INPUT SECTION */}
+            <div className="p-4 border-t border-zinc-800 bg-[#0a0a0b]/90 backdrop-blur-md space-y-3">
+              {selectedImage && (
+                <div className="relative inline-block p-1 bg-zinc-800 rounded-xl">
+                  <img
+                    src={selectedImage}
+                    alt="Preview"
+                    className="w-16 h-16 object-cover rounded-lg"
+                  />
+                  <button
+                    onClick={() => {
+                      setSelectedImage(null);
+                      if (fileInputRef.current) fileInputRef.current.value = "";
+                    }}
+                    className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full p-0.5"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                </div>
+              )}
+
+              <div className="flex items-end gap-2 bg-zinc-900 border border-zinc-800 rounded-2xl p-2">
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={isChatLoading}
+                  className="p-2 text-zinc-500 hover:text-zinc-200"
+                >
+                  <ImageIcon className="w-5 h-5" />
+                </button>
                 <textarea
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Ketik pesan..."
+                  placeholder={`Kirim ke ${selectedModel}...`}
+                  className="flex-1 bg-transparent border-0 px-2 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none resize-none max-h-24 scrollbar-none"
                   rows={1}
-                  className="flex-1 resize-none bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500/50 focus:shadow-[0_0_15px_rgba(37,99,235,0.3)] transition-all scrollbar-thin scrollbar-thumb-zinc-800"
+                  disabled={isChatLoading}
                 />
                 <button
                   onClick={handleSendMessage}
-                  disabled={!chatInput.trim() || isChatLoading}
-                  className="p-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white disabled:opacity-40 transition-all shadow-[0_0_10px_rgba(37,99,235,0.3)] hover:shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+                  disabled={
+                    (!chatInput.trim() && !selectedImage) || isChatLoading
+                  }
+                  className="p-2.5 rounded-xl bg-blue-600 text-white disabled:opacity-30"
                 >
-                  <Send className="w-4 h-4" />
+                  {isChatLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
                 </button>
               </div>
             </div>
