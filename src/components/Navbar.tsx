@@ -19,6 +19,8 @@ import {
   Sparkles,
   Zap,
   Wrench,
+  Pencil,
+  Check,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -205,6 +207,8 @@ const MarkdownComponents: any = {
 export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  // Chat States
   const [chatMessages, setChatMessages] = useState<
     { role: "user" | "assistant"; content: string }[]
   >([]);
@@ -212,6 +216,11 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
   const [toolCallStatus, setToolCallStatus] = useState<string | null>(null);
+
+  // Edit States
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [editInput, setEditInput] = useState("");
+
   const chatEndRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -229,17 +238,12 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chatMessages, streamingContent, toolCallStatus]);
+  }, [chatMessages, streamingContent, toolCallStatus, editingIndex]);
 
-  const handleSendMessage = async () => {
-    if (!chatInput.trim() || isChatLoading) return;
-
-    const userMessage = chatInput.trim();
-    setChatInput("");
-    setChatMessages((prev) => [
-      ...prev,
-      { role: "user", content: userMessage },
-    ]);
+  /* ---------- CORE AI FETCH LOGIC ---------- */
+  const fetchAIResponse = async (
+    history: { role: "user" | "assistant"; content: string }[],
+  ) => {
     setIsChatLoading(true);
     setStreamingContent("");
     setToolCallStatus(null);
@@ -251,11 +255,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
           content:
             "Kamu adalah Lintang AI, asisten AI untuk platform Lintang Predator — AI Market Intelligence untuk Bursa Efek Indonesia. Bantu pengguna memahami saham, analisis teknikal, sentimen pasar, dan data ekonomi. Kamu bisa menggunakan format markdown (tabel, list, tebal) agar penjelasanmu rapi. Gunakan fungsi yang tersedia untuk mendapatkan informasi real-time jika diperlukan.",
         },
-        ...chatMessages.map((msg) => ({
-          role: msg.role,
-          content: msg.content,
-        })),
-        { role: "user", content: userMessage },
+        ...history,
       ];
 
       const completion = (await puter.ai.chat(messages, {
@@ -317,12 +317,6 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
       } else {
         finalContent =
           completion.message?.content || "Maaf, tidak ada respons.";
-        setChatMessages((prev) => [
-          ...prev,
-          { role: "assistant", content: finalContent },
-        ]);
-        setIsChatLoading(false);
-        return;
       }
 
       setChatMessages((prev) => [
@@ -342,6 +336,43 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
       setStreamingContent("");
       setToolCallStatus(null);
     }
+  };
+
+  /* ---------- MESSAGE HANDLERS ---------- */
+  const handleSendMessage = () => {
+    if (!chatInput.trim() || isChatLoading) return;
+
+    const userMessage = chatInput.trim();
+    setChatInput("");
+
+    const newHistory: { role: "user" | "assistant"; content: string }[] = [
+      ...chatMessages,
+      { role: "user", content: userMessage },
+    ];
+    setChatMessages(newHistory);
+    fetchAIResponse(newHistory);
+  };
+
+  const handleSaveEdit = (index: number) => {
+    if (!editInput.trim() || isChatLoading) return;
+    const newContent = editInput.trim();
+
+    // Jika tidak ada perubahan, batalkan mode edit
+    if (newContent === chatMessages[index].content) {
+      setEditingIndex(null);
+      return;
+    }
+
+    setEditingIndex(null);
+
+    // Potong array history HANYA sampai ke pesan yang diedit, lalu tambahkan pesan baru
+    const newHistory: { role: "user" | "assistant"; content: string }[] = [
+      ...chatMessages.slice(0, index),
+      { role: "user", content: newContent },
+    ];
+
+    setChatMessages(newHistory);
+    fetchAIResponse(newHistory);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -591,8 +622,24 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
               {chatMessages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-${msg.role === "user" ? "right" : "left"}-2 duration-300`}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} group animate-in fade-in slide-in-from-${msg.role === "user" ? "right" : "left"}-2 duration-300`}
                 >
+                  {/* EDIT BUTTON (Tampil di sebelah kiri bubble user saat dihover) */}
+                  {msg.role === "user" &&
+                    editingIndex !== idx &&
+                    !isChatLoading && (
+                      <button
+                        onClick={() => {
+                          setEditingIndex(idx);
+                          setEditInput(msg.content);
+                        }}
+                        className="opacity-0 group-hover:opacity-100 p-2 text-zinc-500 hover:text-blue-400 transition-all h-fit mt-1 mr-1"
+                        title="Edit Pesan"
+                      >
+                        <Pencil className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg overflow-hidden ${
                       msg.role === "user"
@@ -610,10 +657,46 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                         {msg.role === "user" ? "You" : "Lintang AI"}
                       </span>
                     </div>
+
                     {msg.role === "user" ? (
-                      <p className="whitespace-pre-wrap leading-relaxed">
-                        {msg.content}
-                      </p>
+                      editingIndex === idx ? (
+                        <div className="flex flex-col gap-3 min-w-[200px] sm:min-w-[280px]">
+                          <textarea
+                            value={editInput}
+                            onChange={(e) => setEditInput(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" && !e.shiftKey) {
+                                e.preventDefault();
+                                handleSaveEdit(idx);
+                              }
+                            }}
+                            className="w-full bg-black/20 border border-white/20 rounded-xl px-3 py-2 text-sm text-white placeholder-zinc-300 focus:outline-none focus:border-white/50 resize-none"
+                            rows={Math.max(2, editInput.split("\n").length)}
+                            autoFocus
+                          />
+                          <div className="flex justify-end gap-2">
+                            <button
+                              onClick={() => setEditingIndex(null)}
+                              className="p-1.5 rounded-lg bg-black/20 hover:bg-black/40 text-white/80 hover:text-white transition-colors"
+                              title="Batal"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => handleSaveEdit(idx)}
+                              disabled={!editInput.trim() || isChatLoading}
+                              className="p-1.5 rounded-lg bg-white/20 hover:bg-white/40 text-white disabled:opacity-40 transition-colors"
+                              title="Simpan & Kirim Ulang"
+                            >
+                              <Check className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="whitespace-pre-wrap leading-relaxed">
+                          {msg.content}
+                        </p>
+                      )
                     ) : (
                       <div className="w-full">
                         <ReactMarkdown
