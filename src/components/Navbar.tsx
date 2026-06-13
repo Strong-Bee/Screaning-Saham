@@ -167,7 +167,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     setToolCallStatus(null);
 
     try {
-      const messages = [
+      const messages: any[] = [
         {
           role: "system",
           content:
@@ -180,11 +180,12 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
         { role: "user", content: userMessage },
       ];
 
-      const completion = await puter.ai.chat(messages, {
+      // PERBAIKAN: Tambahkan 'as any' untuk menghindari error TypeScript pada non-streaming response
+      const completion = (await puter.ai.chat(messages, {
         model: "x-ai/grok-4.3",
         tools: tools,
         stream: false,
-      });
+      })) as any;
 
       let finalContent = "";
 
@@ -431,7 +432,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                   <RefreshCw
                     className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
                   />
-                  Sync Engine
+                  <span className="hidden lg:inline">Sync Engine</span>
                 </button>
               )}
             </div>
