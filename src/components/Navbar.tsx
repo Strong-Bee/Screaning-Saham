@@ -23,6 +23,8 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { puter } from "@heyputer/puter.js";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface NavbarProps {
   onSync?: () => void;
@@ -124,6 +126,82 @@ function getMarketSentiment(index: string) {
   };
 }
 
+/* ---------- MARKDOWN COMPONENTS ---------- */
+const MarkdownComponents: any = {
+  table: ({ node, ...props }: any) => (
+    <div className="overflow-x-auto my-3 rounded-lg border border-zinc-700/50 shadow-sm">
+      <table
+        className="w-full text-left border-collapse text-xs sm:text-sm"
+        {...props}
+      />
+    </div>
+  ),
+  thead: ({ node, ...props }: any) => (
+    <thead className="bg-zinc-800/80" {...props} />
+  ),
+  th: ({ node, ...props }: any) => (
+    <th
+      className="px-3 py-2.5 font-semibold border-b border-zinc-700 text-zinc-200"
+      {...props}
+    />
+  ),
+  td: ({ node, ...props }: any) => (
+    <td
+      className="px-3 py-2 border-b border-zinc-800/50 text-zinc-300"
+      {...props}
+    />
+  ),
+  tr: ({ node, ...props }: any) => (
+    <tr className="hover:bg-zinc-800/30 transition-colors" {...props} />
+  ),
+  p: ({ node, ...props }: any) => (
+    <p className="mb-2.5 last:mb-0 leading-relaxed" {...props} />
+  ),
+  ul: ({ node, ...props }: any) => (
+    <ul className="list-disc list-outside ml-4 mb-3 space-y-1" {...props} />
+  ),
+  ol: ({ node, ...props }: any) => (
+    <ol className="list-decimal list-outside ml-4 mb-3 space-y-1" {...props} />
+  ),
+  li: ({ node, ...props }: any) => <li className="pl-1" {...props} />,
+  strong: ({ node, ...props }: any) => (
+    <strong className="font-semibold text-white" {...props} />
+  ),
+  a: ({ node, ...props }: any) => (
+    <a
+      className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
+      target="_blank"
+      rel="noreferrer"
+      {...props}
+    />
+  ),
+  code: ({ node, className, children, ...props }: any) => {
+    const match = /language-(\w+)/.exec(className || "");
+    return match ? (
+      <div className="my-3 overflow-hidden rounded-lg border border-zinc-800 bg-[#050505]">
+        <div className="flex items-center px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-[10px] font-mono text-zinc-500 uppercase">
+          {match[1]}
+        </div>
+        <div className="overflow-x-auto p-3 scrollbar-thin scrollbar-thumb-zinc-800">
+          <code
+            className={`text-[12px] font-mono text-zinc-300 ${className || ""}`}
+            {...props}
+          >
+            {children}
+          </code>
+        </div>
+      </div>
+    ) : (
+      <code
+        className="bg-zinc-800/80 text-blue-300 px-1.5 py-0.5 rounded-md text-[11px] font-mono border border-zinc-700/50"
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  },
+};
+
 export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -171,7 +249,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
         {
           role: "system",
           content:
-            "Kamu adalah Lintang AI, asisten AI untuk platform Lintang Predator — AI Market Intelligence untuk Bursa Efek Indonesia. Bantu pengguna memahami saham, analisis teknikal, sentimen pasar, dan data ekonomi. Kamu bisa menggunakan fungsi yang tersedia untuk mendapatkan informasi real-time.",
+            "Kamu adalah Lintang AI, asisten AI untuk platform Lintang Predator — AI Market Intelligence untuk Bursa Efek Indonesia. Bantu pengguna memahami saham, analisis teknikal, sentimen pasar, dan data ekonomi. Kamu bisa menggunakan format markdown (tabel, list, tebal) agar penjelasanmu rapi. Gunakan fungsi yang tersedia untuk mendapatkan informasi real-time jika diperlukan.",
         },
         ...chatMessages.map((msg) => ({
           role: msg.role,
@@ -180,7 +258,6 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
         { role: "user", content: userMessage },
       ];
 
-      // PERBAIKAN: Tambahkan 'as any' untuk menghindari error TypeScript pada non-streaming response
       const completion = (await puter.ai.chat(messages, {
         model: "x-ai/grok-4.3",
         tools: tools,
@@ -477,7 +554,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-5 space-y-4 scrollbar-thin scrollbar-thumb-zinc-800">
+            <div className="flex-1 overflow-y-auto p-5 space-y-5 scrollbar-thin scrollbar-thumb-zinc-800">
               {chatMessages.length === 0 &&
                 !streamingContent &&
                 !toolCallStatus && (
@@ -497,13 +574,13 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                         terkini.
                       </p>
                       <div className="mt-3 flex justify-center gap-2 text-xs text-zinc-500">
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full">
+                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
                           🌤 Cuaca
                         </span>
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full">
+                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
                           🕒 Waktu
                         </span>
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full">
+                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
                           📈 Pasar
                         </span>
                       </div>
@@ -517,13 +594,13 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-${msg.role === "user" ? "right" : "left"}-2 duration-300`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg ${
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg overflow-hidden ${
                       msg.role === "user"
                         ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-blue-500/20"
                         : "bg-zinc-900 border border-zinc-800 text-zinc-300 shadow-black/20"
                     }`}
                   >
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-2">
                       {msg.role === "user" ? (
                         <User className="w-3 h-3" />
                       ) : (
@@ -533,7 +610,20 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                         {msg.role === "user" ? "You" : "Lintang AI"}
                       </span>
                     </div>
-                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                    {msg.role === "user" ? (
+                      <p className="whitespace-pre-wrap leading-relaxed">
+                        {msg.content}
+                      </p>
+                    ) : (
+                      <div className="w-full">
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          components={MarkdownComponents}
+                        >
+                          {msg.content}
+                        </ReactMarkdown>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -549,18 +639,22 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
 
               {streamingContent && (
                 <div className="flex justify-start animate-in fade-in slide-in-from-left-2 duration-300">
-                  <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-zinc-900 border border-blue-500/30 text-zinc-300 shadow-[0_0_10px_rgba(37,99,235,0.2)]">
-                    <div className="flex items-center gap-2 mb-1">
+                  <div className="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-zinc-900 border border-blue-500/30 text-zinc-300 shadow-[0_0_10px_rgba(37,99,235,0.2)] overflow-hidden">
+                    <div className="flex items-center gap-2 mb-2">
                       <Bot className="w-3 h-3 text-blue-500" />
                       <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">
                         Lintang AI
                       </span>
                       <span className="inline-block w-2 h-4 bg-blue-500 animate-pulse" />
                     </div>
-                    <p className="whitespace-pre-wrap">
-                      {streamingContent}
-                      <span className="inline-block w-2 h-5 bg-blue-500 ml-1 animate-pulse" />
-                    </p>
+                    <div className="w-full">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={MarkdownComponents}
+                      >
+                        {streamingContent}
+                      </ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               )}
@@ -584,7 +678,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                   onKeyDown={handleKeyDown}
                   placeholder="Ketik pesan..."
                   rows={1}
-                  className="flex-1 resize-none bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500/50 focus:shadow-[0_0_15px_rgba(37,99,235,0.3)] transition-all"
+                  className="flex-1 resize-none bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500/50 focus:shadow-[0_0_15px_rgba(37,99,235,0.3)] transition-all scrollbar-thin scrollbar-thumb-zinc-800"
                 />
                 <button
                   onClick={handleSendMessage}
