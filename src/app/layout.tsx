@@ -21,12 +21,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Lintang Predator — AI Stock Radar Indonesia",
-    template: "%s | Lintang Predator",
+    default: "Optimaze — AI Stock Radar Indonesia",
+    template: "%s | Optimaze",
   },
 
   description:
-    "Lintang Predator adalah AI Stock Radar Indonesia untuk screening saham BEI otomatis berbasis RSI dan algoritma Lintang-GPT. Temukan saham potensial real-time di Bursa Efek Indonesia.",
+    "Optimaze adalah AI Stock Radar Indonesia untuk screening saham BEI otomatis berbasis RSI dan algoritma Lintang-GPT. Temukan saham potensial real-time di Bursa Efek Indonesia.",
 
   keywords: [
     "stock radar indonesia",
@@ -39,11 +39,12 @@ export const metadata: Metadata = {
     "screener saham",
     "saham indonesia",
     "bursa efek indonesia",
+    "optimaze",
   ],
 
-  authors: [{ name: "Lintang Predator" }],
-  creator: "Lintang Predator",
-  publisher: "Lintang Predator",
+  authors: [{ name: "Optimaze" }],
+  creator: "Optimaze",
+  publisher: "Optimaze",
   category: "finance",
 
   robots: {
@@ -68,29 +69,29 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Lintang Predator — AI Stock Radar Indonesia",
+    title: "Optimaze — AI Stock Radar Indonesia",
     description:
       "AI Stock Radar Indonesia untuk screening saham BEI otomatis berbasis RSI dan algoritma Lintang-GPT.",
     url: SITE_URL,
-    siteName: "Lintang Predator",
+    siteName: "Optimaze",
     locale: "id_ID",
     type: "website",
     images: [
       {
-        url: `${SITE_URL}/og-lintang-predator.jpg`,
+        url: `${SITE_URL}/og-optimaze.jpg`,
         width: 1200,
         height: 630,
-        alt: "Lintang Predator Stock Radar Indonesia",
+        alt: "Optimaze Stock Radar Indonesia",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Lintang Predator — AI Stock Radar Indonesia",
+    title: "Optimaze — AI Stock Radar Indonesia",
     description:
       "AI Stock Radar Indonesia untuk screening saham BEI otomatis berbasis RSI dan Lintang-GPT.",
-    images: [`${SITE_URL}/og-lintang-predator.jpg`],
+    images: [`${SITE_URL}/og-optimaze.jpg`],
   },
 };
 
@@ -107,7 +108,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Lintang Predator",
+    name: "Optimaze",
     url: SITE_URL,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
@@ -120,7 +121,7 @@ export default function RootLayout({
     },
     creator: {
       "@type": "Organization",
-      name: "Lintang Predator",
+      name: "Optimaze",
       url: SITE_URL,
     },
   };

@@ -12,19 +12,16 @@ import {
   Zap,
   Database,
   CalendarDays,
-  Globe,
-  TrendingUp,
   CheckCircle,
-  RefreshCw,
-  BarChart3,
-  Users,
+  TrendingUp,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import IHSGTicker from "@/components/IHSGTicker"; // atau import langsung jika satu file
 
-/* ================= HERO ================= */
+/* ---------- Hero ---------- */
 function Hero() {
   return (
     <section className="relative overflow-hidden">
@@ -54,7 +51,7 @@ function Hero() {
 
           <p className="mt-6 text-zinc-400 text-lg leading-relaxed">
             Platform AI untuk mendeteksi peluang saham Indonesia secara
-            real-time menggunakan analisis teknikal, fundamental, dan sentimen
+            real‑time menggunakan analisis teknikal, fundamental, dan sentimen
             pasar.
           </p>
 
@@ -79,7 +76,7 @@ function Hero() {
   );
 }
 
-/* ================= TRUST ================= */
+/* ---------- Trust ---------- */
 function Trust() {
   const stats = [
     { number: "800+", label: "Saham Dipantau" },
@@ -92,33 +89,28 @@ function Trust() {
     <section className="border-y border-zinc-900 bg-[#070707]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat, idx) => (
-          <Stat key={idx} number={stat.number} label={stat.label} />
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="group"
+          >
+            <div className="text-3xl font-black text-white group-hover:text-blue-400 transition-colors">
+              {stat.number}
+            </div>
+            <div className="text-xs uppercase tracking-widest text-zinc-500 mt-2">
+              {stat.label}
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>
   );
 }
 
-function Stat({ number, label }: { number: string; label: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-      className="group"
-    >
-      <div className="text-3xl font-black text-white group-hover:text-blue-400 transition-colors">
-        {number}
-      </div>
-      <div className="text-xs uppercase tracking-widest text-zinc-500 mt-2">
-        {label}
-      </div>
-    </motion.div>
-  );
-}
-
-/* ================= FEATURES ================= */
+/* ---------- Features ---------- */
 function Features() {
   const items = [
     {
@@ -129,7 +121,7 @@ function Features() {
     {
       icon: Brain,
       title: "AI Scoring",
-      text: "Penilaian peluang saham menggunakan algoritma Lintang-GPT proprietary.",
+      text: "Penilaian peluang saham menggunakan algoritma Lintang‑GPT proprietary.",
     },
     {
       icon: LineChart,
@@ -139,7 +131,7 @@ function Features() {
     {
       icon: Activity,
       title: "Sentiment Tracking",
-      text: "Analisa sentimen berita dan aktivitas pasar secara real-time.",
+      text: "Analisa sentimen berita dan aktivitas pasar secara real‑time.",
     },
     {
       icon: Zap,
@@ -148,7 +140,7 @@ function Features() {
     },
     {
       icon: ShieldCheck,
-      title: "Risk-Aware Engine",
+      title: "Risk‑Aware Engine",
       text: "Model AI mempertimbangkan risiko dan volatilitas saham.",
     },
   ];
@@ -193,10 +185,10 @@ function Features() {
   );
 }
 
-/* ================= ECONOMIC CALENDAR (EXPANDED) ================= */
+/* ---------- Economic Calendar ---------- */
 function EconomicCalendarSection() {
   const benefits = [
-    "Data real-time dari sumber global terpercaya",
+    "Data real‑time dari sumber global terpercaya",
     "Filter event berdasarkan dampak & negara",
     "Notifikasi otomatis saat rilis data penting",
     "Integrasi langsung dengan radar saham IDX",
@@ -206,7 +198,6 @@ function EconomicCalendarSection() {
     <section className="py-24 bg-[#070707] border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -247,7 +238,6 @@ function EconomicCalendarSection() {
             </Link>
           </motion.div>
 
-          {/* RIGHT VISUAL */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -264,7 +254,6 @@ function EconomicCalendarSection() {
                 <CalendarDays className="w-5 h-5 text-blue-500 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.5)] transition" />
               </div>
 
-              {/* Mock events */}
               <div className="space-y-4">
                 <CalendarEvent
                   time="14:30 WIB"
@@ -288,7 +277,7 @@ function EconomicCalendarSection() {
                 />
               </div>
               <div className="mt-6 text-center text-xs text-zinc-600">
-                Data real-time dari Tradays & MetaTrader
+                Data real‑time dari Tradays & MetaTrader
               </div>
             </div>
           </motion.div>
@@ -329,18 +318,18 @@ function CalendarEvent({
   );
 }
 
-/* ================= HOW IT WORKS ================= */
+/* ---------- How It Works ---------- */
 function HowItWorks() {
   const steps = [
     {
       icon: Database,
       title: "Data Aggregation",
-      text: "Kami mengumpulkan data harga saham, berita, dan indikator ekonomi secara real-time.",
+      text: "Kami mengumpulkan data harga saham, berita, dan indikator ekonomi secara real‑time.",
     },
     {
       icon: Brain,
       title: "AI Processing",
-      text: "Algoritma Lintang-GPT menganalisis pola, sentimen, dan valuasi dalam hitungan detik.",
+      text: "Algoritma Lintang‑GPT menganalisis pola, sentimen, dan valuasi dalam hitungan detik.",
     },
     {
       icon: TrendingUp,
@@ -393,7 +382,7 @@ function HowItWorks() {
   );
 }
 
-/* ================= PREVIEW ================= */
+/* ---------- Preview ---------- */
 function Preview() {
   return (
     <section className="py-24 bg-[#070707] border-y border-zinc-900">
@@ -446,7 +435,7 @@ function Preview() {
   );
 }
 
-/* ================= CTA ================= */
+/* ---------- CTA ---------- */
 function CTA() {
   return (
     <section className="py-24">
@@ -481,6 +470,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col selection:bg-blue-500/30">
       <Navbar />
+      {/* TICKER IHSG REAL‑TIME */}
+      <IHSGTicker />
       <main className="flex-1">
         <Hero />
         <Trust />

@@ -21,6 +21,10 @@ import {
   Wrench,
   Pencil,
   Check,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Globe,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -72,24 +76,56 @@ const tools = [
   {
     type: "function" as const,
     function: {
-      name: "get_market_sentiment",
+      name: "get_ihsg_data",
       description:
-        "Dapatkan sentimen pasar saham Indonesia (IHSG) secara real-time",
+        "Dapatkan data pasar IHSG real-time: harga terkini, perubahan poin & persentase, high/low, volume, dan previous close.",
+      parameters: {
+        type: "object",
+        properties: {},
+        required: [],
+      },
+    },
+  },
+  {
+    type: "function" as const,
+    function: {
+      name: "get_stock_data",
+      description:
+        "Dapatkan data saham tertentu berdasarkan simbol ticker (contoh: TLKM, BBCA) tanpa akhiran .JK. Saham Indonesia otomatis menggunakan IDX.",
       parameters: {
         type: "object",
         properties: {
-          index: {
+          symbol: {
             type: "string",
-            description: "Kode indeks (default: IHSG)",
+            description: "Simbol saham (contoh: TLKM, BBCA, ASII)",
           },
         },
-        required: [],
+        required: ["symbol"],
+      },
+    },
+  },
+  {
+    type: "function" as const,
+    function: {
+      name: "scrape_webpage",
+      description:
+        "Scrape konten teks dari sebuah halaman web. Gunakan untuk mendapatkan informasi terkini dari berita, artikel, atau halaman publik.",
+      parameters: {
+        type: "object",
+        properties: {
+          url: {
+            type: "string",
+            description:
+              "URL lengkap halaman yang akan di-scrape (contoh: https://www.cnbcindonesia.com/market/...)",
+          },
+        },
+        required: ["url"],
       },
     },
   },
 ];
 
-/* ---------- MOCK FUNCTIONS ---------- */
+/* ---------- MOCK / UTILITY FUNCTIONS ---------- */
 function getWeather(location: string) {
   const data: Record<
     string,
@@ -119,13 +155,39 @@ function getCurrentTime(location: string) {
   return times[location] || "Waktu tidak tersedia";
 }
 
-function getMarketSentiment(index: string) {
-  return {
-    index: index || "IHSG",
-    sentiment: "Bullish",
-    confidence: 0.78,
-    last_update: new Date().toISOString(),
-  };
+async function getIHSGData() {
+  try {
+    const res = await fetch("/api/ihsg");
+    if (!res.ok) throw new Error("Gagal mengambil data IHSG");
+    return await res.json();
+  } catch {
+    return { error: "Data IHSG tidak tersedia" };
+  }
+}
+
+async function getStockData(symbol: string) {
+  try {
+    const cleanSymbol = symbol.toUpperCase().replace(/\.JK$/i, "");
+    const res = await fetch(
+      `/api/tradingview/stock?symbol=${encodeURIComponent(cleanSymbol)}`,
+    );
+    if (!res.ok) throw new Error("Gagal mengambil data saham");
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    return data;
+  } catch {
+    return { error: `Data ${symbol} tidak ditemukan` };
+  }
+}
+
+async function scrapeWebpage(url: string) {
+  try {
+    const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}`);
+    if (!res.ok) throw new Error("Gagal scraping");
+    return await res.json();
+  } catch {
+    return { error: `Gagal mengakses ${url}` };
+  }
 }
 
 /* ---------- MARKDOWN COMPONENTS ---------- */
@@ -208,7 +270,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  // Chat States
+  // Chat states
   const [chatMessages, setChatMessages] = useState<
     { role: "user" | "assistant"; content: string }[]
   >([]);
@@ -216,10 +278,23 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
   const [toolCallStatus, setToolCallStatus] = useState<string | null>(null);
-
-  // Edit States
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [editInput, setEditInput] = useState("");
+
+  // IHSG Mini Ticker state
+  const [ihsgData, setIhsgData] = useState<{
+    price: number | null;
+    change: number | null;
+    changePercent: number | null;
+    loading: boolean;
+    error: string | null;
+  }>({
+    price: null,
+    change: null,
+    changePercent: null,
+    loading: true,
+    error: null,
+  });
 
   const chatEndRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -235,6 +310,30 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  // Fetch IHSG mini data untuk ticker navbar
+  const fetchMiniIHSG = async () => {
+    try {
+      const res = await fetch("/api/ihsg", { cache: "no-store" });
+      if (!res.ok) throw new Error("Gagal");
+      const json = await res.json();
+      setIhsgData({
+        price: json.price,
+        change: json.change,
+        changePercent: json.changePercent,
+        loading: false,
+        error: null,
+      });
+    } catch (err: any) {
+      setIhsgData((prev) => ({ ...prev, loading: false, error: err.message }));
+    }
+  };
+
+  useEffect(() => {
+    fetchMiniIHSG();
+    const interval = setInterval(fetchMiniIHSG, 60_000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -253,7 +352,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
         {
           role: "system",
           content:
-            "Kamu adalah Lintang AI, asisten AI untuk platform Lintang Predator — AI Market Intelligence untuk Bursa Efek Indonesia. Bantu pengguna memahami saham, analisis teknikal, sentimen pasar, dan data ekonomi. Kamu bisa menggunakan format markdown (tabel, list, tebal) agar penjelasanmu rapi. Gunakan fungsi yang tersedia untuk mendapatkan informasi real-time jika diperlukan.",
+            "Kamu adalah Lintang AI, asisten AI untuk platform Lintang Predator — AI Market Intelligence untuk Bursa Efek Indonesia. Kamu dapat mengakses data pasar real-time (dari TradingView), cuaca, waktu, dan melakukan scraping halaman web untuk mendapatkan berita terkini. Bantu pengguna dengan analisis saham, teknikal, sentimen pasar, dan berita ekonomi. Gunakan format markdown (tabel, list, tebal) agar penjelasanmu rapi. Gunakan fungsi yang tersedia untuk mendapatkan informasi real-time jika diperlukan.",
         },
         ...history,
       ];
@@ -284,8 +383,14 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
             case "get_current_time":
               result = getCurrentTime(args.location);
               break;
-            case "get_market_sentiment":
-              result = getMarketSentiment(args.index || "IHSG");
+            case "get_ihsg_data":
+              result = await getIHSGData();
+              break;
+            case "get_stock_data":
+              result = await getStockData(args.symbol);
+              break;
+            case "scrape_webpage":
+              result = await scrapeWebpage(args.url);
               break;
             default:
               result = { error: "Fungsi tidak dikenal" };
@@ -357,7 +462,6 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
     if (!editInput.trim() || isChatLoading) return;
     const newContent = editInput.trim();
 
-    // Jika tidak ada perubahan, batalkan mode edit
     if (newContent === chatMessages[index].content) {
       setEditingIndex(null);
       return;
@@ -365,7 +469,6 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
 
     setEditingIndex(null);
 
-    // Potong array history HANYA sampai ke pesan yang diedit, lalu tambahkan pesan baru
     const newHistory: { role: "user" | "assistant"; content: string }[] = [
       ...chatMessages.slice(0, index),
       { role: "user", content: newContent },
@@ -381,6 +484,28 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
       handleSendMessage();
     }
   };
+
+  // Mini ticker formatting & colors
+  const formatRupiahCompact = (value: number) =>
+    "Rp " + value.toLocaleString("id-ID", { maximumFractionDigits: 2 });
+
+  const changeDirection = !ihsgData.change
+    ? "netral"
+    : ihsgData.change > 0
+      ? "up"
+      : "down";
+  const TrendIcon =
+    changeDirection === "up"
+      ? TrendingUp
+      : changeDirection === "down"
+        ? TrendingDown
+        : Minus;
+  const trendColor =
+    changeDirection === "up"
+      ? "text-green-400"
+      : changeDirection === "down"
+        ? "text-red-400"
+        : "text-zinc-400";
 
   return (
     <>
@@ -439,6 +564,29 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
 
             {/* RIGHT */}
             <div className="flex items-center gap-2 sm:gap-4">
+              {/* IHSG Mini Ticker */}
+              <div className="hidden sm:flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 hover:border-blue-500/30 transition-colors">
+                <Globe className="w-3 h-3 text-blue-500" />
+                <span className="text-zinc-500 font-semibold uppercase tracking-widest text-[10px]">
+                  IHSG
+                </span>
+                {ihsgData.loading ? (
+                  <span className="text-zinc-500 animate-pulse">...</span>
+                ) : ihsgData.error ? (
+                  <span className="text-red-400 text-[10px]">Error</span>
+                ) : (
+                  <>
+                    <span className="text-white font-bold">
+                      {formatRupiahCompact(ihsgData.price!)}
+                    </span>
+                    <span className={`flex items-center gap-0.5 ${trendColor}`}>
+                      <TrendIcon className="w-3 h-3" />
+                      {ihsgData.changePercent?.toFixed(2)}%
+                    </span>
+                  </>
+                )}
+              </div>
+
               <button
                 onClick={() => setIsChatOpen(!isChatOpen)}
                 className={`relative hidden sm:flex items-center gap-2 px-4 lg:px-5 py-2 rounded-xl text-[11px] font-black uppercase transition-all duration-300 border ${
@@ -573,7 +721,7 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                   </h3>
                   <p className="text-[10px] text-zinc-500 flex items-center gap-1">
                     <Zap className="w-3 h-3 text-blue-500" />
-                    Grok 4.3 • Function Calling
+                    Grok 4.3 • TradingView + Scraping
                   </p>
                 </div>
               </div>
@@ -601,18 +749,21 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
                         Lintang AI Siap Membantu
                       </p>
                       <p className="text-sm mt-2 text-zinc-600">
-                        Tanyakan analisis saham, cuaca, atau berita pasar
-                        terkini.
+                        Tanyakan analisis saham, cuaca, berita pasar, atau
+                        scraping halaman web!
                       </p>
-                      <div className="mt-3 flex justify-center gap-2 text-xs text-zinc-500">
+                      <div className="mt-3 flex justify-center gap-2 text-xs text-zinc-500 flex-wrap">
+                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
+                          📈 IHSG
+                        </span>
+                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
+                          🏢 Saham
+                        </span>
                         <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
                           🌤 Cuaca
                         </span>
                         <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
-                          🕒 Waktu
-                        </span>
-                        <span className="px-2 py-1 bg-zinc-800 rounded-full cursor-default">
-                          📈 Pasar
+                          🌐 Scraping
                         </span>
                       </div>
                     </div>
@@ -622,9 +773,12 @@ export default function Navbar({ onSync, isLoading }: NavbarProps) {
               {chatMessages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} group animate-in fade-in slide-in-from-${msg.role === "user" ? "right" : "left"}-2 duration-300`}
+                  className={`flex ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
+                  } group animate-in fade-in slide-in-from-${
+                    msg.role === "user" ? "right" : "left"
+                  }-2 duration-300`}
                 >
-                  {/* EDIT BUTTON (Tampil di sebelah kiri bubble user saat dihover) */}
                   {msg.role === "user" &&
                     editingIndex !== idx &&
                     !isChatLoading && (
