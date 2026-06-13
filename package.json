@@ -9,10 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heyputer/puter.js": "^2.5.3",
     "axios": "^1.13.4",
     "cheerio": "^1.2.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.40.0",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.3",
